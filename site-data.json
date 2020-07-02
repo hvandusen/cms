@@ -1,0 +1,63 @@
+{
+  "allMarkdownRemark": {
+    "edges": [
+      {
+        "node": {
+          "id": "7cec542e-0c34-56fd-ac8f-91c52109cc84",
+          "fields": { "slug": "/products/" },
+          "frontmatter": { "tags": null, "templateKey": "product-page" }
+        }
+      },
+      {
+        "node": {
+          "id": "bb5ac24c-630f-591f-bcee-c9914ce26196",
+          "fields": {
+            "slug": "/blog/2017-01-04-a-beginners-guide-to-brewing-with-chemex/"
+          },
+          "frontmatter": {
+            "tags": ["brewing", "chemex"],
+            "templateKey": "blog-post"
+          }
+        }
+      },
+      {
+        "node": {
+          "id": "6af60148-71c1-5537-8011-44ac18b7f2d6",
+          "fields": {
+            "slug": "/blog/2017-01-04-just-in-small-batch-of-jamaican-blue-mountain-in-store-next-week/"
+          },
+          "frontmatter": {
+            "tags": ["jamaica", "green beans", "flavor", "tasting"],
+            "templateKey": "blog-post"
+          }
+        }
+      },
+      {
+        "node": {
+          "id": "98194080-b552-5685-b4d7-c7307e7355dd",
+          "fields": { "slug": "/about/" },
+          "frontmatter": { "tags": null, "templateKey": "about-page" }
+        }
+      },
+      {
+        "node": {
+          "id": "1c47bfa5-e6d0-5a71-b59c-d4cf4e7f8653",
+          "fields": {
+            "slug": "/blog/2016-12-17-making-sense-of-the-scaas-new-flavor-wheel/"
+          },
+          "frontmatter": {
+            "tags": ["flavor", "tasting"],
+            "templateKey": "blog-post"
+          }
+        }
+      },
+      {
+        "node": {
+          "id": "b14c4a9d-2453-50a7-9933-a3cdf1d67b06",
+          "fields": { "slug": "/" },
+          "frontmatter": { "tags": null, "templateKey": "index-page" }
+        }
+      }
+    ]
+  }
+}

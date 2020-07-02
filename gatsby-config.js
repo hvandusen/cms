@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'Henry Van Dusen- things i made',
+    title: 'henry van dusen',
     description:
-      'this site is supposed to help me document and share the random stuff i make, since it\'s getting a bit harder to keep track of whats going on',
+      'stuff i (henry van dusen) do!',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
