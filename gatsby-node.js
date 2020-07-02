@@ -3,6 +3,7 @@ const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+const fs = require("fs")
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
@@ -31,7 +32,7 @@ exports.createPages = ({ actions, graphql }) => {
     }
 
     const posts = result.data.allMarkdownRemark.edges
-
+    fs.writeFileSync("posts-data.json", JSON.stringify(posts))
     posts.forEach((edge) => {
       const id = edge.node.id
       createPage({
