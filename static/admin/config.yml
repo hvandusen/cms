@@ -41,12 +41,14 @@ collections:
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "work"}
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Type", name: "type", widget: "select", options: ["Drawing","Candusen page"]}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Description", name: "description", widget: "text", required: false}
       - {label: "Featured Image", name: "featuredimage", widget: image, required: false}
       - {label: "Body", name: "body", widget: "markdown", required: false}
       - {label: "Images", name: "images", widget: "image", multiple: true, required: false}
       - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Code", name: "paper_code", widget: "code", required: false} 
 
   - name: "pages"
     label: "Pages"
