@@ -20,6 +20,7 @@ exports.createPages = ({ actions, graphql }) => {
             frontmatter {
               tags
               templateKey
+              type
             }
           }
         }
@@ -35,11 +36,15 @@ exports.createPages = ({ actions, graphql }) => {
     fs.writeFileSync("posts-data.json", JSON.stringify(posts))
     posts.forEach((edge) => {
       const id = edge.node.id
+      const postType = edge.node.frontmatter.type
+      console.log("postType: ",postType)
       createPage({
         path: edge.node.fields.slug,
         tags: edge.node.frontmatter.tags,
         component: path.resolve(
-          `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
+          `src/templates/${String(
+            postType === "Candusen page" ? "paper-page" : edge.node.frontmatter.templateKey
+          )}.js`
         ),
         // additional data can be passed via context
         context: {
