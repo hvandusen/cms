@@ -9,7 +9,6 @@ paper_code:
 
     function onMouseDown(e){
     	draw = !draw;
-        alert()
     	if(draw){
     		line = new Path(getOptions());
     		//line.sendToBack();
