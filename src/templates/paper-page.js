@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import PaperWrapper from '../components/PaperWrapper'
 import { HTMLContent } from '../components/Content'
@@ -41,6 +41,7 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
+
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title

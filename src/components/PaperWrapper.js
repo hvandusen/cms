@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import { Link } from 'gatsby'
 import Content from './Content'
-import {paper} from 'paper'
+import {paper, PaperScope} from 'paper'
 import install from './paperUtils'
 if(typeof window !== "undefined")
   install(window,paper)
@@ -23,6 +23,7 @@ const PaperWrapper = ({
   height
 }) => {
   const PostContent = contentComponent || Content
+  let scope = new PaperScope()
   let canv = () => (
     <div style={{position: "fixed"}} className="canvasContainer">
       <canvas hidpi="on" id={"canvas-"+id}
@@ -32,15 +33,17 @@ const PaperWrapper = ({
     </div>
   )
   useEffect(() => {
+
     const script = document.createElement('script');
     script.type= "text/javascript"
     const canvas = document.getElementById('canvas-'+id)
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
-    paper.install(window)
-    paper.setup(canvas);
-    paper.execute(code)
-    paper.activate()
+    scope.install(window)
+    scope.setup(canvas);
+    scope.execute(code)
+    console.log("executing ",title)
+    scope.activate()
     return () => {
       paper.remove()
     }
@@ -83,7 +86,7 @@ PaperWrapper.propTypes = {
   html: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
   description: PropTypes.string,
-  images: PropTypes.object,
+  // images: PropTypes.object,
   title: PropTypes.string,
   helmet: PropTypes.object,
 }
