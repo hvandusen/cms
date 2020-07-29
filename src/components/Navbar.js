@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
 
 const Navbar = class extends React.Component {
@@ -46,28 +45,29 @@ const Navbar = class extends React.Component {
             </Link>
             {/* Hamburger menu */}
             <div
+              role="menu" tabIndex={0}
               className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-              data-target="navMenu"
+              data-target="nav"
               onClick={() => this.toggleHamburger()}
+              onKeyPress={console.log}
             >
-              <span />
-              <span />
-              <span />
             </div>
           </div>
           <div
-            id="navMenu"
-            className={`navbar-menu ${this.state.navBarActiveClass}`}
-          >
-            <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/work">
-                Work
+            id="nav"
+            className={`navbar-menu ${this.state.navBarActiveClass}`}>
+            <div className="navbar-start">
+              <Link activeClassName="active" className="navbar-item" to="/">
+                All
               </Link>
-              <Link className="navbar-item" to="/candusen">
-                Web shit
+              <Link activeClassName="active" className="navbar-item" to="/work">
+                Web
               </Link>
-              <Link className="navbar-item" to="/contact/examples">
-                Form Examples
+              <Link activeClassName="active" className="navbar-item" to="/candusen">
+                Art
+              </Link>
+              <Link activeClassName="active" className="navbar-item" to="/contact/examples">
+                Music
               </Link>
             </div>
           </div>

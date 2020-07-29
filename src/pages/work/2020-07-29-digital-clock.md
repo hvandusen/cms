@@ -68,9 +68,9 @@ paper_code:
     project.importSVG("/static/img/clock.svg",function(files){
     		layer = project.activeLayer.children
     		layer.position = view.center;
-    		
+
     		//layer.activate()
-    		
+
     		project.activeLayer.children[0]
     		for(c in files.children){
     			points.push(new Point(files.children[c].bounds.center))
@@ -130,7 +130,7 @@ paper_code:
     	for(var i = kids.length-3;i> -1;i--){
     		kids[i].visible = false;
     	}
-    	
+
     	for(i in numPatterns[h[0]]) //digit 1; fill panels that match time digit
     		{
     		dig1 = h[0]

@@ -43,7 +43,7 @@ class CandusenList extends React.Component {
                   </p>
                 </header>
                 <p>
-                  {post.excerpt}
+                  {post.excerpt}asd
                   <br />
                   <br />
                   <Link className="button" to={post.fields.slug}>

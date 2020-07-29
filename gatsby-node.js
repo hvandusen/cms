@@ -37,7 +37,6 @@ exports.createPages = ({ actions, graphql }) => {
     posts.forEach((edge) => {
       const id = edge.node.id
       const postType = edge.node.frontmatter.type
-      console.log("postType: ",postType)
       createPage({
         path: edge.node.fields.slug,
         tags: edge.node.frontmatter.tags,
@@ -79,10 +78,9 @@ exports.createPages = ({ actions, graphql }) => {
   })
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+async function onCreateNode({ node, actions, getNode, loadNodeContent }){
   const { createNodeField } = actions
   fmImagesToRelative(node) // convert image paths for gatsby images
-
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
     createNodeField({
@@ -91,4 +89,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value,
     })
   }
+  //load in paper scripts
+  if (node.sourceInstanceName === `paper-content` && node.internal.type === "File") {
+    let cont = await loadNodeContent(node)
+    const value = cont
+    createNodeField({
+      name: `paper-script`,
+      node,
+      value,
+    })
+  }
 }
+
+exports.onCreateNode = onCreateNode

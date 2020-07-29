@@ -47,6 +47,7 @@ class WorkList extends React.Component {
                   <br />
                   <br />
                   <Link className="button" to={post.fields.slug}>
+                    {post.frontmatter.featuredimage ? post.frontmatter.featuredimage : "no"}
                     Keep Reading →
                   </Link>
                 </p>
@@ -56,7 +57,7 @@ class WorkList extends React.Component {
       </div>
     )
   }
-} 
+}
 
 WorkList.propTypes = {
   data: PropTypes.shape({
@@ -85,6 +86,7 @@ export default () => (
                 title
                 templateKey
                 date(formatString: "MMMM DD, YYYY")
+                featuredimage
                 tags
                 description
                 images

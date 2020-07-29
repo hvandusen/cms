@@ -1,4 +1,28 @@
 @import "~bulma/sass/utilities/initial-variables"
+@import "~bulma"
+
+@font-face
+  font-family: "Aktiv"
+  src: url("../../static/fonts/AktivGrotesk.ttf")   format("truetype")
+
+
+@keyframes rgbFade
+  0%
+    color: red
+  32.9%
+    color: red
+  33%
+    color: blue
+  65.9%
+    color: blue
+  66%
+    color: green
+  99.9%
+    color: green
+$fadeRGB: rgbFade 3s linear infinite
+body
+  font-family: "Aktiv"
+  font-size: $size-4
 
 // Config vars
 // Kaldi logo brand color: #FD461E
@@ -9,10 +33,31 @@
   left: 0
   z-index: -1
 
+.navbar 
+  background: transparent
 
-@import "~bulma"
-.navbar-item img
+
+.navbar-item
+  &:nth-child(1)
+      color: red
+  &:nth-child(2)
+      color: red
+      &:hover
+        animation: $fadeRGB
+  &:nth-child(3)
+      color: green
+      &:hover
+        animation: $fadeRGB
+  &:nth-child(4)
+      color: blue
+      &:hover
+        animation: $fadeRGB
+  img
     max-height: none
+  &.active
+    text-decoration: underline
+    animation: $fadeRGB
+
 
 // responsiveness
 +tablet-only
