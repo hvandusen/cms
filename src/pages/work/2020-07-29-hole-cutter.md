@@ -4,7 +4,7 @@ title: Hole cutter
 type: Candusen page
 date: 2020-07-29T15:19:49.452Z
 paper_code:
-  code: >+
+  code: >
     var count = -4;
 
     var gradientRatio=.1;
