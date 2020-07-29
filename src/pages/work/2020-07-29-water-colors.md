@@ -21,7 +21,7 @@ paper_code:
     	}
     }
 
-    var shadowOffset = new Point(00,0);
+    var shadowOffset = new Point(0,0);
     var shadowOffsets = new Point(0,0);
 
     var getOptions = function(){
