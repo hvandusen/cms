@@ -65,7 +65,7 @@ paper_code:
 
     new Layer()
 
-    project.importSVG("/static/clock.svg",function(files){
+    project.importSVG("/static/img/clock.svg",function(files){
     		layer = project.activeLayer.children
     		layer.position = view.center;
     		
