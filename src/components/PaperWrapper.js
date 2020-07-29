@@ -1,12 +1,19 @@
-import React, {  useEffect } from 'react'
+import React, {  useEffect,useState } from 'react'
 import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import { Link } from 'gatsby'
 import Content from './Content'
 import {paper, PaperScope} from 'paper'
 import install from './paperUtils'
-if(typeof window !== "undefined")
-  install(window,paper)
+
+const canvasContainerStyle = {
+  minHeight: "100vh"
+}
+
+const canvasStyle = {
+  // height: 0,
+  // paddingBottom:" 100%"
+}
 
 const PaperWrapper = ({
   id,
@@ -19,33 +26,27 @@ const PaperWrapper = ({
   title,
   helmet,
   code,
-  width,
-  height
 }) => {
   const PostContent = contentComponent || Content
+  let wrapperRef = React.createRef()
+  let [dims,setDims] = useState([window.innerWidth,window.innerHeight])
   let scope = new PaperScope()
-  let canv = () => (
-    <div style={{position: "fixed"}} className="canvasContainer">
-      <canvas hidpi="on" id={"canvas-"+id}
-        width={width ? width : window.innerWidth}
-        height={height ? height : window.innerHeight}>
-      </canvas>
-    </div>
-  )
+  if(typeof window !== "undefined")
+    install(window,scope)
   useEffect(() => {
-
+      //setDims([wrapperRef.current.offsetWidth,wrapperRef.current.offsetHeight])
     const script = document.createElement('script');
     script.type= "text/javascript"
     const canvas = document.getElementById('canvas-'+id)
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+    canvas.width = wrapperRef.current ? wrapperRef.current.offsetWidth : window.innerWidth//dims[0]
+    canvas.height = wrapperRef.current ? wrapperRef.current.offsetHeight : window.innerHeight//dims[1]
+    console.log(wrapperRef.current.offsetHeight)
     scope.install(window)
     scope.setup(canvas);
     scope.execute(code)
-    console.log("executing ",title)
     scope.activate()
     return () => {
-      paper.remove()
+      scope.remove()
     }
   });
   return (
@@ -54,6 +55,9 @@ const PaperWrapper = ({
       <div className="container content">
         <div className="columns">
           <div className="column is-10 is-offset-1">
+          <div ref={wrapperRef} style={canvasContainerStyle} className="canvasContainer">
+            <canvas style={{height: "100%", width: "100%"}} hidpi="on" id={"canvas-"+id}></canvas>
+          </div>
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
@@ -76,7 +80,6 @@ const PaperWrapper = ({
             ) : null}
           </div>
         </div>
-        {canv()}
       </div>
     </section>
   )

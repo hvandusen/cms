@@ -22,11 +22,9 @@ const CandusenList = ({data}) => {
       <div className="paper-listing" style={gridStyle}>
         {posts &&
           posts.map(({ node: post }) => (
-            <div className="paper-preview" style={previewStyle} key={post.id}>
-
+            <div className="paper-preview" ref={ el => console.log(el)} style={previewStyle} key={post.id}>
               <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
-
-
+              <PaperWrapper {...post.frontmatter} {...post.frontmatter.paper_code} {...post}/>
             </div>
           ))}
       </div>
