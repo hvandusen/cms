@@ -37,10 +37,6 @@ paper_code:
     	drawShape();
     };
 
-    function onMouseDown(event) {
-          var test = red.hitTest(event.point);
-    }
-
     function drawShape(){
     	project.activeLayer.removeChildren();
     	path = new Path();
