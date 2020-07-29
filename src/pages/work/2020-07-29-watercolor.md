@@ -40,10 +40,6 @@ paper_code:
 
     var line = new Path(getOptions());
 
-    function onMouseDown(e){
-    	draw = !draw;
-    }
-
     function onMouseMove(e){
     	var adder = e.delta.normalize().rotate(90).multiply(100)
     	if(draw){
