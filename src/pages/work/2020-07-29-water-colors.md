@@ -39,10 +39,6 @@ paper_code:
 
     var line = new Path(getOptions());
 
-    $("body").on("touchend", function(){
-    	draw = !draw;
-    });
-
     function onMouseMove(e){
     	var adder = e.delta.normalize().rotate(90).multiply(100)
     	if(draw){
