@@ -7,7 +7,21 @@ paper_code:
   code: |
     var draw = false;
 
-
+    function onMouseDown(e){
+    	draw = !draw;
+        alert()
+    	if(draw){
+    		line = new Path(getOptions());
+    		//line.sendToBack();
+    	}
+    	else {
+    		//draw.scale(.9+Math.random()*.2)
+    		//split(line);
+    		// var randPt = line.getPointAt(Math.random()*line.length);
+    		// console.log(line.length);
+    		// line.split(randPt);
+    	}
+    }
 
     var shadowOffset = new Point(-1550,-1550);
     var shadowOffsets = new Point(200,200);
@@ -26,10 +40,6 @@ paper_code:
     }
 
     var line = new Path(getOptions());
-
-    function onMouseDown(e){
-    	draw = !draw;
-    }
 
     function onMouseMove(e){
     	var adder = e.delta.normalize().rotate(90).multiply(100)
