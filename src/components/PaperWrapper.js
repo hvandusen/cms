@@ -11,8 +11,10 @@ const canvasContainerStyle = {
 }
 
 const canvasStyle = {
-  // height: 0,
-  // paddingBottom:" 100%"
+  boxShadow: "blue 0 0 10px",
+  height: "100%",
+  width: "100%",
+  position: "relative"
 }
 
 const PaperWrapper = ({
@@ -52,35 +54,29 @@ const PaperWrapper = ({
   return (
     <section className="section">
       {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-          <div ref={wrapperRef} style={canvasContainerStyle} className="canvasContainer">
-            <canvas style={{height: "100%", width: "100%"}} hidpi="on" id={"canvas-"+id}></canvas>
-          </div>
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <p>{description}</p>
-            <PostContent content={html} />
-            {images && images.length ? (
-                images.map((img) => <img src={img} alt=""></img>)
-            ) : <p>hi</p>}
-            {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
-                  {tags.map((tag) => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-          </div>
-        </div>
+      <div ref={wrapperRef} style={canvasContainerStyle} className="canvasContainer">
+        <canvas style={canvasStyle} hidpi="on" id={"canvas-"+id}></canvas>
       </div>
+        <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
+          {title}
+        </h1>
+        <p>{description}</p>
+        <PostContent content={html} />
+        {images && images.length ? (
+            images.map((img) => <img src={img} alt=""></img>)
+        ) : <p>hi</p>}
+        {tags && tags.length ? (
+          <div style={{ marginTop: `4rem` }}>
+            <h4>Tags</h4>
+            <ul className="taglist">
+              {tags.map((tag) => (
+                <li key={tag + `tag`}>
+                  <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
     </section>
   )
 }

@@ -10,3 +10,4 @@ yarn-error.log
 .atomignore
 package-lock.json
 assets
+posts-data.json

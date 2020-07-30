@@ -6,7 +6,7 @@ import PreviewCompatibleImage from './PreviewCompatibleImage'
 
 const gridStyle = {
   display: "grid",
-  gridTemplateColumns: "1fr 1fr 1fr"
+  gridTemplateColumns: "1fr 1fr"
 }
 
 const previewStyle = {
