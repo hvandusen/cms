@@ -42,6 +42,8 @@ collections:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "work"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Type", name: "type", widget: "select", options: ["Drawing","Candusen page"], default: "Candusen page"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false}
+      - {label: "Draft", name: "draft", widget: "boolean", default: false}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Description", name: "description", widget: "text", required: false}
       - {label: "Featured Image", name: "featuredimage", widget: image, required: false}

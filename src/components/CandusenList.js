@@ -11,22 +11,22 @@ const gridStyle = {
 
 const previewStyle = {
   overflow: "scroll",
-  padding: "2rem",
-  maxHeight: "30vw"
+  padding: "2rem"
 }
 
 const CandusenList = ({data}) => {
     const { edges: posts } = data.allMarkdownRemark
+    let wrapperRef = React.createRef()
     //<PaperWrapper {...post.frontmatter} {...post.frontmatter.paper_code} {...post}/>
     return (
       <div className="paper-listing" style={gridStyle}>
         {posts &&
-          posts.map(({ node: post }) => (
-            <div className="paper-preview" ref={ el => console.log(el)} style={previewStyle} key={post.id}>
+          posts.map(({ node: post }) => 
+            <div className="paper-preview" ref={wrapperRef} style={previewStyle} key={post.id}>
               <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
-              <PaperWrapper {...post.frontmatter} {...post.frontmatter.paper_code} {...post}/>
+              <PaperWrapper wrapperRef={wrapperRef} {...post.frontmatter} {...post.frontmatter.paper_code} {...post}/>
             </div>
-          ))}
+          )}
       </div>
     )
 }

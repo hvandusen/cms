@@ -27,11 +27,13 @@ body
 // Config vars
 // Kaldi logo brand color: #FD461E
 
+.paper-preview
+  .canvasContainer
+
 
 .canvasContainer
-  top: 0
-  left: 0
-  position: relative
+  height: 0
+  padding-bottom: 100%
   &:before, &:after
     z-index: -1
     content: ""
@@ -40,10 +42,13 @@ body
     left: 0
     width: 100%
     height: 100%
-  &:before
-    box-shadow: green 0 0 random(30) + px
-  &:after
-    box-shadow: red 0 0 random(30) + px
+  canvas
+    position: absolute
+  // &:before
+  //   box-shadow: green 0 0 random(30) + px
+  // &:after
+  //   box-shadow: red 0 0 random(30) + px
+
 
 
 .navbar
