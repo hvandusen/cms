@@ -11,7 +11,7 @@ const canvasContainerStyle = {
 }
 
 const canvasStyle = {
-  boxShadow: "blue 0 0 10px",
+  // boxShadow: "blue 0 0 10px",
   height: "100%",
   width: "100%"
 }

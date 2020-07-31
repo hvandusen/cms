@@ -20,10 +20,9 @@ const CandusenList = ({data}) => {
     //<PaperWrapper {...post.frontmatter} {...post.frontmatter.paper_code} {...post}/>
     return (
       <div className="paper-listing" style={gridStyle}>
-        {posts &&
-          posts.map(({ node: post }) => 
+        {posts && posts.map(({ node: post }) =>
             <div className="paper-preview" ref={wrapperRef} style={previewStyle} key={post.id}>
-              <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
+              <Link class="paper-preview-link" to={post.fields.slug}>{post.frontmatter.title}</Link>
               <PaperWrapper wrapperRef={wrapperRef} {...post.frontmatter} {...post.frontmatter.paper_code} {...post}/>
             </div>
           )}

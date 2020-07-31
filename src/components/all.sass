@@ -1,11 +1,6 @@
 @import "~bulma/sass/utilities/initial-variables"
 @import "~bulma"
 
-@font-face
-  font-family: "Aktiv"
-  src: url("../../static/fonts/AktivGrotesk.ttf")   format("truetype")
-
-
 @keyframes rgbFade
   0%
     color: red
@@ -19,16 +14,81 @@
     color: green
   99.9%
     color: green
-$fadeRGB: rgbFade 3s linear infinite
-body
-  font-family: "Aktiv"
-  font-size: $size-4
 
+@font-face
+  font-family: "Aktiv"
+  src: url("../../static/fonts/AktivGrotesk.ttf")   format("truetype")
+
+@font-face
+  font-family: "Haptik"
+  src: url("../../static/fonts/GT-Haptik-Regular.ttf")   format("truetype")
+
+@font-face
+  font-family: "Az-Regular"
+  src: url("../../static/fonts/AkzidenzGrotesk-Regular.ttf")   format("truetype")
+
+@font-face
+  font-family: "Az-Medium"
+  src: url("../../static/fonts/AkzidenzGrotesk-Medium.ttf")   format("truetype")
+
+@font-face
+  font-family: "Az-Bold"
+  src: url("../../static/fonts/AkzidenzGrotesk-Bold.ttf")   format("truetype")
+
+@font-face
+  font-family: "Az-Italic"
+  src: url("../../static/fonts/AkzidenzGrotesk-Italic.ttf")   format("truetype")
+
+@font-face
+  font-family: "mtdbt2f"
+  src: url("../../static/fonts/mtdbt2f-f.ttf")   format("truetype")
+  src: url("../../static/fonts/mtdbt2f-f.woff")   format("woff")
+
+$mainFont: "Az-Regular"
+$boldFont: "Az-Medium"
+$italicFont: "Az-Italic"
+$fadeRGB: rgbFade 3s linear infinite
+
+html
+  font-size: 12px
+
+body
+  font-family: $mainFont
+  font-size: 2rem
+  line-height: 1.25em
+
+b
+  font-family: "Az-Bold"
+
+i
+  font-family: "Az-Italic"
+
+h1
+  font-size: 4rem
+  line-height: 5.7rem
+h2
+  font-size: 3rem
+  line-height: 3.5rem
+h3
+  font-size: 2.5rem
+  line-height: 3.4rem
+h4
+  text-transform: uppercase
+  letter-spacing: 3px
+div,p
+  margin: 1rem 0
 // Config vars
 // Kaldi logo brand color: #FD461E
+.paper-listing
+  .paper-preview-link
+    padding: .5em
+    position: absolute
+    z-index: 10
 
-.paper-preview
-  .canvasContainer
+  .paper-preview
+    .canvasContainer
+
+.styleguide
 
 
 .canvasContainer
@@ -44,6 +104,7 @@ body
     height: 100%
   canvas
     position: absolute
+    background-image: url(../../static/img/canvas-background.png)
   // &:before
   //   box-shadow: green 0 0 random(30) + px
   // &:after
@@ -53,7 +114,8 @@ body
 
 .navbar
   background: transparent
-
+  position: fixed
+  bottom: 0
 
 .navbar-item
   &:nth-child(1)

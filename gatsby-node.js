@@ -89,16 +89,6 @@ async function onCreateNode({ node, actions, getNode, loadNodeContent }){
       value,
     })
   }
-  //load in paper scripts
-  if (node.sourceInstanceName === `paper-content` && node.internal.type === "File") {
-    let cont = await loadNodeContent(node)
-    const value = cont
-    createNodeField({
-      name: `paper-script`,
-      node,
-      value,
-    })
-  }
 }
 
 exports.onCreateNode = onCreateNode
