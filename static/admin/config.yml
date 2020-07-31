@@ -42,10 +42,10 @@ collections:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "work"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Type", name: "type", widget: "select", options: ["Drawing","Candusen page","client site"], default: "Candusen page"}
-      - {label: "Featured", name: "featured", widget: "boolean", default: false}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false, required: false}
       - {label: "Draft", name: "draft", widget: "boolean", default: false}
       - {label: "Created Date", name: "date", widget: "datetime"}
-      - {label: "URL", name: "url", widget: "string"}
+      - {label: "URL", name: "url", widget: "string", required: false}
       - {label: "Description", name: "description", widget: "text", required: false}
       - {label: "Featured Image", name: "featuredimage", widget: image, required: false}
       - {label: "Body", name: "body", widget: "markdown", required: false}

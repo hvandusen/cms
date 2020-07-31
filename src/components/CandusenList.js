@@ -22,7 +22,7 @@ const CandusenList = ({data}) => {
       <div className="paper-listing" style={gridStyle}>
         {posts && posts.map(({ node: post }) =>
             <div className="paper-preview" ref={wrapperRef} style={previewStyle} key={post.id}>
-              <Link class="paper-preview-link" to={post.fields.slug}>{post.frontmatter.title}</Link>
+              <Link className="paper-preview-link" to={post.fields.slug}>{post.frontmatter.title}</Link>
               <PaperWrapper wrapperRef={wrapperRef} {...post.frontmatter} {...post.frontmatter.paper_code} {...post}/>
             </div>
           )}
@@ -42,7 +42,7 @@ export default () => (
   <StaticQuery
     query={graphql`
      query MyQuery {
-       allMarkdownRemark(filter: {frontmatter: {type: {eq: "Candusen page"}}}) {
+       allMarkdownRemark(filter: {frontmatter: {type: {eq: "Candusen page"}, draft: {ne: true}}}) {
          edges {
            node {
              id
@@ -52,7 +52,6 @@ export default () => (
                title
                description
                featuredimage
-               images
                tags
                paper_code {
                  code

@@ -8,33 +8,39 @@ import BlogRoll from '../components/BlogRoll'
 
 export const IndexPageTemplate = ({
   image,
-  title
+  title,
+  rows
 }) => (
-  <div className="styleguide">
-    <div><h1>Henry Van Dusen</h1></div>
-    <div>
-      <h2>Website of things h2.</h2>
-      <h2>And maybe some more bro.</h2>
+  <div className="home">
+    <div className="grid">
+      {rows.map((e,i) => <span key={i}>{e}</span>)}
     </div>
-    <h3>Subtitle h3</h3>
-    <h4>And some small cap for ur bitchahh</h4>
-    <p>This is a p big dog.</p>
-    <i>This should be italic</i>
-    <b>Bold please! can u b bold?</b>
-    <a href="google.com">Here's a link. Do u like the link?</a>
-    <div>Regular div text... How we feel bout this?</div>
-    <div>
-      <p>This is div w some text though. does it look okay????</p>
-      <p>it's got a few ps..... hoping that's cool with you!</p>
-      <p>It had better be, XD!</p>
+    <div className="styleguide">
+      <div><h1>Henry Van Dusen</h1></div>
+      <div>
+        <h2>Website of things h2.</h2>
+        <h2>And maybe some more bro.</h2>
+      </div>
+      <h3>Subtitle h3</h3>
+      <h4>And some small cap for ur bitchahh</h4>
+      <p>This is a p big dog.</p>
+      <i>This should be italic</i>
+      <b>Bold please! can u b bold?</b>
+      <a href="google.com">Here's a link. Do u like the link?</a>
+      <div>Regular div text... How we feel bout this?</div>
+      <div>
+        <p>This is div w some text though. does it look okay????</p>
+        <p>it's got a few ps..... hoping that's cool with you!</p>
+        <p>It had better be, XD!</p>
+      </div>
+      <ul>
+        <li>List item big bro</li>
+        <li>Another list item big bro</li>
+        <li>Okay just one more please</li>
+      </ul>
+      <button>okay nice</button>
+      <input type="range"></input>
     </div>
-    <ul>
-      <li>List item big bro</li>
-      <li>Another list item big bro</li>
-      <li>Okay just one more please</li>
-    </ul>
-    <button>okay nice</button>
-    <input type="range"></input>
   </div>
 )
 
@@ -51,6 +57,7 @@ const IndexPage = ({ data }) => {
       <IndexPageTemplate
         image={frontmatter.image}
         title={frontmatter.title}
+        rows={['thing1','thing2']}
       />
     </Layout>
   )
@@ -78,26 +85,27 @@ export const pageQuery = graphql`
             }
           }
         }
-        heading
-        subheading
-        mainpitch {
-          title
-          description
-        }
-        description
-        intro {
-          blurbs {
-            image {
-              childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+      }
+    }
+    allMarkdownRemark(filter: {fields: {slug: {regex: "/work/"}}}) {
+      edges {
+        node {
+          id
+          html
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            title
+            description
+            featuredimage
+            images
+            tags
+            paper_code {
+              code
             }
-            text
           }
-          heading
-          description
+          fields {
+            slug
+          }
         }
       }
     }

@@ -47,6 +47,7 @@ const TemplateWrapper = ({ children }) => {
           property="og:image"
           content={`${withPrefix('/')}img/og-image.jpg`}
         />
+      <script src={`${withPrefix('/')}paper-full.min.js`}></script>
       </Helmet>
       <Navbar />
       <div>{children}</div>

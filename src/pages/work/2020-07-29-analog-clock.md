@@ -25,7 +25,7 @@ paper_code:
     function gradient(shape,stops,p1,p2){
     	shape.fillColor = {
     		gradient:{
-    			stops:[notch2,notch3,notch1]},	
+    			stops:[notch2,notch3,notch1]},
     			origin: [0,Math.random()*screen.availHeight],
     			destination: [screen.availWidth,Math.random()*screen.availHeight]
     					};
@@ -34,7 +34,7 @@ paper_code:
 
     background.fillColor = {
     		gradient:{
-    			stops:[notch2,notch3,notch1]},	
+    			stops:[notch2,notch3,notch1]},
     			origin: [0,Math.random()*screen.availHeight],
     			destination: [screen.availWidth,Math.random()*screen.availHeight]
     					};
@@ -45,7 +45,7 @@ paper_code:
 
     frame.strokeColor = {
     		gradient:{
-    			stops:[notch1,notch3,notch2]},	
+    			stops:[notch1,notch3,notch2]},
     			origin: [0,Math.random()*screen.availHeight],
     			destination: [screen.availWidth,Math.random()*screen.availHeight]
     					};
@@ -69,7 +69,7 @@ paper_code:
     notchSize = 3;
 
     for(var i=0;i<60;i++){
-    	
+
     	notches.push(new Point(guide.segments[1].point.x,guide.segments[1].point.y))
     	if(i%5===0){
     	 new Path.Circle(guide.segments[1].point,notchSize+4).fillColor = notch1
@@ -129,14 +129,6 @@ paper_code:
     			origin: [Math.random()*screen.availWidth,0],
     			destination: [Math.random()*screen.availWidth,screen.availHeight]
     		};
-
-
-
-    function onMouseMove(event){
-
-    console.log('hihihi');
-
-    }
 
 
     function time(){
