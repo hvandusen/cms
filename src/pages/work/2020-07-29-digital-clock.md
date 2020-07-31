@@ -2,6 +2,7 @@
 templateKey: work
 title: Digital clock
 type: Candusen page
+draft: true
 date: 2020-07-29T15:23:49.527Z
 paper_code:
   code: >
