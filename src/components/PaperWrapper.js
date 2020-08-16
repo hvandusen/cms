@@ -6,6 +6,7 @@ import Content from './Content'
 import install from './paperUtils'
 
 let paper
+let paperLoaded = false;
 
 const canvasContainerStyle = {
   position: "relative"
@@ -29,12 +30,13 @@ const PaperWrapper = ({
   code
 }) => {
   const PostContent = contentComponent || Content
+  let [delay, setDelay] = useState(false);
   let wrapperRef = React.createRef()
   useEffect(() => {
-    if(typeof window !== "undefined"){
+    if(typeof window !== "undefined" && typeof window.paper !== "undefined"){
       paper = window.paper
-      let scope = new paper.PaperScope()
-        install(window,scope)
+      var scope = new paper.PaperScope()
+      install(window,scope)
       const script = document.createElement('script');
       script.type= "text/javascript"
       const canvas = document.getElementById('canvas-'+id)
@@ -47,11 +49,9 @@ const PaperWrapper = ({
       let amendedCode = code.replace(regex,"view.bounds.width").replace(regex2,"view.bounds.height")
       scope.execute(amendedCode)
       scope.activate()
-
-
-    return () => {
-      scope.remove()
-    }
+      return () => {
+        scope.remove()
+      }
     }
   });
   return (

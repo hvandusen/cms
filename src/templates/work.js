@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import { Helmet } from 'react-helmet'
-import { graphql, Link } from 'gatsby'
+import { graphql, Link, withPrefix } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 
@@ -75,6 +75,7 @@ const Work = ({ data }) => {
               name="description"
               content={`${post.frontmatter.description}`}
             />
+            <script src={`${withPrefix('/')}paper-full.min.js`}></script>
           </Helmet>
         }
         tags={post.frontmatter.tags}

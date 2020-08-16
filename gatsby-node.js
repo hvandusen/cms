@@ -6,8 +6,8 @@ const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 const fs = require("fs")
 
 exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
-
+  const { createPage, createNodeField } = actions
+  console.log("createNodeField:",createNodeField)
   return graphql(`
     {
       allMarkdownRemark(limit: 1000) {
@@ -21,6 +21,16 @@ exports.createPages = ({ actions, graphql }) => {
               tags
               templateKey
               type
+            }
+          }
+          next {
+            fields {
+              slug
+            }
+          }
+          previous {
+            fields {
+              slug
             }
           }
         }
@@ -48,6 +58,8 @@ exports.createPages = ({ actions, graphql }) => {
         // additional data can be passed via context
         context: {
           id,
+          previous: edge.previous ? edge.previous.fields.slug : "fuck",
+          next: edge.next ? edge.next.fields.slug : "fuck"
         },
       })
     })
@@ -88,6 +100,7 @@ async function onCreateNode({ node, actions, getNode, loadNodeContent }){
       node,
       value,
     })
+    // if(node.frontmatter.type )
   }
 }
 

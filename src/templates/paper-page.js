@@ -1,15 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import { graphql, Link } from 'gatsby'
+import { graphql, Link, withPrefix } from 'gatsby'
 import Layout from '../components/Layout'
 import PaperWrapper from '../components/PaperWrapper'
 import { HTMLContent } from '../components/Content'
 
-const Candusen = ({ data }) => {
+const Candusen = (props) => {
+  const { data } = props
   const { markdownRemark: post } = data
+  console.log("next",props,"previous")
+  const {previous,next} = props.pageContext
   return (
     <Layout>
+      <div className="paper-nav">
+        {previous ? (
+        <Link className="previous" to={previous} >previous</Link>): null}
+        {next ? (
+        <Link className="next" to={next} >next</Link>): null}
+      </div>
       <PaperWrapper {...post.frontmatter} {...post.frontmatter.paper_code}
         {...post}
         contentComponent={HTMLContent}
@@ -23,34 +32,15 @@ const Candusen = ({ data }) => {
           </Helmet>
         }
       />
-
     </Layout>
   )
 }
 
-// <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-//   {title}
-// </h1>
-// <p>{description}</p>
-// <PostContent content={html} />
-// {images && images.length ? (
-//     images.map((img) => <img src={img} alt=""></img>)
-// ) : <p>hi</p>}
-// {tags && tags.length ? (
-//   <div style={{ marginTop: `4rem` }}>
-//     <h4>Tags</h4>
-//     <ul className="taglist">
-//       {tags.map((tag) => (
-//         <li key={tag + `tag`}>
-//           <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-//         </li>
-//       ))}
-//     </ul>
-//   </div>
-
 Candusen.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.object,
+    previous: PropTypes.string,
+    next: PropTypes.string
   }),
 }
 
@@ -61,7 +51,6 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
-
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title

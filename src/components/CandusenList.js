@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import PaperWrapper from './PaperWrapper'
+import Layout from './Layout'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 
@@ -19,14 +20,14 @@ const CandusenList = ({data}) => {
     let wrapperRef = React.createRef()
     //<PaperWrapper {...post.frontmatter} {...post.frontmatter.paper_code} {...post}/>
     return (
-      <div className="paper-listing" style={gridStyle}>
-        {posts && posts.map(({ node: post }) =>
-            <div className="paper-preview" ref={wrapperRef} style={previewStyle} key={post.id}>
-              <Link className="paper-preview-link" to={post.fields.slug}>{post.frontmatter.title}</Link>
-              <PaperWrapper wrapperRef={wrapperRef} {...post.frontmatter} {...post.frontmatter.paper_code} {...post}/>
-            </div>
-          )}
-      </div>
+        <div className="paper-listing" style={gridStyle}>
+          {posts && posts.map(({ node: post }) =>
+              <div className="paper-preview" ref={wrapperRef} style={previewStyle} key={post.id}>
+                <Link className="paper-preview-link" to={post.fields.slug}>{post.frontmatter.title}</Link>
+                <PaperWrapper wrapperRef={wrapperRef} {...post.frontmatter} {...post.frontmatter.paper_code} {...post}/>
+              </div>
+            )}
+        </div>
     )
 }
 

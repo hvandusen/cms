@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
+import Table from '../components/Table'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
 
@@ -12,9 +13,6 @@ export const IndexPageTemplate = ({
   rows
 }) => (
   <div className="home">
-    <div className="grid">
-      {rows.map((e,i) => <span key={i}>{e}</span>)}
-    </div>
     <div className="styleguide">
       <div><h1>Henry Van Dusen</h1></div>
       <div>
@@ -41,6 +39,7 @@ export const IndexPageTemplate = ({
       <button>okay nice</button>
       <input type="range"></input>
     </div>
+    <Table/>
   </div>
 )
 
