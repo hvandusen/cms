@@ -92,15 +92,31 @@ p
 
 .paper-nav
   position: absolute
-  top: 0
-  left: 0
+  top: 1rem
+  left: 1rem
   z-index: 10
+
+.help-container
+  position: absolute
+  bottom: 1rem
+  right: 1rem
+  z-index: 10
+  div
+    margin: 1rem 0
+  .arrows
+    width: 40px
+    vertical-align: text-bottom
+  .key
+    border-radius: 12.5%
+    // border: solid blue 1px
+    background: blue
+    color: white
+    padding: 2px 4px
 
 .styleguide
   display: none
 
 .spreadsheet
-  // width: 100%
   td
     border: none!important
     padding: 0!important
@@ -118,13 +134,6 @@ p
     height: 100%
   canvas
     position: absolute
-    // background-image: url(../../static/img/canvas-background.png)
-  // &:before
-  //   box-shadow: green 0 0 random(30) + px
-  // &:after
-  //   box-shadow: red 0 0 random(30) + px
-
-
 
 .navbar
   background: transparent

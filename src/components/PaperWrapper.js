@@ -1,19 +1,21 @@
 import React, {  useEffect,useState } from 'react'
 import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 import Content from './Content'
 import install from './paperUtils'
+import arrows from "../img/arrows.png"
 
 let paper
 let paperLoaded = false;
+
+
 
 const canvasContainerStyle = {
   position: "relative"
 }
 
 const canvasStyle = {
-  // boxShadow: "blue 0 0 10px",
   height: "100%",
   width: "100%"
 }
@@ -55,8 +57,12 @@ const PaperWrapper = ({
     }
   });
   return (
-      <div ref={wrapperRef} style={canvasContainerStyle} className="canvasContainer">
-        <canvas style={canvasStyle} hidpi="on" id={"canvas-"+id}></canvas>
+      <div ref={wrapperRef} style={canvasContainerStyle} className="canvasContainer" >
+        <div className="help-container">
+          <div><img className="arrows" src={arrows}></img>Browse</div>
+          <div><span className="key">D</span> Download SVG</div>
+        </div>
+        <canvas style={canvasStyle} hidpi="on" id={"canvas-"+id} ></canvas>
       </div>
   )
 }
@@ -65,7 +71,6 @@ PaperWrapper.propTypes = {
   html: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
   description: PropTypes.string,
-  // images: PropTypes.object,
   title: PropTypes.string,
   helmet: PropTypes.object,
 }

@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import { graphql, Link, withPrefix } from 'gatsby'
+import { graphql, Link, withPrefix, navigate } from 'gatsby'
 import Layout from '../components/Layout'
 import PaperWrapper from '../components/PaperWrapper'
 import { HTMLContent } from '../components/Content'
@@ -11,6 +11,29 @@ const Candusen = (props) => {
   const { markdownRemark: post } = data
   console.log("next",props,"previous")
   const {previous,next} = props.pageContext
+  const onkeydown = (e) => {
+    switch (e.key) {
+      case "ArrowLeft":
+        navigate(previous)
+        break;
+      case "ArrowRight":
+        navigate(next)
+        break;
+      case "ArrowUp":
+
+        break;
+      case "ArrowDown":
+
+        break;
+      default:
+    }
+  }
+  useEffect(() =>{
+    if(typeof window !== "undefined"){
+      document.addEventListener('keydown', onkeydown);
+      console.log("did it")
+    }
+  },)
   return (
     <Layout>
       <div className="paper-nav">
@@ -19,7 +42,7 @@ const Candusen = (props) => {
         {next ? (
         <Link className="next" to={next} >next</Link>): null}
       </div>
-      <PaperWrapper {...post.frontmatter} {...post.frontmatter.paper_code}
+      <PaperWrapper autoFocus={true} tabIndex="0" onKeyDown="alert()" {...post.frontmatter} {...post.frontmatter.paper_code}
         {...post}
         contentComponent={HTMLContent}
         helmet={
