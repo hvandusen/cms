@@ -33,8 +33,18 @@ const PaperWrapper = ({
 }) => {
   const PostContent = contentComponent || Content
   let [delay, setDelay] = useState(false);
+  let [helpToggle, setHelpToggle] = useState([true,true]); //currently showing, currently first time showing
+  let helpAutohideTimeout;
+  const toggleHelp = () => {
+    clearTimeout(helpAutohideTimeout)
+    setHelpToggle([!helpToggle[0],false])
+  }
   let wrapperRef = React.createRef()
   useEffect(() => {
+    if(helpToggle[1])
+    helpAutohideTimeout = setTimeout(()=>{
+      setHelpToggle([false,false])
+    },3000)
     if(typeof window !== "undefined" && typeof window.paper !== "undefined"){
       paper = window.paper
       var scope = new paper.PaperScope()
@@ -56,11 +66,15 @@ const PaperWrapper = ({
       }
     }
   });
+
   return (
       <div ref={wrapperRef} style={canvasContainerStyle} className="canvasContainer" >
-        <div className="help-container">
-          <div><img className="arrows" src={arrows}></img>Browse</div>
-          <div><span className="key">D</span> Download SVG</div>
+        <div className={`help-container ${helpToggle[0] ? "active" : ""}`}>
+          <div className="help">
+            <h3>use<img className="arrows" src={arrows}></img> to browse</h3>
+            <h3>press &nbsp;<span className="key">D</span> to download</h3>
+          </div>
+          <h3 className="toggle" onClick={toggleHelp}>*help*</h3>
         </div>
         <canvas style={canvasStyle} hidpi="on" id={"canvas-"+id} ></canvas>
       </div>

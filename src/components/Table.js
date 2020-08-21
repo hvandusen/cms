@@ -2,16 +2,29 @@ import React from 'react'
 import { useTable, useSortBy } from 'react-table'
 import { graphql, StaticQuery, Link } from 'gatsby'
 
+const slug = (string) => string.replace(/ /g,'-').toLowerCase()
+const colorMap = {
+  "candusen-page": "red",
+  "client-site": "green",
+  "software": "blue",
+  "website": "orange",
+  "print": "purple",
+  "essay": "yellow",
+}
+const wrapH = (priority) => ({ value }) => {
+  let Wrap = `h${priority}`
+ return <Wrap>{value}</Wrap>
+}
  const Table = ({tableRows,filter}) => {
    let nodes = tableRows.allMarkdownRemark.edges
    const data = React.useMemo(
      () => nodes.map( ({node: work},i) => ({
-       col1: {
+       title: {
          slug: work.fields.slug,
          title: work.frontmatter.title
        },
-       col2: work.frontmatter.date,
-       col3: work.frontmatter.type
+       date: work.frontmatter.date,
+       type: work.frontmatter.type
      })
    ),[])
 
@@ -19,22 +32,29 @@ import { graphql, StaticQuery, Link } from 'gatsby'
      () => [
        {
          Header: 'Title',
-         accessor: 'col1', // accessor is the "key" in the data
+         accessor: 'title', // accessor is the "key" in the data
          sortType: (rowA, rowB) => {
            console.log(rowA,rowB)
-           return Math.random() > .5 ? 1: -1;
+           return rowA.values.title.title.toLowerCase() >
+                  rowB.values.title.title.toLowerCase() ? 1: -1;
          },
          Cell: ({ value }) => {
-          return <Link to={value.slug}>{value.title}</Link>
+          return <Link to={value.slug}><h3>{value.title}</h3></Link>
          }
        },
        {
          Header: 'Date',
-         accessor: 'col2',
+         accessor: 'date',
+         // Cell: wrapH(6)
        },
        {
          Header: 'Type',
-         accessor: 'col3',
+         accessor: 'type',
+         // Cell: wrapH(6),
+         sortType: (rowA, rowB) => {
+           return rowA.values.type.toLowerCase() >
+                  rowB.values.type.toLowerCase() ? 1: -1;
+         },
        },
      ],
      []
@@ -49,7 +69,7 @@ import { graphql, StaticQuery, Link } from 'gatsby'
    } = useTable({ columns, data }, useSortBy)
 
    return (
-     <table className="spreadsheet" {...getTableProps()} style={{ border: 'solid 1px blue' }}>
+     <table className="spreadsheet" {...getTableProps()} >
        <thead>
          {headerGroups.map(headerGroup => (
            <tr {...headerGroup.getHeaderGroupProps()}>
@@ -57,9 +77,9 @@ import { graphql, StaticQuery, Link } from 'gatsby'
                <th
                  {...column.getHeaderProps(column.getSortByToggleProps())}
                  style={{
-                   borderBottom: 'solid 3px red',
+                   // borderBottom: 'solid 3px red',
                    color: 'black',
-                   fontWeight: 'bold',
+                   fontWeight: 'normal',
                  }}
                >
                  {column.render('Header')}
@@ -79,7 +99,9 @@ import { graphql, StaticQuery, Link } from 'gatsby'
          {rows.map(row => {
            prepareRow(row)
            return (
-             <tr {...row.getRowProps()}>
+             <tr {...row.getRowProps()} style={{
+                 background: colorMap[slug(row.values.type)]
+               }} className={slug(row.values.type)}>
                {row.cells.map(cell => {
                  return (
                    <td

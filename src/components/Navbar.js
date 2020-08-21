@@ -11,7 +11,7 @@ const Navbar = class extends React.Component {
     }
   }
 
-  toggleHamburger = () => {
+  toggleMenu = () => {
     // toggle the active boolean in the state
     this.setState(
       {
@@ -34,24 +34,22 @@ const Navbar = class extends React.Component {
   render() {
     return (
       <nav
-        className="navbar is-transparent"
+        className={`navbar is-transparent ${this.state.navBarActiveClass}`}
         role="navigation"
         aria-label="main-navigation"
       >
+        <div className="nav-icon"
+          role="menu" tabIndex={0}
+          data-target="nav"
+          onClick={() => this.toggleMenu()}
+          onKeyPress={console.log}
+          ></div>
         <div className="container">
           <div className="navbar-brand">
             <Link to="/" className="navbar-item" title="Logo">
               <img src={logo} alt="henryvd.com" style={{ width: '188px' }} />
             </Link>
-            {/* Hamburger menu */}
-            <div
-              role="menu" tabIndex={0}
-              className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-              data-target="nav"
-              onClick={() => this.toggleHamburger()}
-              onKeyPress={console.log}
-            >
-            </div>
+            {/* Menu menu */}
           </div>
           <div
             id="nav"

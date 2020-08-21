@@ -1,0 +1,99 @@
+$spritesheetPNG: '../../static/img/spritesheet.png'
+$spritesheetSVG: '../../static/img/spritesheet.svg'
+$spriteSize: 128px
+
+@mixin transform($transforms)
+  -moz-transform: $transforms
+  -o-transform: $transforms
+  -ms-transform: $transforms
+  -webkit-transform: $transforms
+  transform: $transforms
+
+
+@mixin transition($args)
+  -webkit-transition: $args
+  -moz-transition: $args
+  -ms-transition: $args
+  -o-transition: $args
+  transition: $args
+
+@font-face
+  font-family: 'Akzidenz'
+  src: url("../../static/fonts/AktivGrotesk.ttf")
+
+
+@mixin sprite($column: 0, $row: 0)
+	background-image: url($spritesheetPNG)
+	background-image: url($spritesheetSVG)
+	background-size: (100% * 8) (100% / 1)
+	background-position-x: $column * (100% / 8)
+	background-position-y: $row * 100%
+
+@mixin columns($start: 0,$end: 0)
+	grid-column-start: $start
+	grid-column-end: $end
+
+$outerPadding: 2.5rem
+
+@mixin bp($class)
+  @if $class == xs
+    @media (max-width: 767px)
+      @content
+
+  @else if $class == sm
+    @media (min-width: 768px)
+      @content
+
+  @else if $class == md
+    @media (min-width: 992px)
+      @content
+
+  @else if $class == lg
+    @media (min-width: 1200px)
+      @content
+
+  @else
+    @warn "Breakpoint mixin supports: xs, sm, md, lg"
+
+
+
+@mixin balloon
+  font-family: "Balloon"
+  -webkit-text-stroke: 1.5px
+  text-stroke: 1.5px
+  letter-spacing: .02em
+  line-height: 1em
+
+@mixin grid
+	display: grid
+	grid-template-columns: repeat(12, 1fr)
+	grid-gap: $outerPadding
+	@include bp(xs)
+		grid-template-columns: repeat(6, 1fr)
+		grid-gap: 1.25rem
+
+
+
+@mixin fullwidth
+	grid-column-start: 1
+  grid-column-end: 13
+	@include bp(xs)
+		grid-column-start: 1
+	  grid-column-end: 7
+
+
+
+@mixin wrapper
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+
+
+@mixin centered
+	grid-column-start: 3
+  grid-column-end: 11
+	@include bp(xs)
+		grid-column-start: 2
+	  grid-column-end: 5

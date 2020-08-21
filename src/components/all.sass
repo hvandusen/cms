@@ -1,6 +1,8 @@
 @import "~bulma/sass/utilities/initial-variables"
 @import "~bulma"
 
+@import "mixins"
+
 @keyframes rgbFade
   0%
     color: red
@@ -40,23 +42,28 @@
   src: url("../../static/fonts/AkzidenzGrotesk-Italic.ttf")   format("truetype")
 
 @font-face
+  font-family: 'Newzald'
+  src: url("../../static/fonts/Newzald-Book.otf")   format("opentype")
+
+@font-face
   font-family: "mtdbt2f"
   src: url("../../static/fonts/mtdbt2f-f.ttf")   format("truetype")
   src: url("../../static/fonts/mtdbt2f-f.woff")   format("woff")
 
 $mainFont: "Az-Regular"
 $boldFont: "Az-Medium"
+$bookFont: "Newzald"
 $italicFont: "Az-Italic"
 $fadeRGB: rgbFade 3s linear infinite
 
 html
-  font-size: 16px
+  font-size: 14px
 
 body
   font-family: $mainFont
   font-size: 1rem
   line-height: 1.25em
-
+  color: black
 b
   font-family: "Az-Bold"
 
@@ -75,11 +82,34 @@ h3
 h4
   text-transform: uppercase
   letter-spacing: 3px
+h5
+  font-family: $bookFont
+  font-size: 3rem
+  line-height: 3.5rem
+body h6
+  font-family: $bookFont
+  font-size: 2em
+  line-height: 2.5rem
+  margin: 0
+  padding: 0
+
+.h6
+  font-family: $bookFont
+  font-size: 2em
+  line-height: 2.5rem
+  margin: 0
+  padding: 0
+
 p
   margin: 1rem 0
-// Config vars
-// Kaldi logo brand color: #FD461E
+  font-size: 2rem
+  font-family: $bookFont
 
+.readContainer
+  width: calc(100vw - 15rem)
+  margin: calc(1.5rem + 2px) auto 0 auto
+  .header
+    margin-bottom: 3rem
 
 .paper-listing
   .paper-preview-link
@@ -89,38 +119,73 @@ p
 
   .paper-preview
     .canvasContainer
-
+.software
+  background: yellow
 .paper-nav
   position: absolute
-  top: 1rem
-  left: 1rem
+  bottom: 1.5rem
+  left: 1.5rem
   z-index: 10
-
+  .next, .previous
+    width: 50px
+    height: 50px
+    display: inline-block
+    margin: 0 1em
+    cursor: pointer
+    color: transparent
+  .previous
+    @include sprite(4)
+    background-position: 57%
+  .next
+    @include sprite(5)
+    background-position: 71.3%
 .help-container
   position: absolute
-  bottom: 1rem
-  right: 1rem
+  bottom: 1.5rem
+  right: 1.5rem
   z-index: 10
+  text-align: right
+  .toggle
+    cursor: pointer
+  .help
+    opacity: 0
+    transition: opacity .2s
+  &.active
+    .help
+      opacity: 1
   div
     margin: 1rem 0
   .arrows
     width: 40px
     vertical-align: text-bottom
+    margin: 0 0.1em 0 0.4em
   .key
-    border-radius: 12.5%
-    // border: solid blue 1px
-    background: blue
-    color: white
-    padding: 2px 4px
+    border-radius: 20%
+    border: solid black 1px
+    // background: blue
+    color: black
+    padding: 1px 4px
 
 .styleguide
   display: none
-
 .spreadsheet
+  // margin: 0 auto
+  border-spacing: 15px
+  thead
+    @extend h3
+  tr
+      // background: red
+      &.mix
+        background: red
   td
     border: none!important
     padding: 0!important
+    vertical-align: bottom
 
+    &:nth-child(2), &:nth-child(3)
+      @extend .h6
+      margin: 0
+      padding: 0
 .canvasContainer
   height: 0
   padding-bottom: 100vh
@@ -138,9 +203,22 @@ p
 .navbar
   background: transparent
   position: fixed
-  bottom: 0
-
+  top: 1.5rem
+  left: 1.5rem
+  &.is-active
+    .container
+      opacity: 1
+  .container
+    opacity: 0
+    margin-left: 3rem
+  .nav-icon
+    @include sprite(0)
+    width: 64px
+    height: 49px
+    outline: none
+    cursor: pointer
 .navbar-item
+  padding: 0
   &:nth-child(1)
       color: red
   &:nth-child(2)
@@ -157,20 +235,21 @@ p
         animation: $fadeRGB
   img
     max-height: none
+    width: 138px
   &.active
     text-decoration: underline
     animation: $fadeRGB
 
 
 // responsiveness
-+tablet-only
-  .blog-list-item .featured-thumbnail
-    flex-basis: 50%;
-
-+mobile
-  .blog-list-item header
-    display: block
-  .blog-list-item .featured-thumbnail
-    text-align: center;
-    max-width: 70%;
-    margin: 0 0 1em;
+// +tablet-only
+//   .blog-list-item .featured-thumbnail
+//     flex-basis: 50%
+//
+// +mobile
+//   .blog-list-item header
+//     display: block
+//   .blog-list-item .featured-thumbnail
+//     text-align: center
+//     max-width: 70%
+//     margin: 0 0 1em

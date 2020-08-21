@@ -33,7 +33,7 @@ export const WorkTemplate = ({
         ) : <p>hi</p>}
         {tags && tags.length ? (
           <div style={{ marginTop: `4rem` }}>
-            <h4>Tags</h4>
+            <h3>Tags</h3>
             <ul className="taglist">
               {tags.map((tag) => (
                 <li key={tag + `tag`}>
