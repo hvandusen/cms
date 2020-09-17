@@ -1,6 +1,6 @@
 ---
 templateKey: work
-title: helloimnickmorris.com
+title: helloimnickmorris . com
 type: Website
 featured: false
 draft: false
