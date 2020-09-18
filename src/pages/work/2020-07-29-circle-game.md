@@ -3,8 +3,10 @@ templateKey: work
 title: Circle game
 type: Candusen page
 date: 2020-07-29T15:45:20.158Z
+featuredimage:
+  - https://res.cloudinary.com/candusen/image/upload/v1600438154/Screen_Shot_2020-09-17_at_6.28.00_PM_zmm4hi.png
 paper_code:
-  code: >+
+  code: >
     var ctr = new Point(window.innerWidth*2,window.innerHeight*2);
 
     var bounds = new Point(window.innerWidth*2,window.innerHeight);
@@ -30,6 +32,7 @@ paper_code:
     			origin: [0,Math.random()*screen.availHeight],
     			destination: [screen.availWidth+150,Math.random()*screen.availHeight]
     					}
+
 
     					
     /*}
@@ -57,6 +60,7 @@ paper_code:
     	white.fillColor = 'black'
     	bs = new Symbol(white);
     	ws = new Symbol(black)
+
 
     	
     }
