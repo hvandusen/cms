@@ -4,6 +4,8 @@ title: Digital clock
 type: Candusen page
 draft: true
 date: 2020-07-29T15:23:49.527Z
+featuredimage:
+  - https://res.cloudinary.com/candusen/image/upload/v1600434043/Screen_Shot_2020-09-18_at_9.00.20_AM_rka7gc.png
 paper_code:
   code: >
     var currentShape = null;
