@@ -31,6 +31,15 @@ const wrapH = (priority) => ({ value }) => {
    const columns = React.useMemo(
      () => [
        {
+         Header: 'Type',
+         accessor: 'type',
+         // Cell: wrapH(6),
+         sortType: (rowA, rowB) => {
+           return rowA.values.type.toLowerCase() >
+                  rowB.values.type.toLowerCase() ? 1: -1;
+         },
+       },
+       {
          Header: 'Title',
          accessor: 'title', // accessor is the "key" in the data
          sortType: (rowA, rowB) => {
@@ -39,22 +48,13 @@ const wrapH = (priority) => ({ value }) => {
                   rowB.values.title.title.toLowerCase() ? 1: -1;
          },
          Cell: ({ value }) => {
-          return <Link to={value.slug}><h3>{value.title}</h3></Link>
+          return <Link to={value.slug}><p>{value.title}</p></Link>
          }
        },
        {
          Header: 'Date',
          accessor: 'date',
          // Cell: wrapH(6)
-       },
-       {
-         Header: 'Type',
-         accessor: 'type',
-         // Cell: wrapH(6),
-         sortType: (rowA, rowB) => {
-           return rowA.values.type.toLowerCase() >
-                  rowB.values.type.toLowerCase() ? 1: -1;
-         },
        },
      ],
      []
@@ -66,7 +66,14 @@ const wrapH = (priority) => ({ value }) => {
      headerGroups,
      rows,
      prepareRow,
-   } = useTable({ columns, data }, useSortBy)
+   } = useTable({ columns, data, initialState: {
+            sortBy: [
+                {
+                    id: 'title',
+                    desc: false
+                }
+            ]
+        }}, useSortBy)
 
    return (
      <table className="spreadsheet" {...getTableProps()} >
@@ -100,12 +107,14 @@ const wrapH = (priority) => ({ value }) => {
            prepareRow(row)
            return (
              <tr {...row.getRowProps()} style={{
-                 background: colorMap[slug(row.values.type)]
+                 // background: colorMap[slug(row.values.type)]
                }} className={slug(row.values.type)}>
                {row.cells.map(cell => {
+                 console.log(cell)
                  return (
                    <td
                      {...cell.getCellProps()}
+                     className={cell.column.Header === "Type" ? "color" : ""}
                      style={{
                        padding: '10px',
                        border: 'solid 1px gray'

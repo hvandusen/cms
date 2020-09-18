@@ -7,14 +7,25 @@ import Table from '../components/Table'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
 
+const slugify = (str) => str.replace(/\s+/g, '-').toLowerCase()
+const dotcomfix = (str) => str.replace(".com"," . com")
 export const IndexPageTemplate = ({
   image,
   title,
-  rows
+  rows,
+  works
 }) => (
-  <div className="home readContainer">
-    <h5 className="header">henry van dusen - computer enthusiast</h5>
-    <Table/>
+  <div className="home">
+    {works.map((work) => {
+      let fm = work.frontmatter
+      return <div className={"work-box "+slugify(fm.type)}>
+        <h1>{fm.title}</h1>
+        <p>{fm.description}</p>
+        <img src={fm.featuredimage}></img>
+        <span className="type-label color">{fm.type}</span>
+        <Link className="wrapper" to={work.fields.slug}></Link>
+      </div>
+    })}
   </div>
 )
 
@@ -32,6 +43,7 @@ const IndexPage = ({ data }) => {
         image={frontmatter.image}
         title={frontmatter.title}
         rows={['thing1','thing2']}
+        works={data.allMarkdownRemark.edges.map((e) => e.node)}
       />
     </Layout>
   )
@@ -68,6 +80,7 @@ export const pageQuery = graphql`
           html
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
+            type
             title
             description
             featuredimage

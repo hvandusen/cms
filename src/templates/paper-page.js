@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { graphql, Link, withPrefix, navigate } from 'gatsby'
@@ -8,6 +8,7 @@ import { HTMLContent } from '../components/Content'
 
 const Candusen = (props) => {
   const { data } = props
+  let [fullscreen, setFullscreen] = useState(false);
   const { markdownRemark: post } = data
   console.log("next",props,"previous")
   const {previous,next} = props.pageContext
@@ -25,6 +26,9 @@ const Candusen = (props) => {
       case "ArrowDown":
 
         break;
+      case "f":
+        setFullscreen(!fullscreen)
+        console.log(fullscreen)
       default:
     }
   }
@@ -42,7 +46,7 @@ const Candusen = (props) => {
         {next ? (
         <Link className="next" to={next} >next</Link>): null}
       </div>
-      <PaperWrapper autoFocus={true} tabIndex="0" onKeyDown="alert()" {...post.frontmatter} {...post.frontmatter.paper_code}
+      <PaperWrapper autoFocus={true} tabIndex="0" fullscreen={fullscreen} {...post.frontmatter} {...post.frontmatter.paper_code}
         {...post}
         contentComponent={HTMLContent}
         helmet={

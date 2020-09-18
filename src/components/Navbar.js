@@ -38,17 +38,15 @@ const Navbar = class extends React.Component {
         role="navigation"
         aria-label="main-navigation"
       >
-        <div className="nav-icon"
+        <Link to="/" className="navbar-item" title="Logo"><div className="nav-icon"
           role="menu" tabIndex={0}
           data-target="nav"
           onClick={() => this.toggleMenu()}
           onKeyPress={console.log}
-          ></div>
+          ></div></Link>
+        <h5 className="header">henry van dusen</h5>
         <div className="container">
           <div className="navbar-brand">
-            <Link to="/" className="navbar-item" title="Logo">
-              <img src={logo} alt="henryvd.com" style={{ width: '188px' }} />
-            </Link>
             {/* Menu menu */}
           </div>
           <div

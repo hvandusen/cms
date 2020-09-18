@@ -20,6 +20,8 @@ const canvasStyle = {
   width: "100%"
 }
 
+const keyhandler = console.log
+
 const PaperWrapper = ({
   id,
   html,
@@ -29,7 +31,8 @@ const PaperWrapper = ({
   featuredimage,
   tags,
   title,
-  code
+  code,
+  fullscreen
 }) => {
   const PostContent = contentComponent || Content
   let [delay, setDelay] = useState(false);
@@ -41,7 +44,7 @@ const PaperWrapper = ({
   }
   let wrapperRef = React.createRef()
   useEffect(() => {
-    if(helpToggle[1])
+    if(helpToggle[1] && false)
     helpAutohideTimeout = setTimeout(()=>{
       setHelpToggle([false,false])
     },3000)
@@ -76,7 +79,7 @@ const PaperWrapper = ({
           </div>
           <h3 className="toggle" onClick={toggleHelp}>*help*</h3>
         </div>
-        <canvas style={canvasStyle} hidpi="on" id={"canvas-"+id} ></canvas>
+        <canvas style={canvasStyle} hidpi="on" id={"canvas-"+id} className={"fullscreen"}></canvas>
       </div>
   )
 }

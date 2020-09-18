@@ -1,5 +1,5 @@
 @import "~bulma/sass/utilities/initial-variables"
-@import "~bulma"
+// @import "~bulma"
 
 @import "mixins"
 
@@ -44,6 +44,7 @@
 @font-face
   font-family: 'Newzald'
   src: url("../../static/fonts/Newzald-Book.otf")   format("opentype")
+  font-weight: normal!important
 
 @font-face
   font-family: "mtdbt2f"
@@ -56,8 +57,12 @@ $bookFont: "Newzald"
 $italicFont: "Az-Italic"
 $fadeRGB: rgbFade 3s linear infinite
 
+html,body
+  margin: 0
+  padding: 0
+
 html
-  font-size: 14px
+  font-size: 12px
 
 body
   font-family: $mainFont
@@ -72,7 +77,8 @@ i
 
 h1
   font-size: 4rem
-  line-height: 5.7rem
+  line-height: 4.5rem
+  margin: 0
 h2
   font-size: 3rem
   line-height: 3.5rem
@@ -103,13 +109,85 @@ body h6
 p
   margin: 1rem 0
   font-size: 2rem
+  line-height: 1em
   font-family: $bookFont
 
-.readContainer
-  width: calc(100vw - 15rem)
-  margin: calc(1.5rem + 2px) auto 0 auto
-  .header
-    margin-bottom: 3rem
+span
+  font-size: 1.5rem
+  line-height: 1.7rem
+.wrapper
+  @include wrapper
+.page
+  padding: 100px 0
+.home
+  display: grid
+  grid-auto-flow: row dense
+  grid-template-columns: repeat(auto-fit, 4rem)
+  grid-template-rows: repeat(auto-fit, fit-content(4rem))
+  margin-right: 1rem
+  margin-left: 10rem
+  grid-gap: 2rem
+  .work-box
+    border-style: solid
+    border-width: 2px
+    border-radius: 4px
+    display: inline-block
+    grid-column: span 4
+    padding: 3rem 1rem 1rem
+    position: relative
+    transition: .3s all linear
+    img
+      max-width: 100%
+      height: auto
+    .wrapper.color
+      z-index: -1
+    // &:hover
+      // border-width: 4px
+    .type-label
+      position: absolute
+      top: 1rem
+      left: 1rem
+      display: inline-block
+      padding: 2px
+$thingToColor: "border-color"
+.candusen-page
+  .work-box, &.work-box
+    grid-column: span 4
+    grid-row: span 4
+    #{$thingToColor}: red
+  .color, &.color
+    background: red
+.client-site
+  .work-box, &.work-box
+    grid-column: span 10
+    #{$thingToColor}: green
+  .color, &.color
+    background: green
+.software
+  .work-box, &.work-box
+    grid-column: span 4
+    #{$thingToColor}: blue
+  .color, &.color
+    background: blue
+.website
+  .work-box, &.work-box
+    grid-column: span 6
+    #{$thingToColor}: orange
+  .color, &.color
+    background: orange
+.print
+  .work-box, &.work-box
+    grid-column: span 7
+    #{$thingToColor}: #ad54ff
+  .color, &.color
+    background: #ad54ff
+.essay
+  .work-box, &.work-box
+    grid-column: span 5
+    #{$thingToColor}: yellow
+  .color, &.color
+    background: yellow
+
 
 .paper-listing
   .paper-preview-link
@@ -119,8 +197,6 @@ p
 
   .paper-preview
     .canvasContainer
-.software
-  background: yellow
 .paper-nav
   position: absolute
   bottom: 1.5rem
@@ -170,13 +246,9 @@ p
   display: none
 .spreadsheet
   // margin: 0 auto
-  border-spacing: 15px
+  border-spacing: 0
   thead
     @extend h3
-  tr
-      // background: red
-      &.mix
-        background: red
   td
     border: none!important
     padding: 0!important
@@ -199,12 +271,21 @@ p
     height: 100%
   canvas
     position: absolute
+    &.fullscreen
+      z-index: 20
+      background: white
 
 .navbar
   background: transparent
   position: fixed
-  top: 1.5rem
-  left: 1.5rem
+  z-index: 1
+  top: 0
+  left: 0
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .header
+    margin: 0
   &.is-active
     .container
       opacity: 1
@@ -213,10 +294,14 @@ p
     margin-left: 3rem
   .nav-icon
     @include sprite(0)
-    width: 64px
-    height: 49px
+    display: inline-block
+    width: 7rem
+    height: 7rem
     outline: none
     cursor: pointer
+    margin-right: 2rem
+    margin-left: 1rem
+    margin-top: 1rem
 .navbar-item
   padding: 0
   &:nth-child(1)
