@@ -1,6 +1,6 @@
 ---
 templateKey: work
-title: Stamp Refresh
+title: Stamp Refresh Print Edition
 type: print
 featured: false
 draft: false
