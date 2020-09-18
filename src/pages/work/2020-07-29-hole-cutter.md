@@ -3,6 +3,8 @@ templateKey: work
 title: Hole cutter
 type: Candusen page
 date: 2020-07-29T15:19:49.452Z
+featuredimage:
+  - https://res.cloudinary.com/candusen/image/upload/v1600431841/Screen_Shot_2020-09-17_at_6.48.02_PM_b1qvwy.png
 paper_code:
   code: >
     var count = -4;
