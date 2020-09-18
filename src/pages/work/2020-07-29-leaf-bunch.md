@@ -4,6 +4,8 @@ title: Leaf bunch
 type: Candusen page
 draft: true
 date: 2020-07-29T15:44:06.315Z
+featuredimage:
+  - https://res.cloudinary.com/candusen/image/upload/v1600431843/Screen_Shot_2020-09-17_at_6.51.06_PM_n0grr2.png
 paper_code:
   code: >
     var spot;
