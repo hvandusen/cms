@@ -2,6 +2,7 @@
 templateKey: work
 title: Water colors
 type: Candusen page
+draft: true
 date: 2020-07-29T15:41:04.102Z
 paper_code:
   code: |
