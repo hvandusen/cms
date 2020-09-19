@@ -109,8 +109,7 @@ async function onCreateNode({
       node,
       value,
     })
-    let url = node.frontmatter.featuredimage | null;
-    url = typeof url === "string" ? url : url[0] ;
+    let url = node.frontmatter.featuredimage ? node.frontmatter.featuredimage[0] : null;
     if (url !== null && url !== undefined) {
       let fileNode = await createRemoteFileNode({
         url: url, // string that points to the URL of the image
@@ -122,7 +121,7 @@ async function onCreateNode({
       })
       // if the file was created, attach the new node to the parent node
       if (fileNode) {
-        node.featuredSharp___NODE = fileNode.id
+        node.featuredimage___NODE = fileNode.id
       }
     }
   }
@@ -136,7 +135,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
     type Frontmatter {
       title: String!
-      featuredimage: String
+      featuredimage: [String]
     }
   `)
 }

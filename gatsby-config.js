@@ -29,8 +29,6 @@ module.exports = {
         name: 'images',
       },
     },
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -59,14 +57,8 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-remote-images`,
-    //   options: {
-    //
-    //     nodeType: 'markdownRemark',
-    //     imagePath: "frontmatter.featuredimage",
-    //   },
-    // },
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {

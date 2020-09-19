@@ -8,9 +8,22 @@ import Table from '../components/Table'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
 
+import BackgroundImage from 'gatsby-background-image'
+
 const slugifyType = (str) => str.replace(/\s+/g, '-').toLowerCase().replace("mix","tape")
 const dotcomfix = (str) => str.replace(".com"," . com")
 const ensureHttp = (str) => str.indexOf("http")> - 1 ? str : "http://"+ str
+const labelOrderedWorks = (works) => {
+  let labeled = works.slice()
+  labeled[0].firstOfType = true
+  for (var i = 1; i < works.length; i++) {
+    labeled[i].firstOfType = false
+    if(labeled[i-1].frontmatter.type !== labeled[i].frontmatter.type){
+      labeled[i].firstOfType = true
+    }
+  }
+  return labeled
+}
 export const IndexPageTemplate = ({
   image,
   title,
@@ -21,13 +34,14 @@ export const IndexPageTemplate = ({
   let handleFilter = (e) => setFilter(slugifyType(e.currentTarget.textContent))
   let categories = works.map((work) => work.frontmatter.type)
   .filter((e,i,self) => self.indexOf(e) === i)
+  works = works.filter( w => !w.frontmatter.draft)
   let worksWithFilter = works.filter(work => {
     return slugifyType(work.frontmatter.type) === filter
   })
   let worksWithoutFilter = works.filter(work => {
     return slugifyType(work.frontmatter.type) !== filter
   })
-  let sortedWorks = worksWithFilter.concat(worksWithoutFilter)
+  let sortedWorks = labelOrderedWorks(worksWithFilter.concat(worksWithoutFilter))
   return (
     <div className="homepage">
       <div key={1}className="project-nav">
@@ -40,17 +54,24 @@ export const IndexPageTemplate = ({
       {sortedWorks.map((work,i) => {
         console.log(work)
         let fm = work.frontmatter
-        let theClass = "work-box "+slugifyType(fm.type) + (filter.length > 0  && filter !== slugifyType(fm.type) ? " hide" : "")
+        let theClass = "work-box "+slugifyType(fm.type) +
+        (filter.length > 0  && filter !== slugifyType(fm.type) ? " hide " : " ")+
+        (work.firstOfType ? "first" : "")
+
         return <div key={i} className={theClass}>
-          <h2>{fm.title}</h2>
-          <p>{fm.description}</p>
-          <img src={fm.featuredimage}></img>
-          {work.localImage ?
-          <Img fluid={work.localImage.childImageSharp.fluid} alt={fm.description}/>
+          {work.featuredSharp ?
+          <BackgroundImage className="project-img"
+            style={{
+              backgroundSize: "contain"
+            }}
+            fluid={work.featuredSharp.childImageSharp.fluid}
+            alt={fm.description}/>
           : ""}
           {fm.url && fm.featured ? (
             <iframe src={ensureHttp(fm.url)}></iframe>
           ): ""}
+          <h1>{fm.title}</h1>
+          <p className="description">{fm.description}</p>
           <Link className="wrapper" to={work.fields.slug}></Link>
           <span className="type-label color">{fm.type}</span>
         </div>
@@ -121,11 +142,19 @@ export const pageQuery = graphql`
             url
             description
             featuredimage
+            draft
             featured
             images
             tags
             paper_code {
               code
+            }
+          }
+          featuredSharp {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
           fields {

@@ -85,8 +85,8 @@ h2
   font-size: 3rem
   line-height: 3.5rem
 h3
-  font-size: 2.5rem
-  line-height: 3.4rem
+  font-size: 2rem
+  line-height: 2rem
 h4
   text-transform: uppercase
   letter-spacing: 3px
@@ -120,10 +120,10 @@ span
 .wrapper
   @include wrapper
 .page
-  padding-top: 10rem
+
 .homepage
   position: relative
-  // margin: 100px 0
+  margin-top: 10rem
   .project-nav
     position: absolute
     top: 0
@@ -139,7 +139,7 @@ span
   .project-grid
     display: grid
     grid-auto-flow: row dense
-    grid-template-columns: repeat(auto-fit, 4rem)
+    grid-template-columns: repeat(auto-fit, 3rem)
     grid-template-rows: repeat(auto-fit, fit-content(4rem))
     margin-right: 1rem
     margin-left: 10rem
@@ -150,7 +150,6 @@ span
       border-width: 2px
       border-radius: 4px
       display: inline-block
-      // grid-column: span 4
       padding: 3rem 1rem 1rem
       position: relative
       transition: .3s all linear
@@ -160,15 +159,19 @@ span
       iframe
         width: 100%
         min-height: 400px
-      img
-        max-width: 100%
-        height: auto
+      .project-img
+        width: 100%
+        height: 250px
+        background-size: contain!important
       // &:hover
         // border-width: 4px
       .type-label
+        display: none
+      .type-label
         position: absolute
-        top: 1rem
+        top: -1rem
         left: 1rem
+        border-radius: 10px
         display: inline-block
         padding: 2px
 $thingToColor: "border-color"
@@ -307,12 +310,12 @@ $thingToColor: "border-color"
 .navbar
   background: transparent
   position: fixed
-  z-index: 1
+  z-index: 26
   top: 0
   left: 0
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  display: flex
+  flex-direction: row
+  align-items: center
   .header
     margin: 0
   &.is-active
