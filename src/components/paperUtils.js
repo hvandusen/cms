@@ -44,47 +44,58 @@ const installOldFunctions = (window,paper) => {
         return color;
 
     }
-    window.grid = function(x,y,size,color){
-    var columns = [], width,height;
-		this.groups = new paper.Group();
-		width = window.innerWidth/x;
-		height = window.innerHeight/y;
-		if(size!==undefined){
-			width = size;
-			height = size;
-			x = Math.ceil(window.innerWidth/size);
-			y = Math.ceil(window.innerHeight/size);
-		}
-		for(var i=0;i<x;i++){
-			columns[i] = [];
-			this.groups.children.push(new paper.Group());
-			for(var j=0;j<y;j++){
-				columns[i][j] = new paper.Path.Rectangle(i*width,j*height,width,height);
-				//columns[i][j].scale(2)
-				this.groups.children[i].children.push(columns[i][j]);
-				}
-			//groups[i].scale(3);
+    window.shuffle = function(a) {
+        var j, x, i;
+        for (i = a.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = a[i];
+            a[i] = a[j];
+            a[j] = x;
+        }
+        return a;
+    }
 
-		}
-		this.columns = columns;
-    this.modify = function(fn){
-      this.groups.children.forEach(function(column,i){
-        column.children.forEach(function(path,j){
-          path.set(fn(i,j));
+    window.grid = function(x,y,size,color){
+      var columns = [], width,height;
+  		this.groups = new paper.Group();
+  		width = window.innerWidth/x;
+  		height = window.innerHeight/y;
+  		if(size!==undefined){
+  			width = size;
+  			height = size;
+  			x = Math.ceil(window.innerWidth/size);
+  			y = Math.ceil(window.innerHeight/size);
+  		}
+  		for(var i=0;i<x;i++){
+  			columns[i] = [];
+  			this.groups.children.push(new paper.Group());
+  			for(var j=0;j<y;j++){
+  				columns[i][j] = new paper.Path.Rectangle(i*width,j*height,width,height);
+  				//columns[i][j].scale(2)
+  				this.groups.children[i].children.push(columns[i][j]);
+  				}
+  			//groups[i].scale(3);
+
+  		}
+  		this.columns = columns;
+      this.modify = function(fn){
+        this.groups.children.forEach(function(column,i){
+          column.children.forEach(function(path,j){
+            path.set(fn(i,j));
+          })
         })
-      })
-    }
-    this.clear = function(){
-      this.groups.children.forEach(function(column,i){
-        column.children.forEach(function(path,j){
-          path.remove();
+      }
+      this.clear = function(){
+        this.groups.children.forEach(function(column,i){
+          column.children.forEach(function(path,j){
+            path.remove();
+          })
+          column.remove();
         })
-        column.remove();
-      })
-      this.groups.remove()
+        this.groups.remove()
+      }
+  		return this;
     }
-		return this;
-  }
 
 }
 export default installOldFunctions

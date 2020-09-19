@@ -47,7 +47,7 @@ const Navbar = class extends React.Component {
         <h5 className="header">henry van dusen</h5>
         <div className="container">
           <div className="navbar-brand">
-            {/* Menu menu */}
+            
           </div>
           <div
             id="nav"

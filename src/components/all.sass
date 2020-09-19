@@ -9,13 +9,13 @@
   32.9%
     color: red
   33%
-    color: blue
+    color: #476fff
   65.9%
-    color: blue
+    color: #476fff
   66%
-    color: green
+    color: #3abc3a
   99.9%
-    color: green
+    color: #3abc3a
 
 @font-face
   font-family: "Aktiv"
@@ -74,7 +74,9 @@ b
 
 i
   font-family: "Az-Italic"
-
+h1,h2,h3,h4,h5,h6
+  padding: 0
+  margin: 0
 h1
   font-size: 4rem
   line-height: 4.5rem
@@ -118,57 +120,78 @@ span
 .wrapper
   @include wrapper
 .page
-  padding: 100px 0
-.home
-  display: grid
-  grid-auto-flow: row dense
-  grid-template-columns: repeat(auto-fit, 4rem)
-  grid-template-rows: repeat(auto-fit, fit-content(4rem))
-  margin-right: 1rem
-  margin-left: 10rem
-  grid-gap: 2rem
-  .work-box
-    border-style: solid
-    border-width: 2px
-    border-radius: 4px
-    display: inline-block
-    grid-column: span 4
-    padding: 3rem 1rem 1rem
-    position: relative
-    transition: .3s all linear
-    img
-      max-width: 100%
-      height: auto
-    .wrapper.color
-      z-index: -1
-    // &:hover
-      // border-width: 4px
-    .type-label
-      position: absolute
-      top: 1rem
-      left: 1rem
+  padding-top: 10rem
+.homepage
+  position: relative
+  // margin: 100px 0
+  .project-nav
+    position: absolute
+    top: 0
+    width: 8rem
+    left: 1rem
+    display: flex
+    flex-direction: column
+    align-items: center
+    .project-category
+      cursor: pointer
+      margin-bottom: 1rem
+      text-align: center
+  .project-grid
+    display: grid
+    grid-auto-flow: row dense
+    grid-template-columns: repeat(auto-fit, 4rem)
+    grid-template-rows: repeat(auto-fit, fit-content(4rem))
+    margin-right: 1rem
+    margin-left: 10rem
+    grid-gap: 2rem
+
+    .work-box
+      border-style: solid
+      border-width: 2px
+      border-radius: 4px
       display: inline-block
-      padding: 2px
+      // grid-column: span 4
+      padding: 3rem 1rem 1rem
+      position: relative
+      transition: .3s all linear
+      h1 a
+        display: block
+        color: black
+      iframe
+        width: 100%
+        min-height: 400px
+      img
+        max-width: 100%
+        height: auto
+      // &:hover
+        // border-width: 4px
+      .type-label
+        position: absolute
+        top: 1rem
+        left: 1rem
+        display: inline-block
+        padding: 2px
 $thingToColor: "border-color"
+
 .candusen-page
   .work-box, &.work-box
     grid-column: span 4
-    grid-row: span 4
+    // grid-row: span 4
     #{$thingToColor}: red
   .color, &.color
     background: red
 .client-site
   .work-box, &.work-box
     grid-column: span 10
-    #{$thingToColor}: green
+    #{$thingToColor}: #3abc3a
   .color, &.color
-    background: green
+    background: #3abc3a
 .software
   .work-box, &.work-box
     grid-column: span 4
-    #{$thingToColor}: blue
+    #{$thingToColor}: #476fff
   .color, &.color
-    background: blue
+    background: #476fff
 .website
   .work-box, &.work-box
     grid-column: span 6
@@ -177,17 +200,23 @@ $thingToColor: "border-color"
     background: orange
 .print
   .work-box, &.work-box
-    grid-column: span 7
+    grid-column: span 6
     #{$thingToColor}: #ad54ff
   .color, &.color
     background: #ad54ff
 .essay
   .work-box, &.work-box
-    grid-column: span 5
+    grid-column: span 8
     #{$thingToColor}: yellow
   .color, &.color
     background: yellow
 
+.tape
+  .work-box, &.work-box
+    grid-column: span 4
+    #{$thingToColor}: pink
+  .color, &.color
+    background: pink
 
 .paper-listing
   .paper-preview-link
@@ -238,7 +267,7 @@ $thingToColor: "border-color"
   .key
     border-radius: 20%
     border: solid black 1px
-    // background: blue
+    // background: #476fff
     color: black
     padding: 1px 4px
 
@@ -311,11 +340,11 @@ $thingToColor: "border-color"
       &:hover
         animation: $fadeRGB
   &:nth-child(3)
-      color: green
+      color: #3abc3a
       &:hover
         animation: $fadeRGB
   &:nth-child(4)
-      color: blue
+      color: #476fff
       &:hover
         animation: $fadeRGB
   img

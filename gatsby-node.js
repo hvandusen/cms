@@ -1,7 +1,7 @@
 //https://www.gatsbyjs.org/docs/node-apis/
 const _ = require('lodash')
 const path = require('path')
-const { createFilePath } = require('gatsby-source-filesystem')
+const { createFilePath,createRemoteFileNode } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 const fs = require("fs")
 
@@ -90,7 +90,16 @@ exports.createPages = ({ actions, graphql }) => {
   })
 }
 
-async function onCreateNode({ node, actions, getNode, loadNodeContent }){
+async function onCreateNode({
+  node,
+  actions,
+  actions: { createNode },
+  getNode,
+  loadNodeContent,
+  store,
+  cache,
+  createNodeId,
+}){
   const { createNodeField } = actions
   fmImagesToRelative(node) // convert image paths for gatsby images
   if (node.internal.type === `MarkdownRemark`) {
@@ -100,8 +109,36 @@ async function onCreateNode({ node, actions, getNode, loadNodeContent }){
       node,
       value,
     })
-    // if(node.frontmatter.type )
+    let url = node.frontmatter.featuredimage | null;
+    url = typeof url === "string" ? url : url[0] ;
+    if (url !== null && url !== undefined) {
+      let fileNode = await createRemoteFileNode({
+        url: url, // string that points to the URL of the image
+        parentNodeId: node.id, // id of the parent node of the fileNode you are going to create
+        createNode, // helper function in gatsby-node to generate the node
+        createNodeId, // helper function in gatsby-node to generate the node id
+        cache, // Gatsby's cache
+        store, // Gatsby's redux store
+      })
+      // if the file was created, attach the new node to the parent node
+      if (fileNode) {
+        node.featuredSharp___NODE = fileNode.id
+      }
+    }
   }
+}
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  createTypes(`
+    type MarkdownRemark implements Node {
+      frontmatter: Frontmatter
+      featuredSharp: File @link(from: "featuredimage___NODE")
+    }
+    type Frontmatter {
+      title: String!
+      featuredimage: String
+    }
+  `)
 }
 
 exports.onCreateNode = onCreateNode

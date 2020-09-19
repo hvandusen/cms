@@ -55,10 +55,18 @@ module.exports = {
             options: {
               destinationDir: 'static',
             },
-          },
+          }
         ],
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-remote-images`,
+    //   options: {
+    //
+    //     nodeType: 'markdownRemark',
+    //     imagePath: "frontmatter.featuredimage",
+    //   },
+    // },
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
