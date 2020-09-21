@@ -1,6 +1,6 @@
 ---
 templateKey: work
-title: Wire Painting
+title: "Wire Painting "
 type: print
 featured: false
 draft: false
