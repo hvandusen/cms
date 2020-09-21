@@ -123,6 +123,7 @@ span
 
 @media(max-width:480px)
   body .navbar
+    width: 150px
     .nav-icon
       width: 10rem
       height: 10rem
@@ -134,7 +135,7 @@ span
       display: grid
       grid-auto-flow: row dense
       grid-template-columns: repeat(8, 1fr)
-      grid-auto-rows: minmax(4rem, auto)
+      grid-auto-rows: minmax(3rem, auto)
       margin-right: 1rem
       margin-left: 10rem
       grid-gap: 2rem 1rem
@@ -145,7 +146,7 @@ span
           grid-row: span 4
         &.website
           grid-row: span 6
-        &.print
+        &.print, &.software
           grid-column: span 8
         iframe
           z-index: -1

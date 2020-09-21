@@ -45,13 +45,19 @@ export const IndexPageTemplate = ({
   let worksWithoutFilter = works.filter(work => {
     return slugifyType(work.frontmatter.type) !== filter
   })
+  let convertTypeNames = (type) => {
+    let switcher = {
+      "Candusen page": "Drawing"
+    }
+    return switcher.hasOwnProperty(type) ? switcher[type] : type
+  }
   let sortedWorks = labelOrderedWorks(worksWithFilter.concat(worksWithoutFilter))
   return (
     <div className="homepage">
       <div key={1}className="project-nav">
         <span key={1} className="project-category">Filter:</span>
         {categories.map((cat,i) =>
-          <span key={i+2} onClick={handleFilter} className={"color project-category "+slugifyType(cat)}>{cat}</span>
+          <span key={i+2} onClick={handleFilter} className={"color project-category "+slugifyType(cat)}>{convertTypeNames(cat)}</span>
         )}
       </div>
       <div key={2}className={"project-grid " + (filter.length > 0 ? "filtered" : "")}>
@@ -75,8 +81,8 @@ export const IndexPageTemplate = ({
           ): ""}
           <h2>{fm.title}</h2>
           <p className="description">{fm.description}</p>
-          <Link className="wrappler" to={work.fields.slug}></Link>
-          <span className="type-label color">{fm.type}</span>
+          <Link className="wrapper" to={work.fields.slug}></Link>
+          <span className="type-label color">{convertTypeNames(fm.type)}</span>
         </div>
       })}
     </div>
