@@ -13,4 +13,6 @@ description: >-
   24x16".
 
   2014.
+featuredimage:
+  - https://res.cloudinary.com/candusen/image/upload/v1600701291/IMG_7773_hfadwi.jpg
 ---
