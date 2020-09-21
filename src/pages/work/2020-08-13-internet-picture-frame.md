@@ -1,6 +1,6 @@
 ---
 templateKey: work
-title: Internet Picture Frame
+title: Random Picture Frame
 type: Website
 featured: false
 draft: false
