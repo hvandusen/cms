@@ -24,6 +24,9 @@ const labelOrderedWorks = (works) => {
   }
   return labeled
 }
+const shuffle = (array) => {
+  return array.slice().sort(() => Math.random() - 0.5);
+}
 export const IndexPageTemplate = ({
   image,
   title,
@@ -35,6 +38,7 @@ export const IndexPageTemplate = ({
   let categories = works.map((work) => work.frontmatter.type)
   .filter((e,i,self) => self.indexOf(e) === i)
   works = works.filter( w => !w.frontmatter.draft)
+  works = shuffle(works)
   let worksWithFilter = works.filter(work => {
     return slugifyType(work.frontmatter.type) === filter
   })
@@ -55,11 +59,11 @@ export const IndexPageTemplate = ({
         let fm = work.frontmatter
         let theClass = "work-box "+slugifyType(fm.type) +
         (filter.length > 0  && filter !== slugifyType(fm.type) ? " hide " : " ")+
-        (work.firstOfType ? "first" : "")
+        (work.firstOfType ? "first " : " ")
 
         return <div key={i} className={theClass}>
           {work.featuredSharp ?
-          <BackgroundImage className="project-img"
+          <BackgroundImage className="project-img "
             style={{
               backgroundSize: "contain"
             }}
@@ -69,9 +73,9 @@ export const IndexPageTemplate = ({
           {fm.url && fm.featured ? (
             <iframe src={ensureHttp(fm.url)}></iframe>
           ): ""}
-          <h1>{fm.title}</h1>
+          <h2>{fm.title}</h2>
           <p className="description">{fm.description}</p>
-          <Link className="wrapper" to={work.fields.slug}></Link>
+          <Link className="wrappler" to={work.fields.slug}></Link>
           <span className="type-label color">{fm.type}</span>
         </div>
       })}

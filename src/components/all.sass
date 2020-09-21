@@ -121,12 +121,43 @@ span
   @include wrapper
 .page
 
+@media(max-width:480px)
+  body .navbar
+    .nav-icon
+      width: 10rem
+      height: 10rem
+    .header
+      display: none
+  body .homepage
+    margin: 0
+    .project-grid
+      display: grid
+      grid-auto-flow: row dense
+      grid-template-columns: repeat(8, 1fr)
+      grid-auto-rows: minmax(4rem, auto)
+      margin-right: 1rem
+      margin-left: 10rem
+      grid-gap: 2rem 1rem
+      margin-left: 1rem
+      margin-right: 1rem
+      .work-box
+        &.candusen-page, &.tape
+          grid-row: span 4
+        &.website
+          grid-row: span 6
+        &.print
+          grid-column: span 8
+        iframe
+          z-index: -1
+    .project-nav .project-category
+      margin: .5rem 1rem
+      padding: .5rem
+
 .homepage
   position: relative
-  margin-top: 10rem
+  margin: 10rem 0
   .project-nav
-    position: absolute
-    top: 0
+    position: fixed
     width: 8rem
     left: 1rem
     display: flex
@@ -139,29 +170,37 @@ span
   .project-grid
     display: grid
     grid-auto-flow: row dense
-    grid-template-columns: repeat(auto-fit, 3rem)
-    grid-template-rows: repeat(auto-fit, fit-content(4rem))
+    grid-template-columns: repeat(auto-fit, 4rem)
+    grid-auto-rows: minmax(4rem, auto)
     margin-right: 1rem
     margin-left: 10rem
     grid-gap: 2rem
-
     .work-box
       border-style: solid
       border-width: 2px
       border-radius: 4px
       display: inline-block
-      padding: 3rem 1rem 1rem
+      padding: 1rem
       position: relative
       transition: .3s all linear
+      display: grid
+      grid-template-rows: 1fr auto
+      word-break: break-word
+      &:hover
+        h2
+          text-decoration: underline
+      p
+        margin: 0
       h1 a
         display: block
         color: black
       iframe
         width: 100%
         min-height: 400px
+        z-index: 100
       .project-img
         width: 100%
-        height: 250px
+        min-height: 150px
         background-size: contain!important
       // &:hover
         // border-width: 4px
@@ -174,42 +213,61 @@ span
         border-radius: 10px
         display: inline-block
         padding: 2px
+  @media(max-width: 480px)
+    .project-nav
+      right: 1rem
+      left: auto
+      display: flex
+      flex-direction: row
+      flex-wrap: wrap
+      align-items: center
+      top: 1rem
+      width: calc(100vw - 140px)
+      position: static
+      justify-content: flex-end
+      margin: .5rem 0 4rem auto
 $thingToColor: "border-color"
 
 .candusen-page
   .work-box, &.work-box
     grid-column: span 4
+    grid-row: span 6
     // grid-row: span 4
     #{$thingToColor}: red
   .color, &.color
     background: red
 .client-site
   .work-box, &.work-box
-    grid-column: span 10
+    grid-column: span 8
+    grid-row: span 8
     #{$thingToColor}: #3abc3a
   .color, &.color
     background: #3abc3a
 .software
   .work-box, &.work-box
     grid-column: span 4
+    grid-row: span 6
     #{$thingToColor}: #476fff
   .color, &.color
     background: #476fff
 .website
   .work-box, &.work-box
-    grid-column: span 6
+    grid-column: span 8
+    grid-row: span 8
     #{$thingToColor}: orange
   .color, &.color
     background: orange
 .print
   .work-box, &.work-box
-    grid-column: span 6
+    grid-column: span 4
+    grid-row: span 6
     #{$thingToColor}: #ad54ff
   .color, &.color
     background: #ad54ff
 .essay
   .work-box, &.work-box
     grid-column: span 8
+    grid-row: span 6
     #{$thingToColor}: yellow
   .color, &.color
     background: yellow
@@ -217,6 +275,7 @@ $thingToColor: "border-color"
 .tape
   .work-box, &.work-box
     grid-column: span 4
+    grid-row: span 6
     #{$thingToColor}: pink
   .color, &.color
     background: pink
