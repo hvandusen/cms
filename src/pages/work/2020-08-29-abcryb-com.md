@@ -2,7 +2,7 @@
 templateKey: work
 title: abcryb.com
 type: client site
-featured: false
+featured: true
 draft: false
 date: 2020-08-29T16:59:43.902Z
 url: https://abcryb.com
