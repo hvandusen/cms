@@ -7,4 +7,6 @@ draft: false
 date: 2020-08-13T14:04:33.360Z
 url: candusen.net
 description: "My personal website for years. Hen: put all the old versions on there!"
+featuredimage:
+  - https://res.cloudinary.com/candusen/image/upload/v1600709377/Screen_Shot_2020-09-21_at_1.29.18_PM_sedrv5.png
 ---
