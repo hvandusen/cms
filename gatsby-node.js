@@ -7,7 +7,6 @@ const fs = require("fs")
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage, createNodeField } = actions
-  console.log("createNodeField:",createNodeField)
   return graphql(`
     {
       allMarkdownRemark(limit: 1000) {

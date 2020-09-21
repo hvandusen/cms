@@ -43,7 +43,6 @@ const wrapH = (priority) => ({ value }) => {
          Header: 'Title',
          accessor: 'title', // accessor is the "key" in the data
          sortType: (rowA, rowB) => {
-           console.log(rowA,rowB)
            return rowA.values.title.title.toLowerCase() >
                   rowB.values.title.title.toLowerCase() ? 1: -1;
          },
@@ -110,7 +109,6 @@ const wrapH = (priority) => ({ value }) => {
                  // background: colorMap[slug(row.values.type)]
                }} className={slug(row.values.type)}>
                {row.cells.map(cell => {
-                 console.log(cell)
                  return (
                    <td
                      {...cell.getCellProps()}
