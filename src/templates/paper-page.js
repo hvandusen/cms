@@ -10,7 +10,6 @@ const Candusen = (props) => {
   const { data } = props
   let [fullscreen, setFullscreen] = useState(false);
   const { markdownRemark: post } = data
-  console.log("next",props,"previous")
   const {previous,next} = props.pageContext
   const onkeydown = (e) => {
     switch (e.key) {
@@ -28,14 +27,12 @@ const Candusen = (props) => {
         break;
       case "f":
         setFullscreen(!fullscreen)
-        console.log(fullscreen)
       default:
     }
   }
   useEffect(() =>{
     if(typeof window !== "undefined"){
       document.addEventListener('keydown', onkeydown);
-      console.log("did it")
     }
   },)
   return (

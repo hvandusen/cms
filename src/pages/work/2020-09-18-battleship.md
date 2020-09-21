@@ -58,7 +58,6 @@ paper_code:
     Drawable.prototype.fill = function(points,color){
       if(typeof points[0] === "object")
         for(var i=0;i<points.length;i++){
-          console.log(points[i])
           if(!d.pixelAt(points[i][0],points[i][1])){
             return;
           }
@@ -68,7 +67,6 @@ paper_code:
             this.filled[points[i][0]] = [];
           }
           this.filled[points[i][0]].push(points[i][1]);
-          // console.log(this.filled)
         }
       else{
         if(!d.pixelAt(points[0],points[1]))
@@ -128,7 +126,6 @@ paper_code:
 
 
     Drawable.prototype.gen = function(amt){
-      console.log(this.units)
       var pts = [];
       for (var i = 0; i < amt; i++) {
         pts.push([num(this.units),num(this.units)]);
@@ -138,7 +135,6 @@ paper_code:
 
 
     Drawable.prototype.filter = function(func){
-      console.log(this)
       this.squares.children.filter(function(path,i){
         func(path,i);
       })

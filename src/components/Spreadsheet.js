@@ -5,10 +5,6 @@ import PreviewCompatibleImage from './PreviewCompatibleImage'
 
 const Spreadsheet = ({data}) => {
     const { edges: posts } = data.allMarkdownRemark
-    // posts.map(({node:e},i) => {
-    //   console.log(e,i)
-    // })
-    // posts.map(({node: fuck}) => console.log)
     return (
         <div className="spreadsheet">
           fuck off

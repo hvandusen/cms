@@ -52,7 +52,6 @@ export const IndexPageTemplate = ({
       </div>
       <div key={2}className={"project-grid " + (filter.length > 0 ? "filtered" : "")}>
       {sortedWorks.map((work,i) => {
-        console.log(work)
         let fm = work.frontmatter
         let theClass = "work-box "+slugifyType(fm.type) +
         (filter.length > 0  && filter !== slugifyType(fm.type) ? " hide " : " ")+

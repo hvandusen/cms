@@ -51,7 +51,6 @@ paper_code:
     		lf.children.map(function(h,k){
     			if(k < lf.children.length){
     				//if((Math.sin(e.count*.4/k*.7)/19,h.segments[Math.floor(h.segments.length/2)].point).x);
-    				//console.log(h.fillColor)
 
     				h.rotate(Math.sin(e.count*.4/k*.7)/19,base)
 
@@ -200,9 +199,7 @@ paper_code:
     		leaff = lineToLeaf(newp,thickness);
     		//colorWheel(colorScheme+Math.random()*340);//prettyRaCo();
     		leafG.children.push(leaff);
-    		//console.log(leaff.segments.length)
     	}
-    	//console.log(leaff.fillColor)
     	rotateAmt = Math.random()*180;
     	var stem = new Path();
     	stem.add(pt-[0,1]);

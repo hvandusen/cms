@@ -67,13 +67,11 @@ paper_code:
 
 
     function onMouseDown(e){
-      console.log("rect",circle.intersects(rect).type," copy ",circle.intersects(copy).type);
       if(circle.intersects(rect) && circle.intersects(copy)){
         //circle = new Path.Circle(e.point,100);
         //circle.fillColor = "red";
         return
       }
-      console.log("made it")
       var tempPos = copy.position;
       result.remove();
       result = (circle.intersects(rect) ? rect : copy).subtract(circle)

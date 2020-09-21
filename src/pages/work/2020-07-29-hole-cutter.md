@@ -28,7 +28,6 @@ paper_code:
        if(!fileName) {
            fileName = "paperjs_example.svg"
        }
-       console.log(paper.project.exportSVG({asString:true}))
        var url = "data:image/svg+xml;utf8," + encodeURIComponent(paper.project.exportSVG({asString:true}));
 
        var link = document.createElement("a");

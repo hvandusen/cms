@@ -19,7 +19,6 @@ paper_code:
     		//draw.scale(.9+Math.random()*.2)
     		//split(line);
     		// var randPt = line.getPointAt(Math.random()*line.length);
-    		// console.log(line.length);
     		// line.split(randPt);
     	}
     }
