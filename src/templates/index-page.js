@@ -34,24 +34,24 @@ export const IndexPageTemplate = ({
   works
 }) => {
   let [filter, setFilter] = useState("");
-  let handleFilter = (e) => setFilter(slugifyType(e.currentTarget.textContent))
-  let categories = works.map((work) => work.frontmatter.type)
+  const handleFilter = (e) => setFilter(slugifyType(e.currentTarget.textContent))
+  const categories = works.map((work) => work.frontmatter.type)
   .filter((e,i,self) => self.indexOf(e) === i)
   works = works.filter( w => !w.frontmatter.draft)
-  works = shuffle(works)
-  let worksWithFilter = works.filter(work => {
+  // works = shuffle(works)
+  const worksWithFilter = works.filter(work => {
     return slugifyType(work.frontmatter.type) === filter
   })
-  let worksWithoutFilter = works.filter(work => {
+  const worksWithoutFilter = works.filter(work => {
     return slugifyType(work.frontmatter.type) !== filter
   })
-  let convertTypeNames = (type) => {
+  const convertTypeNames = (type) => {
     let switcher = {
-      "Candusen page": "Drawing"
+      "Candusen page": "fun"
     }
     return switcher.hasOwnProperty(type) ? switcher[type] : type
   }
-  let sortedWorks = labelOrderedWorks(worksWithFilter.concat(worksWithoutFilter))
+  const sortedWorks = labelOrderedWorks(worksWithFilter.concat(worksWithoutFilter))
   return (
     <div className="homepage">
       <div key={1}className="project-nav">
@@ -62,8 +62,8 @@ export const IndexPageTemplate = ({
       </div>
       <div key={2}className={"project-grid " + (filter.length > 0 ? "filtered" : "")}>
       {sortedWorks.map((work,i) => {
-        let fm = work.frontmatter
-        let theClass = "work-box "+slugifyType(fm.type) +
+        const fm = work.frontmatter
+        const theClass = "work-box "+slugifyType(fm.type) +
         (filter.length > 0  && filter !== slugifyType(fm.type) ? " hide " : " ")+
         (work.firstOfType ? "first " : " ")
 

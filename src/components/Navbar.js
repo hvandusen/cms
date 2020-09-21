@@ -38,7 +38,7 @@ const Navbar = class extends React.Component {
         role="navigation"
         aria-label="main-navigation"
       >
-        <Link to="/" className="navbar-item" title="Logo"><div className="nav-icon"
+        <Link to="/" className="navbar-item" title="henry van dusen homepage"><div className="nav-icon"
           role="menu" tabIndex={0}
           data-target="nav"
           onClick={() => this.toggleMenu()}
@@ -47,7 +47,7 @@ const Navbar = class extends React.Component {
         <h5 className="header">henry van dusen</h5>
         <div className="container">
           <div className="navbar-brand">
-            
+
           </div>
           <div
             id="nav"
