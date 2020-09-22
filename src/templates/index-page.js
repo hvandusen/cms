@@ -37,12 +37,12 @@ export const IndexPageTemplate = ({
   const handleFilter = (e) => setFilter(slugifyType(e.currentTarget.textContent))
   const categories = works.map((work) => work.frontmatter.type)
   .filter((e,i,self) => self.indexOf(e) === i)
-  works = works.filter( w => !w.frontmatter.draft)
-  // works = shuffle(works)
-  const worksWithFilter = works.filter(work => {
+  const allWorks = works.slice()
+  const published = shuffle(allWorks.filter( w => !w.frontmatter.draft))
+  const worksWithFilter = published.filter(work => {
     return slugifyType(work.frontmatter.type) === filter
   })
-  const worksWithoutFilter = works.filter(work => {
+  const worksWithoutFilter = published.filter(work => {
     return slugifyType(work.frontmatter.type) !== filter
   })
   const convertTypeNames = (type) => {
