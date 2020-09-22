@@ -4,7 +4,7 @@ title: Circle game
 type: Candusen page
 date: 2020-07-29T15:45:20.158Z
 featuredimage:
-  - https://res.cloudinary.com/candusen/image/upload/v1600438154/Screen_Shot_2020-09-17_at_6.28.00_PM_zmm4hi.png
+  - https://res.cloudinary.com/candusen/image/upload/v1600788273/Screen_Shot_2020-09-22_at_11.24.13_AM_ke8drp.png
 paper_code:
   code: >
     var ctr = new Point(window.innerWidth*2,window.innerHeight*2);
@@ -34,6 +34,7 @@ paper_code:
     					}
 
 
+
     					
     /*}
 
@@ -60,6 +61,7 @@ paper_code:
     	white.fillColor = 'black'
     	bs = new Symbol(white);
     	ws = new Symbol(black)
+
 
 
     	
