@@ -1,6 +1,6 @@
 ---
 templateKey: work
-title: "Drumnet: updates"
+title: Drumnet Dispatch
 type: essay
 featured: false
 draft: false
