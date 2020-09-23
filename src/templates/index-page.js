@@ -24,8 +24,8 @@ const labelOrderedWorks = (works) => {
   }
   return labeled
 }
-const shuffle = (array) => {
-  return array.slice().sort(() => Math.random() - 0.5);
+const sortEdgesByFmField = (array,field) => {
+  return array.slice().sort((a,b) => a.node.frontmatter[field] > b.node.frontmatter[field] ? 1 : -1);
 }
 export const IndexPageTemplate = ({
   image,
@@ -38,11 +38,11 @@ export const IndexPageTemplate = ({
   const categories = works.map((work) => work.frontmatter.type)
   .filter((e,i,self) => self.indexOf(e) === i)
   const allWorks = works.slice()
-  const published = shuffle(allWorks.filter( w => !w.frontmatter.draft))
-  const worksWithFilter = published.filter(work => {
+  const published = allWorks.filter( w => !w.frontmatter.draft)
+  const worksWithFilter = published.slice().filter(work => {
     return slugifyType(work.frontmatter.type) === filter
   })
-  const worksWithoutFilter = published.filter(work => {
+  const worksWithoutFilter = published.slice().filter(work => {
     return slugifyType(work.frontmatter.type) !== filter
   })
   const convertTypeNames = (type) => {
@@ -60,14 +60,14 @@ export const IndexPageTemplate = ({
           <span key={i+2} onClick={handleFilter} className={"color project-category "+slugifyType(cat)}>{convertTypeNames(cat)}</span>
         )}
       </div>
-      <div key={2}className={"project-grid " + (filter.length > 0 ? "filtered" : "")}>
-      {sortedWorks.map((work,i) => {
+      <div key={2} className={"project-grid " + (filter.length > 0 ? "filtered" : "")}>
+      {sortedWorks.map((work,j) => {
         const fm = work.frontmatter
-        const theClass = "work-box "+slugifyType(fm.type) +
+        const theClass = j+" work-box "+slugifyType(fm.type) +
         (filter.length > 0  && filter !== slugifyType(fm.type) ? " hide " : " ")+
         (work.firstOfType ? "first " : " ")
         console.log(work)
-        return <div key={i} className={theClass}>
+        return <div key={j} className={theClass}>
           {work.featuredSharp ?
           <BackgroundImage className="project-img "
             style={{
@@ -99,14 +99,14 @@ IndexPageTemplate.propTypes = {
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
-
+  const randomWorks = sortEdgesByFmField(data.allMarkdownRemark.edges,"title").map((e) => e.node)
   return (
     <Layout>
       <IndexPageTemplate
         image={frontmatter.image}
         title={frontmatter.title}
         rows={['thing1','thing2']}
-        works={data.allMarkdownRemark.edges.map((e) => e.node)}
+        works={randomWorks}
       />
     </Layout>
   )
