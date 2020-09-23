@@ -66,7 +66,7 @@ export const IndexPageTemplate = ({
         const theClass = "work-box "+slugifyType(fm.type) +
         (filter.length > 0  && filter !== slugifyType(fm.type) ? " hide " : " ")+
         (work.firstOfType ? "first " : " ")
-
+        console.log(work)
         return <div key={i} className={theClass}>
           {work.featuredSharp ?
           <BackgroundImage className="project-img "
@@ -79,9 +79,12 @@ export const IndexPageTemplate = ({
           {fm.url && fm.featured ? (
             <iframe src={ensureHttp(fm.url)}></iframe>
           ): ""}
-          <h2>{fm.title}</h2>
+          <Link className="wrappler" to={work.fields.slug}><h2 className="color-text">{fm.title}</h2></Link>
           <p className="description">{fm.description}</p>
-          <Link className="wrapper" to={work.fields.slug}></Link>
+          {work.html.length ?
+            <div dangerouslySetInnerHTML={{ __html: work.html}}></div>
+          : ""}
+
           <span className="type-label color">{convertTypeNames(fm.type)}</span>
         </div>
       })}
