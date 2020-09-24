@@ -41,7 +41,7 @@ collections:
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "work"}
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Type", name: "type", widget: "select", options: ["Drawing","Candusen page","client site","print", "Website", "mix", "essay", "software"], default: "Candusen page"}
+      - {label: "Type", name: "type", widget: "select", options: ["Drawing","Candusen page","client site","print", "Website", "mix", "essay", "software", "music"], default: "Candusen page"}
       - {label: "Featured", name: "featured", widget: "boolean", default: false, required: false}
       - {label: "Draft", name: "draft", widget: "boolean", required: false, default: false}
       - {label: "Created Date", name: "date", widget: "datetime"}
