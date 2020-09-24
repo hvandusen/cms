@@ -1,17 +1,12 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
-import Img from "gatsby-image"
 
 import Layout from '../components/Layout'
-import Table from '../components/Table'
-import Features from '../components/Features'
-import BlogRoll from '../components/BlogRoll'
 
 import BackgroundImage from 'gatsby-background-image'
 
 const slugifyType = (str) => str.replace(/\s+/g, '-').toLowerCase().replace("mix","tape")
-const dotcomfix = (str) => str.replace(".com"," . com")
 const ensureHttp = (str) => str.indexOf("http")> - 1 ? str : "http://"+ str
 const labelOrderedWorks = (works) => {
   let labeled = works.slice()
@@ -63,7 +58,7 @@ export const IndexPageTemplate = ({
       <div key={2} className={"project-grid " + (filter.length > 0 ? "filtered" : "")}>
       {sortedWorks.map((work,j) => {
         const fm = work.frontmatter
-        const theClass = j+" work-box "+slugifyType(fm.type) +
+        const theClass = " work-box "+slugifyType(fm.type) +
         (filter.length > 0  && filter !== slugifyType(fm.type) ? " hide " : " ")+
         (work.firstOfType ? "first " : " ")
         console.log(work)
@@ -77,7 +72,7 @@ export const IndexPageTemplate = ({
             alt={fm.description}/>
           : ""}
           {fm.url && fm.featured ? (
-            <iframe src={ensureHttp(fm.url)}></iframe>
+            <iframe title={fm.title} src={ensureHttp(fm.url)}></iframe>
           ): ""}
           <Link className="wrappler" to={work.fields.slug}><h2 className="color-text">{fm.title}</h2></Link>
           <p className="description">{fm.description}</p>

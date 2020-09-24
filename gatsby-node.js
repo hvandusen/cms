@@ -135,6 +135,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Frontmatter {
       title: String!
       featuredimage: [String]
+      images: [String]
     }
   `)
 }
