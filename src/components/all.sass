@@ -77,6 +77,7 @@ i
 h1,h2,h3,h4,h5,h6
   padding: 0
   margin: 0
+  font-family: Az-Bold
 h1
   font-size: 4rem
   line-height: 4.5rem
@@ -125,8 +126,9 @@ span
   body .navbar
     width: 150px
     .nav-icon
-      width: 10rem
-      height: 10rem
+      width: 9rem
+      height: 9rem
+      margin: 2rem
     .header
       display: none
   body .homepage
@@ -138,21 +140,36 @@ span
       grid-auto-rows: minmax(3rem, auto)
       margin-right: 1rem
       margin-left: 10rem
-      grid-gap: 2rem 1rem
+      grid-gap: 2rem
       margin-left: 1rem
       margin-right: 1rem
+      margin: auto 2rem
       .work-box
-        &.candusen-page, &.tape
+        padding: 1.5rem
+        border-width: 5px
+        .type-label
+          padding: 3px 7px
+          font-size: 1.7rem
+        p
+          font-size: 1.6rem
+        a
+          text-decoration: none
+          color: black
+          h2
+            font-size: 2rem
+            padding: 2rem 0 1rem
+            line-height: 2rem
+        iframe
+          pointer-events: none
+        &.candusen-page
           grid-row: span 4
+
         &.website
           grid-row: span 6
-        &.print, &.software
+        &.print, &.software, &.tape
           grid-column: span 8
         iframe
           z-index: -1
-    .project-nav .project-category
-      margin: .5rem 1rem
-      padding: .5rem
 .work-box
   grid-column: span 4
   grid-row: span 4
@@ -227,8 +244,14 @@ span
       top: 1rem
       width: calc(100vw - 140px)
       position: static
-      justify-content: flex-end
       margin: .5rem 0 4rem auto
+      margin: 2rem 2rem 4rem auto
+      width: calc(100vw - 15rem)
+      .project-category
+        padding: .5rem
+        margin-right: 1rem
+        text-transform: lowercase
+        font-size: 1.7rem
   $thingToColor: "border-color"
 
   .candusen-page

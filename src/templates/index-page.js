@@ -30,10 +30,10 @@ export const IndexPageTemplate = ({
 }) => {
   let [filter, setFilter] = useState("");
   const handleFilter = (e) => setFilter(slugifyType(e.currentTarget.textContent))
-  const categories = works.map((work) => work.frontmatter.type)
-  .filter((e,i,self) => self.indexOf(e) === i)
   const allWorks = works.slice()
   const published = allWorks.filter( w => !w.frontmatter.draft)
+  const categories = published.map((work) => work.frontmatter.type)
+  .filter((e,i,self) => self.indexOf(e) === i)
   const worksWithFilter = published.slice().filter(work => {
     return slugifyType(work.frontmatter.type) === filter
   })
