@@ -58,27 +58,32 @@ export const IndexPageTemplate = ({
       <div key={2} className={"project-grid " + (filter.length > 0 ? "filtered" : "")}>
       {sortedWorks.map((work,j) => {
         const fm = work.frontmatter
+        const useIframe = fm.url && fm.featured;
         const theClass = " work-box "+slugifyType(fm.type) +
         (filter.length > 0  && filter !== slugifyType(fm.type) ? " hide " : " ")+
-        (work.firstOfType ? "first " : " ")
+        (work.firstOfType ? "first " : " ")+ (work.featuredSharp ? "" : " no-image ")+
+        (useIframe ? "" : "no-iframe ") + (work.html.length ? "" : " no-html");
+
         return <div key={j} className={theClass}>
           {work.featuredSharp ?
           <BackgroundImage className="project-img "
             style={{
-              backgroundSize: "contain"
+              backgroundSize: "contain",
+              paddingBottom: (100/work.featuredSharp.childImageSharp.fluid.aspectRatio)+"%"
             }}
             fluid={work.featuredSharp.childImageSharp.fluid}
             alt={fm.description}/>
           : ""}
-          {fm.url && fm.featured ? (
+          {useIframe ? (
             <iframe title={fm.title} src={ensureHttp(fm.url)}></iframe>
           ): ""}
+	  {work.html.length ?
+	    <div dangerouslySetInnerHTML={{ __html: work.html}}></div>
+	    : ""}
           <Link className="wrappler" to={work.fields.slug}><h2 className="color-text">{fm.title}</h2></Link>
-          <p className="description">{fm.description}</p>
-          {work.html.length ?
-            <div dangerouslySetInnerHTML={{ __html: work.html}}></div>
-          : ""}
-
+	  {fm.description ?
+	  <p className="description">{fm.description}</p>	  
+	   : ""}
           <span className="type-label color">{convertTypeNames(fm.type)}</span>
         </div>
       })}

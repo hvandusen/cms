@@ -159,23 +159,25 @@ span
           text-decoration: none
           color: black
           h2
-            font-size: 2rem
-            padding: 2rem 0 1rem
-            line-height: 2rem
+            font-size: 1.7rem
+            padding: 1rem 0 0
+            line-height: 2.3rem
+        &.no-image.no-iframe.no-html
+          grid-row: span 1!important
         iframe
           pointer-events: none
         &.candusen-page
-          grid-row: span 4
+          //grid-row: span 4
 
         &.website
-          grid-row: span 6
+          //grid-row: span 6
         &.print, &.software, &.tape
-          grid-column: span 8
+          //grid-column: span 8
         iframe
           z-index: -1
 .work-box
   grid-column: span 4
-  grid-row: span 4
+  //grid-row: span 4
 .homepage
   position: relative
   margin: 10rem 0
@@ -207,8 +209,16 @@ span
       position: relative
       transition: .3s all linear
       display: grid
+      grid-gap: 1rem 0
       grid-template-rows: 1fr auto
+      grid-template-rows: minmax(24rem,1fr) auto
+      align-items: stretch
       word-break: break-word
+      a
+        text-decoration: none
+        color: black
+      &.no-image.no-iframe.no-html
+        grid-row: span 1!important
       &:hover
         h2
           text-decoration: underline
@@ -219,12 +229,16 @@ span
         color: black
       iframe
         width: 100%
-        min-height: 400px
+        //min-height: 400px
         z-index: 100
       .project-img
         width: 100%
-        min-height: 150px
-        background-size: contain!important
+        height: 0
+        padding-bottom: 50%
+        height: 100%
+        padding-bottom: 0!important
+        background-size: cover!important
+        background-position: center!important
       // &:hover
         // border-width: 4px
       .type-label
@@ -260,51 +274,52 @@ span
   .candusen-page
     .work-box, &.work-box
       grid-column: span 4
-      grid-row: span 6
-      // grid-row: span 4
+      //grid-row: span 6
+      grid-row: span 1
       #{$thingToColor}: red
     .color, &.color
       background: red
   .client-site
     .work-box, &.work-box
       grid-column: span 8
-      grid-row: span 8
+      grid-row: span 2
       #{$thingToColor}: #3abc3a
     .color, &.color
       background: #3abc3a
   .software
     .work-box, &.work-box
       grid-column: span 4
-      grid-row: span 6
+      grid-row: span 1
       #{$thingToColor}: #476fff
     .color, &.color
       background: #476fff
   .website
     .work-box, &.work-box
       grid-column: span 8
-      grid-row: span 8
+      grid-row: span 2
       #{$thingToColor}: orange
     .color, &.color
       background: orange
   .print
     .work-box, &.work-box
       grid-column: span 4
-      grid-row: span 6
+      grid-row: span 1
       #{$thingToColor}: #ad54ff
     .color, &.color
       background: #ad54ff
   .essay
     .work-box, &.work-box
       grid-column: span 8
-      grid-row: span 6
+      grid-row: span 2
       #{$thingToColor}: yellow
     .color, &.color
       background: yellow
 
   .tape
     .work-box, &.work-box
-      grid-column: span 4
-      grid-row: span 6
+      grid-column: span 8
+      grid-row: span 2
+      grid-row: span 2
       #{$thingToColor}: pink
     .color, &.color
       background: pink
