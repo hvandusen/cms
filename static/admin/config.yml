@@ -34,10 +34,21 @@ collections:
       - {label: "Tags", name: "tags", widget: "list"}
 
   - name: "work"
-    label: "Work"
+    label: "Works"
     folder: "src/pages/work"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    sortable_fields: ['commit_date', 'title', 'type', 'draft','interactivity',date']
+    view_filters:
+      - label: Featured
+        field: featured
+        pattern: true
+      - label: 'Candusen pages'
+        field: type
+        pattern: 'Candusen page'
+      - label: Drafts
+        field: draft
+        pattern: true
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "work"}
       - {label: "Title", name: "title", widget: "string"}
