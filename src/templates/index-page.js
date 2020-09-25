@@ -61,7 +61,6 @@ export const IndexPageTemplate = ({
         const theClass = " work-box "+slugifyType(fm.type) +
         (filter.length > 0  && filter !== slugifyType(fm.type) ? " hide " : " ")+
         (work.firstOfType ? "first " : " ")
-        console.log(work)
         return <div key={j} className={theClass}>
           {work.featuredSharp ?
           <BackgroundImage className="project-img "
