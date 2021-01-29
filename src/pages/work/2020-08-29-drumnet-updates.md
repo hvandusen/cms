@@ -3,7 +3,7 @@ templateKey: work
 title: Drumnet Dispatch
 type: essay
 featured: false
-draft: false
+draft: true
 date: 2020-08-29T16:48:34.231Z
 description: I am working on software that allows midi drums to trigger notes,
   melodies, chords, and chord progressions as well as the typical drum notes.
