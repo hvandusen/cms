@@ -21,7 +21,6 @@ $spriteSize: 128px
   font-family: 'Akzidenz'
   src: url("../../static/fonts/AktivGrotesk.ttf")
 
-
 @mixin sprite($column: 0, $row: 0)
 	background-image: url($spritesheetPNG)
 	background-image: url($spritesheetSVG)
@@ -37,27 +36,23 @@ $outerPadding: 2.5rem
 
 @mixin bp($class)
   @if $class == xs
-    @media (max-width: 767px)
+    @media(max-width: 767px)
       @content
 
   @else if $class == sm
-    @media (min-width: 768px)
+    @media(min-width: 768px)
       @content
 
   @else if $class == md
-    @media (min-width: 992px)
+    @media(min-width: 992px)
       @content
 
   @else if $class == lg
-    @media (min-width: 1200px)
+    @media(min-width: 1200px)
       @content
 
   @else
     @warn "Breakpoint mixin supports: xs, sm, md, lg"
-
-
-
-
 
 @mixin balloon
   font-family: "Balloon"
@@ -70,11 +65,10 @@ $outerPadding: 2.5rem
 	display: grid
 	grid-template-columns: repeat(12, 1fr)
 	grid-gap: $outerPadding
+
 	@include bp(xs)
 		grid-template-columns: repeat(6, 1fr)
 		grid-gap: 1.25rem
-
-
 
 @mixin fullwidth
 	grid-column-start: 1
@@ -83,15 +77,12 @@ $outerPadding: 2.5rem
 		grid-column-start: 1
 	  grid-column-end: 7
 
-
-
 @mixin wrapper
 	position: absolute
 	top: 0
 	left: 0
 	width: 100%
 	height: 100%
-
 
 @mixin centered
 	grid-column-start: 3

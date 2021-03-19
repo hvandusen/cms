@@ -12,7 +12,7 @@
     "gatsby-image": "^2.3.5",
     "gatsby-plugin-load-script": "^1.1.0",
     "gatsby-plugin-netlify": "^2.2.4",
-    "gatsby-plugin-netlify-cms": "^4.2.5",
+    "gatsby-plugin-netlify-cms": "4.9.0",
     "gatsby-plugin-purgecss": "^5.0.0",
     "gatsby-plugin-react-helmet": "^3.2.5",
     "gatsby-plugin-remote-images": "1.0.7",
@@ -38,6 +38,7 @@
     "react-dom": "^16.8.4",
     "react-helmet": "^6.0.0",
     "react-table": "^7.3.3",
+    "sass-loader": "^11.0.1",
     "uuid": "^7.0.0"
   },
   "keywords": [
@@ -57,5 +58,8 @@
   },
   "devDependencies": {
     "prettier": "^2.0.5"
+  },
+  "resolutions": {
+    "mini-css-extract-plugin": "0.11.2"
   }
 }
