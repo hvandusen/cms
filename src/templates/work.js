@@ -6,7 +6,7 @@ import { graphql, Link, withPrefix } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 
-export const WorkTemplate = ({
+const WorkTemplate = ({
   content,
   contentComponent,
   description,
@@ -28,7 +28,7 @@ export const WorkTemplate = ({
         <PostContent content={content} />
         {images && images.length ? (
             <div className="post-images">
-              {images.map((img) => <img src={img}></img>)}
+              {images.map((img) => <img alt="work img" src={img}></img>)}
             </div>
         ) : <p>hi</p>}
         {tags && tags.length ? (

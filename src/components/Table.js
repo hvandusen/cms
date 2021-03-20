@@ -3,18 +3,18 @@ import { useTable, useSortBy } from 'react-table'
 import { graphql, StaticQuery, Link } from 'gatsby'
 
 const slug = (string) => string.replace(/ /g,'-').toLowerCase()
-const colorMap = {
-  "candusen-page": "red",
-  "client-site": "green",
-  "software": "blue",
-  "website": "orange",
-  "print": "purple",
-  "essay": "yellow",
-}
-const wrapH = (priority) => ({ value }) => {
-  let Wrap = `h${priority}`
- return <Wrap>{value}</Wrap>
-}
+// const colorMap = {
+//   "candusen-page": "red",
+//   "client-site": "green",
+//   "software": "blue",
+//   "website": "orange",
+//   "print": "purple",
+//   "essay": "yellow",
+// }
+// const wrapH = (priority) => ({ value }) => {
+//   let Wrap = `h${priority}`
+//  return <Wrap>{value}</Wrap>
+// }
  const Table = ({tableRows,filter}) => {
    let nodes = tableRows.allMarkdownRemark.edges
    const data = React.useMemo(
@@ -26,7 +26,7 @@ const wrapH = (priority) => ({ value }) => {
        date: work.frontmatter.date,
        type: work.frontmatter.type
      })
-   ),[])
+   ),[nodes])
 
    const columns = React.useMemo(
      () => [
@@ -106,7 +106,7 @@ const wrapH = (priority) => ({ value }) => {
            prepareRow(row)
            return (
              <tr {...row.getRowProps()} style={{
-                 // background: colorMap[slug(row.values.type)]
+                   // background: colorMap[slug(row.values.type)]
                }} className={slug(row.values.type)}>
                {row.cells.map(cell => {
                  return (
@@ -130,7 +130,7 @@ const wrapH = (priority) => ({ value }) => {
    )
  }
 
- export default () => (
+ const WorksTable = () => (
    <StaticQuery
      query={graphql`
        query allWorks {
@@ -158,3 +158,5 @@ const wrapH = (priority) => ({ value }) => {
      render={(data) => <Table tableRows={data} />}
    />
  )
+
+export default WorksTable

@@ -1,13 +1,11 @@
 import React, {  useEffect,useState } from 'react'
 import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
-import { Link, navigate } from 'gatsby'
-import Content from './Content'
+// import { Link, navigate } from 'gatsby'
+// import Content from './Content'
 import install from './paperUtils'
 import arrows from "../img/arrows.png"
 
 let paper
-let paperLoaded = false;
 
 
 
@@ -20,12 +18,10 @@ const canvasStyle = {
   width: "100%"
 }
 
-const keyhandler = console.log
-
 const PaperWrapper = ({
   id,
   html,
-  contentComponent,
+  contentComponent, 
   description,
   images,
   featuredimage,
@@ -34,20 +30,15 @@ const PaperWrapper = ({
   code,
   fullscreen
 }) => {
-  const PostContent = contentComponent || Content
-  let [delay, setDelay] = useState(false);
   let [helpToggle, setHelpToggle] = useState([true,true]); //currently showing, currently first time showing
   let helpAutohideTimeout;
+
   const toggleHelp = () => {
     clearTimeout(helpAutohideTimeout)
     setHelpToggle([!helpToggle[0],false])
   }
   let wrapperRef = React.createRef()
   useEffect(() => {
-    if(helpToggle[1] && false)
-    helpAutohideTimeout = setTimeout(()=>{
-      setHelpToggle([false,false])
-    },3000)
     if(typeof window !== "undefined" && typeof window.paper !== "undefined"){
       paper = window.paper
       var scope = new paper.PaperScope()
@@ -74,10 +65,10 @@ const PaperWrapper = ({
       <div ref={wrapperRef} style={canvasContainerStyle} className="canvasContainer" >
         <div className={`help-container ${helpToggle[0] ? "active" : ""}`}>
           <div className="help">
-            <h3>use<img className="arrows" src={arrows}></img> to browse</h3>
+            <h3>use<img alt="keyboard arrows" className="arrows" src={arrows}></img> to browse</h3>
             <h3>press &nbsp;<span className="key">D</span> to download</h3>
           </div>
-          <h3 className="toggle" onClick={toggleHelp}>*help*</h3>
+          <button tabIndex="0" className="toggle" onClick={toggleHelp}><h3>*help*</h3></button>
         </div>
         <canvas style={canvasStyle} hidpi="on" id={"canvas-"+id} className={"fullscreen"}></canvas>
       </div>

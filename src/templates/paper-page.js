@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import { graphql, Link, withPrefix, navigate } from 'gatsby'
+import { graphql, Link, navigate } from 'gatsby'
 import Layout from '../components/Layout'
 import PaperWrapper from '../components/PaperWrapper'
 import { HTMLContent } from '../components/Content'
@@ -27,6 +27,7 @@ const Candusen = (props) => {
         break;
       case "f":
         setFullscreen(!fullscreen)
+        break;
       default:
     }
   }
@@ -43,7 +44,7 @@ const Candusen = (props) => {
         {next ? (
         <Link className="next" to={next} >next</Link>): null}
       </div>
-      <PaperWrapper autoFocus={true} tabIndex="0" fullscreen={fullscreen} {...post.frontmatter} {...post.frontmatter.paper_code}
+      <PaperWrapper autoFocusz={true} tabIndex="0" fullscreen={fullscreen} {...post.frontmatter} {...post.frontmatter.paper_code}
         {...post}
         contentComponent={HTMLContent}
         helmet={

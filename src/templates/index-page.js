@@ -22,7 +22,7 @@ const labelOrderedWorks = (works) => {
 const sortEdgesByFmField = (array,field) => {
   return array.slice().sort((a,b) => a.node.frontmatter[field] > b.node.frontmatter[field] ? 1 : -1);
 }
-export const IndexPageTemplate = ({
+const IndexPageTemplate = ({
   image,
   title,
   rows,
@@ -49,10 +49,10 @@ export const IndexPageTemplate = ({
   const sortedWorks = labelOrderedWorks(worksWithFilter.concat(worksWithoutFilter))
   return (
     <div className="homepage">
-      <div key={1}className="project-nav">
+      <div role="form" key={1}className="project-nav">
         <span key={1} className="project-category">Filter:</span>
         {categories.map((cat,i) =>
-          <span key={i+2} onClick={handleFilter} className={"color project-category "+slugifyType(cat)}>{convertTypeNames(cat)}</span>
+          <span tabIndex={i} role="button"  key={i+2} onKeyDown={handleFilter} onClick={handleFilter} className={"color project-category "+slugifyType(cat)}>{convertTypeNames(cat)}</span>
         )}
       </div>
       <div key={2} className={"project-grid " + (filter.length > 0 ? "filtered" : "")}>
@@ -82,7 +82,7 @@ export const IndexPageTemplate = ({
 	    : ""}
           <Link className="wrappler" to={work.fields.slug}><h2 className="color-text">{fm.title}</h2></Link>
 	  {fm.description ?
-	  <p className="description">{fm.description}</p>	  
+	  <p className="description">{fm.description}</p>
 	   : ""}
           <span className="type-label color">{convertTypeNames(fm.type)}</span>
         </div>

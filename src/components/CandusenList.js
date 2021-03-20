@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import PaperWrapper from './PaperWrapper'
-import Layout from './Layout'
 import { Link, graphql, StaticQuery } from 'gatsby'
-import PreviewCompatibleImage from './PreviewCompatibleImage'
 
 const gridStyle = {
   display: "grid",
@@ -39,7 +37,7 @@ CandusenList.propTypes = {
   }),
 }
 
-export default () => (
+const CandusenQuery = () => (
   <StaticQuery
     query={graphql`
      query MyQuery {
@@ -69,3 +67,5 @@ export default () => (
     render={(data, count) => <CandusenList data={data} />}
   />
 )
+
+export default CandusenQuery
