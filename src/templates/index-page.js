@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Thumb from '../components/Thumb'
 import Layout from '../components/Layout'
-import Works from '../components/GetWorks'
+import {Works} from '../hooks/GetWorks'
 
 const slugifyType = (str) => str.replace(/\s+/g, '-').toLowerCase().replace("mix","tape")
 const labelOrderedWorks = (works) => {

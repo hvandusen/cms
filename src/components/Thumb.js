@@ -4,6 +4,7 @@ import BackgroundImage from 'gatsby-background-image'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { convertToBgImage } from "gbimage-bridge"
 
+const num = (range) => Math.floor(Math.random()*range)
 const ensureHttp = (str) => str && str.indexOf("http")> - 1 ? str : "http://"+ str
 const convertTypeNames = (type) => {
   let switcher = {
@@ -27,26 +28,30 @@ const Thumb = ({work,filter}) =>{
   switch(workType){
     default:
     return <Link to={work.fields.slug} className={theClass+" wrappler"}>
+      <span className="thumb-label color">{workType === 'Candusen page' ? "fun" : workType}</span>
       <p className="thumb-title">{fm.title}</p>
       <p className="thumb-description">{fm.description}</p>
-      <span className="thumb-label color">{workType === 'Candusen page' ? "fun" : workType}</span>
       <BackgroundImage
         // Spread bgImage into BackgroundImage:
         {...bgImg}
         className="thumb-image"
         preserveStackingContext
+        style={{
+          backgroundSize: "contain"
+        }}
       >
       </BackgroundImage>
     </Link>
     case "Candusen page":
-      return <Link to={work.fields.slug} className={(theClass)+" wrappler"}>
-        <BackgroundImage
-          // Spread bgImage into BackgroundImage:
-          {...bgImg}
-          className="thumb-image"
-          preserveStackingContext
-        >
-        </BackgroundImage>
+      return <Link to={work.fields.slug} className={(theClass)+" wrappler"} style={{
+          transform: `rotate(${num(20)} translate(${num(40)-20}px,${num(40)-20}px)`
+        }}>
+          <BackgroundImage
+            // Spread bgImage into BackgroundImage:
+            {...bgImg}
+            className="thumb-image"
+            preserveStackingContext
+          ></BackgroundImage>
       </Link>
   }
 }

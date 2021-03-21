@@ -1,6 +1,6 @@
-@import '~bulma/sass/utilities/initial-variables'
+// @import '~bulma/sass/utilities/initial-variables'
 // @import '~bulma'
-
+@import 'WorkTypeColors'
 @import 'mixins'
 $thingToColor: 'border-color'
 @keyframes rgbFade
@@ -56,9 +56,9 @@ $thingToColor: 'border-color'
   src: url('../../static/fonts/AktivGrotesk.ttf')   format('truetype')
 
 @font-face
-  font-family: "Swiss Regular"
-  src: url("/fonts/swiss-721-regular.woff") format("woff")
-  src: url("/fonts/swiss-721-regular.woff") format("truetype")
+  font-family: "Swiss Medium"
+  src: url("/fonts/swiss-721-medium.woff") format("woff")
+  src: url("/fonts/swiss-721-medium.ttf") format("truetype")
 
 @font-face
   font-family: "Swiss Round"
@@ -80,9 +80,9 @@ $thingToColor: 'border-color'
   src: url("/fonts/swiss-721-thick.woff") format("woff")
   src: url("/fonts/swiss-721-thick.ttf") format("truetype")
 
-$mainFont: 'Az-Regular'
+$mainFont: "Swiss Medium"
 $boldFont: 'Az-Medium'
-$bookFont: 'Newzald'
+$bookFont: "Swiss Medium"
 $italicFont: 'Az-Italic'
 $fadeRGB: rgbFade 3s linear infinite
 
@@ -108,12 +108,12 @@ h1,h2,h3,h4,h5,h6
   margin: 0
   font-family: Az-Bold
 h1
-  font-size: 4rem
-  line-height: 4.5rem
+  font-size: 2rem
+  line-height: 2.5rem
   margin: 0
 h2
-  font-size: 3rem
-  line-height: 3.5rem
+  font-size: 2rem
+  line-height: 2.5rem
 h3
   font-size: 2rem
   line-height: 2rem
@@ -144,8 +144,8 @@ a
 
 p
   margin: 1rem 0
-  font-size: 2rem
-  line-height: 1em
+  font-size: 1.5rem
+  line-height: 1.75em
   font-family: $bookFont
 
 span
@@ -308,21 +308,40 @@ span
 .project-grid
   display: grid
   grid-template-columns: repeat(12, 1fr)
-  grid-gap: 8rem 1rem
+  grid-gap: 1rem 1rem
   padding: 0 1rem 0 140px
   grid-auto-rows: calc( (100vw - 140px - 3rem - (1rem * 11)) / 12)
+  grid-auto-flow: row dense
   .thumb
     position: relative
-    grid-column: span 3
+    grid-column: span 2
+    border-radius: 4%
     grid-row: span 2
+    display: flex
+    flex-direction: column
+    padding: 1rem
+    // transition: .3s all
+    &:hover
+      transform: scale(1.005)
+      // box-shadow: 1px 1px 32px -18px black
+    &.thumb-client
+      grid-column: span 4
+      grid-row: span 3
     &.thumb-candusen
-      grid-column: span 3
+      grid-column: span 1
       grid-row: span 1
+      border: none
+      padding: 0
+      .thumb-image:after
+        border-radius: 12%
     &.thumb-website
-      grid-column: span 3
+      grid-column: span 4
+      grid-row: span 3
     .thumb-title
       display: block
-      position: absolute
+      // position: absolute
+      margin: .25rem 0px
+      line-height: 1.1
       bottom: 100%
       backdrop-filter: reverse
       &.inline-text
@@ -339,7 +358,9 @@ span
       font-size: .9rem
       letter-spacing: 2px
       text-transform: uppercase
-      position: absolute
+      // position: absolute
+          margin: 0;
+      line-height: 1.4
       top: 100%
       left: 0
       font-family: 'Swiss Round'
