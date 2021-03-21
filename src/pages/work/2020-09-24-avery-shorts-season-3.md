@@ -9,4 +9,6 @@ url: https://henryvandusen.com/avery3
 description: Designed and built season 3 of the architectural e-newsletter Avery
   Shorts, produced by the Columbia Books for Architecture and the City. I used
   emojis to spell out letters, it was fun.
+featuredimage:
+  - https://res.cloudinary.com/candusen/image/upload/v1616355024/Screen_Shot_2021-03-21_at_3.08.13_PM_unyv06.png
 ---
