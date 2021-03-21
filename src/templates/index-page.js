@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Thumb from '../components/Thumb'
 import Layout from '../components/Layout'
-import {Works} from '../hooks/GetWorks'
+import {GetWorks} from '../hooks/GetWorks'
 
 const slugifyType = (str) => str.replace(/\s+/g, '-').toLowerCase().replace("mix","tape")
 const labelOrderedWorks = (works) => {
@@ -65,7 +65,7 @@ IndexPageTemplate.propTypes = {
 }
 
 const IndexPage = ({ data }) => {
-  const allworks = Works()
+  const allworks = GetWorks()
   return (
     <Layout>
       <IndexPageTemplate

@@ -4,7 +4,7 @@ const sortEdgesByFmField = (array,field) => {
   return array.slice().sort((a,b) => a.node.frontmatter[field] > b.node.frontmatter[field] ? 1 : -1);
 }
 
-export const Works = () => {
+export const GetWorks = () => {
   const data = useStaticQuery(graphql`
     query WorkQuery {
       allMarkdownRemark(filter: {fields: {slug: {regex: "/work/"}}}) {
