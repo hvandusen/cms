@@ -47,7 +47,7 @@ const Thumb = ({work,filter}) =>{
           transform: `rotate(${num(20)} translate(${num(40)-20}px,${num(40)-20}px)`
         }}>
           <BackgroundImage
-            // Spread bgImage into BackgroundImage:
+            // Spread bgImage into BackgroundImage: 
             {...bgImg}
             className="thumb-image"
             preserveStackingContext
