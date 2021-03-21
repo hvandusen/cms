@@ -7071,6 +7071,11 @@ gaze@^1.0.0:
   dependencies:
     globule "^1.0.0"
 
+gbimage-bridge@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/gbimage-bridge/-/gbimage-bridge-0.1.1.tgz#8feb1b41a357d13bbf80c2ec106e68c9ed15499b"
+  integrity sha512-kFdv2u1DshZndyO5cO6f8Gd6yv1ZOLly8+02seaVkHDNH27fVWpAghgDQm8NYXhj9QK937YuspKRC2eaWmDpDw==
+
 gensync@^1.0.0-beta.1, gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.2.tgz#32a6ee76c3d7f52d46b2b1ae5d93fea8580a25e0"

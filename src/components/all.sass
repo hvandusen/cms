@@ -2,7 +2,7 @@
 // @import '~bulma'
 
 @import 'mixins'
-
+$thingToColor: 'border-color'
 @keyframes rgbFade
   0%
     color: '#ff0000'
@@ -50,6 +50,35 @@
   font-family: 'mtdbt2f'
   src: url('../../static/fonts/mtdbt2f-f.ttf')   format('truetype')
   src: url('../../static/fonts/mtdbt2f-f.woff')   format('woff')
+
+@font-face
+  font-family: 'Aktiv'
+  src: url('../../static/fonts/AktivGrotesk.ttf')   format('truetype')
+
+@font-face
+  font-family: "Swiss Regular"
+  src: url("/fonts/swiss-721-regular.woff") format("woff")
+  src: url("/fonts/swiss-721-regular.woff") format("truetype")
+
+@font-face
+  font-family: "Swiss Round"
+  src: url("/fonts/swiss-721-bold-rounded.woff") format("woff")
+  src: url("/fonts/swiss-721-bold-rounded.ttf") format("truetype")
+
+@font-face
+  font-family: "Swiss Extended"
+  src: url("/fonts/swiss-721-extended.woff") format("woff")
+  src: url("/fonts/swiss-721-extended.ttf") format("truetype")
+
+@font-face
+  font-family: "Swiss Outline"
+  src: url("/fonts/swiss-721-outline.woff") format("woff")
+  src: url("/fonts/swiss-721-outline.ttf") format("truetype")
+
+@font-face
+  font-family: "Swiss Thick"
+  src: url("/fonts/swiss-721-thick.woff") format("woff")
+  src: url("/fonts/swiss-721-thick.ttf") format("truetype")
 
 $mainFont: 'Az-Regular'
 $boldFont: 'Az-Medium'
@@ -136,7 +165,7 @@ span
       display: none
   body .homepage
     margin: 0
-    .project-grid
+    .project-grid-large-thumbs
       display: grid
       grid-auto-flow: row dense
       grid-template-columns: repeat(8, 1fr)
@@ -178,9 +207,6 @@ span
           //grid-column: span 8
         iframe
           z-index: -1
-.work-box
-  grid-column: span 4
-  border-color: transparent!important
   //grid-row: span 4
 .homepage
   position: relative
@@ -196,7 +222,7 @@ span
       cursor: pointer
       margin-bottom: 1rem
       text-align: center
-  .project-grid
+  .project-grid-large-thumbs
     display: grid
     grid-auto-flow: row dense
     grid-template-columns: repeat(auto-fit, 4rem)
@@ -205,6 +231,8 @@ span
     margin-left: 10rem
     grid-gap: 2rem
     .work-box
+      grid-column: span 4
+      border-color: transparent!important
       border-style: solid
       border-width: 2px
       border-radius: 4px
@@ -273,7 +301,59 @@ span
         margin-right: 1rem
         text-transform: lowercase
         font-size: 1.7rem
-  $thingToColor: 'border-color'
+
+.thumb-type-candusen-page
+  grid-column: span 1
+
+.project-grid
+  display: grid
+  grid-template-columns: repeat(12, 1fr)
+  grid-gap: 8rem 1rem
+  padding: 0 1rem 0 140px
+  grid-auto-rows: calc( (100vw - 140px - 3rem - (1rem * 11)) / 12)
+  .thumb
+    position: relative
+    grid-column: span 3
+    grid-row: span 2
+    &.thumb-candusen
+      grid-column: span 3
+      grid-row: span 1
+    &.thumb-website
+      grid-column: span 3
+    .thumb-title
+      display: block
+      position: absolute
+      bottom: 100%
+      backdrop-filter: reverse
+      &.inline-text
+        font-family: 'Swiss Thick'
+        color: white
+        z-index: 0
+      // top: 100%
+    .thumb-description
+      position: absolute
+      bottom: 0
+      display: block
+      opacity: 0
+    .thumb-label
+      font-size: .9rem
+      letter-spacing: 2px
+      text-transform: uppercase
+      position: absolute
+      top: 100%
+      left: 0
+      font-family: 'Swiss Round'
+    .thumb-image
+      position: absolute
+      z-index: -1
+      width: 100%
+      background-size: contain
+      height: 100%
+      top: 0
+      left: 0
+
+
+
 
   .candusen-page
     .work-box, &.work-box

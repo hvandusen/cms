@@ -1,5 +1,4 @@
-import React from 'react'
-import { Link, graphql, StaticQuery, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 
 const sortEdgesByFmField = (array,field) => {
   return array.slice().sort((a,b) => a.node.frontmatter[field] > b.node.frontmatter[field] ? 1 : -1);
@@ -32,7 +31,6 @@ const Works = () => {
               childImageSharp {
                 gatsbyImageData(
                   width: 800
-                  placeholder: BLURRED
                   formats: [AUTO, WEBP, AVIF]
                 )
                 fluid {
