@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import logo from '../img/ellsworth-shape-logo-padding.png'
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -37,37 +38,24 @@ const Navbar = class extends React.Component {
         role="navigation"
         aria-label="main-navigation"
       >
-        <Link to="/" className="navbar-item" title="henry van dusen homepage"><div className="nav-icon"
+        <Link to="/" className="navbar-item" title="henry van dusen homepage">
+          <div className="nav-icon"
           role="menu" tabIndex={0}
           data-target="nav"
+          style={{
+            backgroundImage: `url(${logo})`,
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat"
+
+          }}
           onClick={() => this.toggleMenu()}
           onKeyPress={console.log}
-          ></div></Link>
+          ></div>
+        </Link>
         <h5 className="header">henry van dusen</h5>
         <div className="container">
           <div className="navbar-brand">
 
-          </div>
-          <div
-            id="nav"
-	    style={{
-	    	display: "none"
-	    }}
-            className={`navbar-menu ${this.state.navBarActiveClass}`}>
-            <div className="navbar-start">
-              <Link activeClassName="active" className="navbar-item" to="/">
-                All
-              </Link>
-              <Link activeClassName="active" className="navbar-item" to="/work">
-                Web
-              </Link>
-              <Link activeClassName="active" className="navbar-item" to="/candusen">
-                Art
-              </Link>
-              <Link activeClassName="active" className="navbar-item" to="/contact/examples">
-                Music
-              </Link>
-            </div>
           </div>
         </div>
       </nav>

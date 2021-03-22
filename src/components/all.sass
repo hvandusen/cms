@@ -210,18 +210,48 @@ span
   //grid-row: span 4
 .homepage
   position: relative
-  margin: 10rem 0
+  margin: 2rem 0
   .project-nav
-    position: fixed
-    width: 8rem
-    left: 1rem
-    display: flex
-    flex-direction: column
-    align-items: center
+    // position: fixed
+    // width: 8rem
+    margin-bottom: 3rem
+    @include bp(lg)
+      position: fixed
+      top: 2.2rem
+      right: 1rem
+      width: calc(100vw - 3rem - 394px)
+      text-align: center
+      .filter-buttons
+        align-items: center!important
+        justify-content: center!important
+
+    @include bp(xs)
+      margin-left: 0
+      text-align: center
+      span.project-category, .filter-header
+        font-size: 2.5rem
+        line-height: 3.3rem
+        margin-left: 0
+        margin-bottom: 0
+
+    margin-left: 1rem
+    .filter-buttons
+      display: flex
+      flex-direction: row
+      align-items: center
+      justify-content: flex-start
+      flex-wrap: wrap
+      span:first-of-type
+        margin-left: 0
+      @include bp(xs)
+        justify-content: center
+        padding: 0 18%
+        max-width: 800px
     .project-category
       cursor: pointer
-      margin-bottom: 1rem
+      margin: 0 1rem
       text-align: center
+
   .project-grid-large-thumbs
     display: grid
     grid-auto-flow: row dense
@@ -301,6 +331,7 @@ span
         margin-right: 1rem
         text-transform: lowercase
         font-size: 1.7rem
+        outline: none
 
 .thumb-type-candusen-page
   grid-column: span 1
@@ -309,8 +340,8 @@ span
   display: grid
   grid-template-columns: repeat(12, 1fr)
   grid-gap: 1rem 1rem
-  padding: 0 1rem 0 123px
-  grid-auto-rows: calc( (100vw - 123px - 3rem - (1rem * 11)) / 12)
+  padding: 0 1rem 0 1rem
+  grid-auto-rows: calc( (100vw - 1rem - 3rem - (1rem * 11)) / 12)
   grid-auto-flow: row dense
   .thumb
     position: relative
@@ -320,6 +351,22 @@ span
     display: flex
     flex-direction: column
     padding: 1rem
+    @include bp(md)
+      grid-column: span 4
+      grid-row: span 4
+    @include bp(xs)
+      grid-column: span 6
+      grid-row: span 6
+      &.thumb-client
+        grid-column: span 6!important
+        grid-row: span 6!important
+      &.thumb-candusen
+        grid-column: span 3!important
+        grid-row: span 3!important
+      &.thumb-website
+            grid-column: span 6!important
+            grid-row: span 6!important
+
     // transition: .3s all
     &:hover
       transform: scale(1.005)
@@ -515,13 +562,17 @@ span
 
 .navbar
   background: transparent
-  position: fixed
+  // position: fixed
   z-index: 26
   top: 0
   left: 0
   display: flex
   flex-direction: row
   align-items: center
+  @include bp(xs)
+    width: 100%
+    justify-content: center
+    margin: 1.3rem 0px
   .header
     margin: 0
   &.is-active

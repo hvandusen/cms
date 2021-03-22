@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Thumb from '../components/Thumb'
 import Layout from '../components/Layout'
-import {GetWorks} from '../hooks/GetWorks'
+import PostFilter from '../components/PostFilter'
 
-const slugifyType = (str) => str.replace(/\s+/g, '-').toLowerCase().replace("mix","tape")
+const slugifyType = (str) => str.replace(/\s+/g, '-').toLowerCase()
 const labelOrderedWorks = (works) => {
   //this iterates through and updates tag of current if its not same as last... pretty stupid
   let labeled = works.slice()
@@ -47,25 +47,15 @@ const IndexPageTemplate = ({
   const sortedWorks = labelOrderedWorks(worksWithFilter.concat(worksWithoutFilter))
   return (
     <div className="homepage">
-      <div role="form" key={1}className="project-nav">
-        <span key={1} className="project-category">Filter:</span>
-        {categories.map((cat,i) =>
-          <span tabIndex={i} role="button"  key={i+2} onKeyDown={handleFilter} onClick={handleFilter} className={"color project-category "+slugifyType(cat)}>{convertTypeNames(cat)}</span>
-        )}
-      </div>
+      <PostFilter works={sortedWorks} setFilter={setFilter}></PostFilter>
       <div key={2} className={"project-grid " + (filter.length > 0 ? "filtered" : "")}>
       {sortedWorks.map((work,j) => <Thumb  filter={filter} work={work} key={j}></Thumb>)}
     </div>
   </div>)
 }
 
-IndexPageTemplate.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  title: PropTypes.string,
-}
-
 const IndexPage = ({ data }) => {
-  const allworks = GetWorks()
+  const allworks = sortEdgesByFmField(data.allMarkdownRemark.edges,"title").map((e) => e.node)
   return (
     <Layout>
       <IndexPageTemplate
@@ -75,6 +65,11 @@ const IndexPage = ({ data }) => {
       />
     </Layout>
   )
+}
+
+IndexPageTemplate.propTypes = {
+  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  title: PropTypes.string,
 }
 
 IndexPage.propTypes = {
@@ -97,6 +92,40 @@ export const pageQuery = graphql`
             fluid(maxWidth: 2048, quality: 100) {
               ...GatsbyImageSharpFluid
             }
+          }
+        }
+      }
+    }
+    allMarkdownRemark(filter: {fields: {slug: {regex: "/work/"}}}) {
+      edges {
+        node {
+          id
+          html
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            type
+            title
+            url
+            description
+            featuredimage
+            draft
+            featured
+            images
+            tags
+            paper_code {
+              code
+            }
+          }
+          featuredSharp {
+            childImageSharp {
+              gatsbyImageData(
+                width: 800
+                formats: [AUTO, WEBP, AVIF]
+              )
+            }
+          }
+          fields {
+            slug
           }
         }
       }
