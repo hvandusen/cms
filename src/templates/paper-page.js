@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { graphql, Link, navigate } from 'gatsby'
+import Layout from '../components/Layout'
 import PaperWrapper from '../components/PaperWrapper'
 import { HTMLContent } from '../components/Content'
 
@@ -34,16 +35,21 @@ const Candusen = (props) => {
     if(typeof window !== "undefined"){
       document.addEventListener('keydown', onkeydown);
     }
-  },)
+  })
   return (
-    <div className="paper-page">
+    <Layout>
       <div className="paper-nav">
         {previous ? (
         <Link className="previous" to={previous} >previous</Link>): null}
         {next ? (
         <Link className="next" to={next} >next</Link>): null}
       </div>
-      <PaperWrapper autoFocusz={true} tabIndex="0" fullscreen={fullscreen} {...post.frontmatter} {...post.frontmatter.paper_code}
+      <PaperWrapper
+        autoFocusz={true}
+        tabIndex="0"
+        fullscreen={fullscreen}
+        {...post.frontmatter}
+        {...post.frontmatter.paper_code}
         {...post}
         contentComponent={HTMLContent}
         helmet={
@@ -54,10 +60,9 @@ const Candusen = (props) => {
               content={`${post.frontmatter.description}`}
             />
           </Helmet>
-        }
-      />
-    </div>
-  )
+        } />
+    </Layout>
+  );
 }
 
 Candusen.propTypes = {

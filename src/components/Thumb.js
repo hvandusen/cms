@@ -28,7 +28,6 @@ const Thumb = ({work,filter}) =>{
   try {
     bgImg = convertToBgImage(img)
   } catch (e) {
-    console.log("NOOOO",e,img, bgImg)
   }
   switch(workType){
     default:

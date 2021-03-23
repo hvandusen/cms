@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import logo from '../img/ellsworth-shape-logo-padding.png'
 
+
 const Navbar = class extends React.Component {
   constructor(props) {
     super(props)

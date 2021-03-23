@@ -6,21 +6,22 @@ const { fmImagesToRelative } = require('gatsby-remark-relative-images-v2')
 const fs = require("fs")
 
 exports.onCreateWebpackConfig = ({ getConfig, stage, actions, plugins }) => {
-  if (stage === "build-javascript") {
-    const currentConfig = getConfig()
-
-    // sanity check so we don't access undefined
-    if (
-      currentConfig.optimization &&
-      currentConfig.optimization.minimizer &&
-      currentConfig.optimization.minimizer.length
-    ) {
-      // replace instance of TerserPlugin with new one with custom options
-      currentConfig.output.publicPath = ""
-
-      actions.replaceWebpackConfig(currentConfig)
-    }
-  }
+  // if (stage === "build-javascript") {
+  //   const currentConfig = getConfig()
+  //
+  //   // sanity check so we don't access undefined
+  //   if (
+  //     false &&
+  //     currentConfig.optimization &&
+  //     currentConfig.optimization.minimizer &&
+  //     currentConfig.optimization.minimizer.length
+  //   ) {
+  //     // replace instance of TerserPlugin with new one with custom options
+  //     currentConfig.output.publicPath = ""
+  //
+  //     actions.replaceWebpackConfig(currentConfig)
+  //   }
+  // }
 }
 
 exports.createPages = ({ actions, graphql }) => {
@@ -75,8 +76,8 @@ exports.createPages = ({ actions, graphql }) => {
         // additional data can be passed via context
         context: {
           id,
-          previous: edge.previous ? edge.previous.fields.slug : "fuck",
-          next: edge.next ? edge.next.fields.slug : "fuck"
+          previous: edge.previous ? edge.previous.fields.slug : null,
+          next: edge.next ? edge.next.fields.slug : null
         },
       })
     })

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 // import { Link, navigate } from 'gatsby'
 // import Content from './Content'
 import install from './paperUtils'
+import arrows from "../img/arrows.png"
 
 let paper
 const canvasContainerStyle = {
