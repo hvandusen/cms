@@ -24,34 +24,53 @@ const Thumb = ({work,filter}) =>{
   const workType = fm.type
   const theClass = " thumb thumb-"+fm.type.split(" ")[0].toLowerCase()
   const img = getImage(work.featuredSharp)
-  const bgImg = convertToBgImage(img)
+  let bgImg
+  try {
+    bgImg = convertToBgImage(img)
+  } catch (e) {
+    console.log("NOOOO",e,img, bgImg)
+  }
   switch(workType){
     default:
     return <Link to={work.fields.slug} className={theClass+" wrappler"}>
       <span className="thumb-label color">{workType === 'Candusen page' ? "fun" : workType}</span>
       <p className="thumb-title">{fm.title}</p>
       <p className="thumb-description">{fm.description}</p>
-      <BackgroundImage
-        // Spread bgImage into BackgroundImage:
-        {...bgImg}
-        className="thumb-image"
-        preserveStackingContext
-        style={{
-          backgroundSize: "contain"
-        }}
-      >
-      </BackgroundImage>
+      {bgImg ?
+        <BackgroundImage
+          // Spread bgImage into BackgroundImage:
+          {...bgImg}
+          className="thumb-image"
+          preserveStackingContext
+          style={{
+            backgroundSize: "contain",
+            backgroundImage: `url(${bgImg ? '' : img.images.fallback.src})`
+          }}
+        >
+      </BackgroundImage> :
+      <GatsbyImage image={img} alt={"we testin"} />
+    }
+
+
     </Link>
     case "Candusen page":
       return <Link to={work.fields.slug} className={(theClass)+" wrappler"} style={{
           transform: `rotate(${num(20)} translate(${num(40)-20}px,${num(40)-20}px)`
         }}>
+        {bgImg ?
           <BackgroundImage
-            // Spread bgImage into BackgroundImage: 
+            // Spread bgImage into BackgroundImage:
             {...bgImg}
             className="thumb-image"
             preserveStackingContext
-          ></BackgroundImage>
+            style={{
+              backgroundSize: "contain",
+              backgroundImage: `url(${bgImg ? '' : img.images.fallback.src})`
+            }}
+          >
+        </BackgroundImage> :
+        <GatsbyImage image={img} alt={"we testin"} />
+      }
       </Link>
   }
 }

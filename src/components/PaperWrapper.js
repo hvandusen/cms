@@ -3,12 +3,8 @@ import PropTypes from 'prop-types'
 // import { Link, navigate } from 'gatsby'
 // import Content from './Content'
 import install from './paperUtils'
-import arrows from "../img/arrows.png"
 
 let paper
-
-
-
 const canvasContainerStyle = {
   position: "relative"
 }
@@ -21,7 +17,7 @@ const canvasStyle = {
 const PaperWrapper = ({
   id,
   html,
-  contentComponent, 
+  contentComponent,
   description,
   images,
   featuredimage,
@@ -64,11 +60,6 @@ const PaperWrapper = ({
   return (
       <div ref={wrapperRef} style={canvasContainerStyle} className="canvasContainer" >
         <div className={`help-container ${helpToggle[0] ? "active" : ""}`}>
-          <div className="help">
-            <h3>use<img alt="keyboard arrows" className="arrows" src={arrows}></img> to browse</h3>
-            <h3>press &nbsp;<span className="key">D</span> to download</h3>
-          </div>
-          <button tabIndex="0" className="toggle" onClick={toggleHelp}><h3>*help*</h3></button>
         </div>
         <canvas style={canvasStyle} hidpi="on" id={"canvas-"+id} className={"fullscreen"}></canvas>
       </div>

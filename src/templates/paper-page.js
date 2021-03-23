@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { graphql, Link, navigate } from 'gatsby'
-import Layout from '../components/Layout'
 import PaperWrapper from '../components/PaperWrapper'
 import { HTMLContent } from '../components/Content'
 
@@ -37,7 +36,7 @@ const Candusen = (props) => {
     }
   },)
   return (
-    <Layout>
+    <div className="paper-page">
       <div className="paper-nav">
         {previous ? (
         <Link className="previous" to={previous} >previous</Link>): null}
@@ -57,7 +56,7 @@ const Candusen = (props) => {
           </Helmet>
         }
       />
-    </Layout>
+    </div>
   )
 }
 
