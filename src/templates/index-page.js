@@ -5,7 +5,8 @@ import Thumb from '../components/Thumb'
 import Layout from '../components/Layout'
 import PostFilter from '../components/PostFilter'
 
-const slugifyType = (str) => str.replace(/\s+/g, '-').toLowerCase()
+// const slugifyType = (str) => str.replace(/\s+/g, '-').toLowerCase()
+const slugifyType = (str) => str.split("-")[0].toLowerCase()
 const labelOrderedWorks = (works) => {
   //this iterates through and updates tag of current if its not same as last... pretty stupid
   let labeled = works.slice()
@@ -38,12 +39,6 @@ const IndexPageTemplate = ({
   const worksWithoutFilter = published.slice().filter(work => {
     return slugifyType(work.frontmatter.type) !== filter
   })
-  const convertTypeNames = (type) => {
-    let switcher = {
-      "Candusen page": "fun"
-    }
-    return switcher.hasOwnProperty(type) ? switcher[type] : type
-  }
   const sortedWorks = labelOrderedWorks(worksWithFilter.concat(worksWithoutFilter))
   return (
     <div className="homepage">

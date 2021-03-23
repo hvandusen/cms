@@ -2,7 +2,8 @@ import React, {useState} from 'react'
 import GetWorks from '../hooks/GetWorks'
 
 
-const slugifyType = (str) => str.replace(/\s+/g, '-').toLowerCase().replace("-"," ").split(" ")[0]
+const slugifyTypez = (str) => str.replace(/\s+/g, '-').toLowerCase().replace("-"," ").split(" ")[0]
+const slugifyType = (str) => str.split("-")[0].toLowerCase()
 let filter;
 const PostFilter = ({works, setFilter}) => {
   const handleFilter = (e) => setFilter(slugifyType(e.currentTarget.textContent))

@@ -22,7 +22,7 @@ collections:
     label: "Works"
     folder: "src/pages/work"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
     sortable_fields: ['commit_date', 'title', 'type', 'draft','interactivity',date']
     view_filters:
       - label: Featured

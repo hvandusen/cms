@@ -18,13 +18,13 @@ const WorkTemplate = ({
 }) => {
   const PostContent = contentComponent || Content
   return (
-    <section className="section">
+    <section className="section work-page">
       {helmet || ''}
       <div className="container content">
-        <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
+        <h1 className="title is-size-2 has-text-weight-bold is-bold-light work-title">
           {title}
         </h1>
-        <p>{description}</p>
+        <p class="work-description" style={{display: "none"}}>{description}</p>
         <PostContent content={content} />
         {images && images.length ? (
             <div className="post-images">

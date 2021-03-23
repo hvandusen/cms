@@ -5,9 +5,12 @@ export const HTMLContent = ({ content, className }) => (
   <div className={className} dangerouslySetInnerHTML={{ __html: content }} />
 )
 
-const Content = ({ content, className }) => (
+const Content = ({ content, className }) => {
+  console.log(content)
+  return (
   <div className={className}>{content}</div>
-)
+  )
+}
 
 Content.propTypes = {
   content: PropTypes.node,
