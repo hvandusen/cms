@@ -38,6 +38,7 @@ const Candusen = (props) => {
   })
   return (
     <Layout>
+      <div className="paper-page">
       <div className="paper-nav">
         {previous ? (
         <Link className="previous" to={previous} >previous</Link>): null}
@@ -61,6 +62,7 @@ const Candusen = (props) => {
             />
           </Helmet>
         } />
+      </div>
     </Layout>
   );
 }
