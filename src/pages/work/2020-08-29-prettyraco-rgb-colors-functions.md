@@ -25,4 +25,29 @@ I started off by looking for ways to draw with code and quickly found Paper.js, 
 
 ![](https://res.cloudinary.com/candusen/image/upload/v1616516564/Screen_Shot_2021-03-23_at_12.22.15_PM_gfoxrl.png "prettyRaCo ball")
 
-Of all the ways we interface with computers, writing code is the most intimate way to discover their unsavory aspects.
+Of all the ways we interface with computers, writing code is the most intimate way to discover their unsavory aspects. 
+
+
+
+```
+function prettyRaCo()
+        {
+            var colorWheel =  Math.floor(Math.random()*6);
+
+            var color = "rgb(";
+            var randomNumber =  Math.floor(Math.random()*256);
+            if(colorWheel ==0)
+            color= color+ "0,255,"+randomNumber+")";
+             if(colorWheel ==1)
+            color= color+ "0,"+randomNumber+",255)";
+             if(colorWheel ==2)
+            color= color+ "255, 0,"+randomNumber+")";
+             if(colorWheel ==3)
+            color= color+ "255,"+randomNumber+",0)";
+             if(colorWheel ==4)
+            color= color+ randomNumber+",255,0)";
+             if(colorWheel ==5)
+            color= color+ randomNumber+",0,255)";
+            return color;
+        }
+```
