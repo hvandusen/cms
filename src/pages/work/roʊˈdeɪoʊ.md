@@ -1,7 +1,7 @@
 ---
 templateKey: work
 title: /roʊˈdeɪoʊ/
-type: Website
+type: software
 featured: false
 draft: false
 date: 2021-03-21T19:31:39.694Z

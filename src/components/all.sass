@@ -349,9 +349,9 @@ span
       &.thumb-candusen
         grid-column: span 3!important
         grid-row: span 3!important
-      &.thumb-website
-            grid-column: span 6!important
-            grid-row: span 6!important
+      &.thumb-website, &.thumb-software
+        grid-column: span 6!important
+        grid-row: span 6!important
 
     // transition: .3s all
     &:hover
@@ -367,7 +367,7 @@ span
       padding: 0
       .thumb-image:after
         border-radius: 12%
-    &.thumb-website
+    &.thumb-website, &.thumb-software
       grid-column: span 4
       grid-row: span 3
     .thumb-title
