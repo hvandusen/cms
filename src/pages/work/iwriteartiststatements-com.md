@@ -2,7 +2,7 @@
 templateKey: work
 title: iwriteartiststatements.com
 type: client site
-featured: false
+featured: true
 draft: false
 date: 2020-07-30T18:39:49.455Z
 url: iwriteartiststatements.com
