@@ -2,7 +2,7 @@
 templateKey: work
 title: peterghoffman.com
 type: client site
-featured: false
+featured: true
 draft: false
 date: 2020-07-30T18:37:03.349Z
 description: Portfolio website for photographer Peter Hoffman. The home page is
