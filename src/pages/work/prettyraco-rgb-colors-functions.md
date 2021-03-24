@@ -29,6 +29,8 @@ Of all the ways we interface with computers, writing code is the most intimate w
 
 
 
+> I'm a boss and thats how i be.
+
 ```
 function prettyRaCo()
         {
