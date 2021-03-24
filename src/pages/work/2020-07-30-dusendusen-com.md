@@ -2,7 +2,7 @@
 templateKey: work
 title: dusendusen.com
 type: client site
-featured: false
+featured: true
 draft: false
 date: 2020-07-30T18:41:57.361Z
 url: dusendusen.com
