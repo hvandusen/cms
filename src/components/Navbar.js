@@ -33,6 +33,7 @@ const Navbar = class extends React.Component {
   }
 
   render() {
+
     return (
       <nav
         className={`navbar is-transparent ${this.state.navBarActiveClass}`}
@@ -53,7 +54,7 @@ const Navbar = class extends React.Component {
           onKeyPress={console.log}
           ></div>
         </Link>
-        <h5 className="header">henry van dusen</h5>
+        <Link to="/" id="nav-main-link" className="navbar-item" title="henry van dusen homepage"><h5 className="header"><span>H</span><span>e</span><span>n</span><span>r</span><span>y</span><span> </span><span>V</span><span>a</span><span>n</span><span> </span><span>D</span><span>u</span><span>s</span><span>e</span><span>n</span></h5></Link>
         <div className="container">
           <div className="navbar-brand">
 

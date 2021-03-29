@@ -80,3 +80,76 @@ $outerPadding: 2.5rem
   @include bp(xs)
     grid-column-start: 2
     grid-column-end: 5
+
+
+@mixin span-text-rgb
+  span:nth-child(3n)
+    color: $red
+  span:nth-child(3n+1)
+    color: $green
+  span:nth-child(3n+2)
+    color: $blue
+
+@keyframes span-0-rotate
+      0%
+        color: $red
+      33.29%
+        color: $red
+      33.33%
+        color: $green
+      66.65%
+        color: $green
+      66.66%
+        color: $blue
+      99.99%
+        color: $blue
+
+@keyframes span-1-rotate
+      0%
+        color: $green
+      33.29%
+        color: $green
+      33.33%
+        color: $blue
+      66.65%
+        color: $blue
+      66.66%
+        color: $red
+      99.99%
+        color: $red
+
+@keyframes span-2-rotate
+      0%
+        color: $blue
+      33.29%
+        color: $blue
+      33.33%
+        color: $red
+      66.65%
+        color: $red
+      66.66%
+        color: $green
+      99.99%
+        color: $green
+
+@keyframes underline-rgb-sparkle
+      0%
+        text-decoration-color: $blue
+      33.29%
+        text-decoration-color: $blue
+      33.33%
+        text-decoration-color: $red
+      66.65%
+        text-decoration-color: $red
+      66.66%
+        text-decoration-color: $green
+      99.99%
+        text-decoration-color: $green
+
+@mixin span-text-rgb-sparkle($time)
+  &:nth-child(3n)
+    animation: span-0-rotate $time 1
+  &:nth-child(3n+1)
+    animation: span-1-rotate $time 1
+  &:nth-child(3n+2)
+    animation: span-2-rotate $time 1

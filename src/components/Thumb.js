@@ -5,7 +5,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { convertToBgImage } from "gbimage-bridge"
 
 const num = (range) => Math.floor(Math.random()*range)
-const ensureHttp = (str) => str && str.indexOf("http")> - 1 ? str : "http://"+ str
+const ensureHttp = (str) => str && str.indexOf("http")> - 1 ? str : "https://"+ str
 const convertTypeNames = (type) => {
   let switcher = {
     "Candusen page": "fun"
@@ -33,11 +33,10 @@ const Thumb = ({work,filter}) =>{
     default:
     return <Link to={work.fields.slug} className={theClass+" wrappler"}>
       <span className="thumb-label color">{workType === 'Candusen page' ? "fun" : workType}</span>
-      <p className="thumb-title">{fm.title}</p>
+      <p className="thumb-title">{fm.title.replace(".com"," . com")}</p>
       <p className="thumb-description">{fm.description}</p>
       {bgImg ?
         <BackgroundImage
-          // Spread bgImage into BackgroundImage:
           {...bgImg}
           className="thumb-image"
           preserveStackingContext
