@@ -4,7 +4,8 @@ title: Stamp Refresh Print Edition
 type: print
 featured: false
 draft: false
-date: 2020-08-13T14:21:00.973Z
+date: 2019-08-13T14:21:00.000Z
+date-finish: 2021-03-05T15:37:00.000Z
 description: |-
   2020
   4-color print on Coventry Rag paper, 44x30".
