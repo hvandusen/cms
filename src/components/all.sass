@@ -61,6 +61,11 @@ $thingToColor: 'border-color'
   src: url("/fonts/swiss-721-medium.ttf") format("truetype")
 
 @font-face
+  font-family: "Swiss Condensed"
+  src: url("/fonts/swiss-721-Condensed.woff") format("woff")
+  src: url("/fonts/swiss-721-Condensed.ttf") format("truetype")
+
+@font-face
   font-family: "Swiss Round"
   src: url("/fonts/swiss-721-bold-rounded.woff") format("woff")
   src: url("/fonts/swiss-721-bold-rounded.ttf") format("truetype")
@@ -484,6 +489,12 @@ span
     margin: 0 auto
     padding-bottom: 5rem
     width: calc(100vw - 180px)
+    .imgcaption
+      margin: 3rem 0
+      img
+        width: 100%
+      .caption
+        @extend p
     .work-iframe
       position: relative
       margin-top: 6rem

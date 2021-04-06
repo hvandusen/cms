@@ -40,7 +40,8 @@ collections:
       - {label: "Type", name: "type", widget: "select", options: ["Drawing","Candusen page","client site","print", "Website", "mix", "essay", "software", "music"], default: "Candusen page"}
       - {label: "Featured", name: "featured", widget: "boolean", default: false, required: false}
       - {label: "Draft", name: "draft", widget: "boolean", required: false, default: false}
-      - {label: "Created Date", name: "date", widget: "datetime"}
+      - {label: "Start Date", name: "date", widget: "datetime"}
+      - {label: "Finish Date", name: "date-finish", widget: "datetime"}
       - {label: "Display URL", name: "display_url", widget: "string", required: false}
       - {label: "URL", name: "url", widget: "string", required: false}
       - {label: "Description", name: "description", widget: "text", required: false}
