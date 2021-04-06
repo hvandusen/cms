@@ -1,2 +1,4 @@
+/*
+  Access-Control-Allow-Origin = "*"
 /static/*
   Cache-Control: "public, max-age=360000"
