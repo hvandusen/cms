@@ -8,3 +8,7 @@
   YARN_FLAGS = "--no-ignore-optional"
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"
+[[headers]]
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"

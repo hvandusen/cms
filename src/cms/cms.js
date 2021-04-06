@@ -10,7 +10,7 @@ import cloudinary from 'netlify-cms-media-library-cloudinary'
 
 CMS.registerMediaLibrary(uploadcare)
 CMS.registerMediaLibrary(cloudinary)
-
+console.log("are we going")
 CMS.registerEditorComponent({
   // Internal id of the component
   id: "imgcaption",
