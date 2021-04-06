@@ -2,7 +2,7 @@
 templateKey: work
 title: Analog clock
 type: Candusen page
-date: 2020-07-29T15:21:09.772Z
+date: 2015-07-29T15:21:00.000Z
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1600434044/Screen_Shot_2020-09-18_at_8.58.54_AM_avj6j7.png
 paper_code:

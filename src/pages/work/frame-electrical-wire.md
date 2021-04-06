@@ -4,7 +4,8 @@ title: Wire Press
 type: print
 featured: false
 draft: false
-date: 2020-08-13T14:25:55.656Z
+date: 2020-04-05T14:27:00.000Z
+date-finish: 2020-04-05T14:27:00.000Z
 description: |
   2019
   Electrical wire
