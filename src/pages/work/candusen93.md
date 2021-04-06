@@ -3,9 +3,10 @@ templateKey: work
 title: "@candusen93"
 type: Website
 featured: false
-draft: false
+draft: true
 date: 2020-08-13T14:08:13.036Z
-url: "instagram.com/candusen93"
+date-finish: 2021-04-06T12:12:55.356Z
+url: instagram.com/candusen93
 description: |-
   My instagram page.
   https://www.instagram.com/candusen93/
