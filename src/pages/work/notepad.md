@@ -5,7 +5,8 @@ type: Website
 featured: true
 draft: false
 date: 2020-08-13T14:03:35.262Z
-url: http://daily-notepad.candusen.life/
+date-finish: 2021-04-08T19:54:12.625Z
+url: https://daily-notepad.candusen.life/
 description: Self-erasing daily diary open to the public. I check the logs
   infrequently so a good way to leave me a note  :)
 featuredimage:
