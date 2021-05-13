@@ -54,7 +54,7 @@
   "main": "n/a",
   "scripts": {
     "clean": "gatsby clean",
-    "start": "npm run develop",
+    "start": "gatsby develop -S",
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
     "develop": "npm run clean && gatsby develop",
     "deploy": "netlify build && netlify deploy --prod",
