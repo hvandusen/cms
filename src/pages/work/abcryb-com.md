@@ -13,3 +13,4 @@ description: "I was hired to work on a project with my sister where we used the
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1616359558/Screen_Shot_2021-03-21_at_4.45.36_PM_mp7sgu.png
 ---
+<div class='imgcaption'><img src=https://res.cloudinary.com/candusen/video/upload/v1621270562/averyshorts-vid_djaazu.mp4></img><div class='caption'>Caption of a video!!</div></div>
