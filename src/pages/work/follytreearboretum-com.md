@@ -14,4 +14,4 @@ featuredimage:
 ---
 <div class='caption-container video-caption'>
     <video autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621367204/ft-vid_frzfee.mp4></video>
-  <div class='caption'>I designed a wiggly background animation inspired by a video of stoma cells.</div></div>
+  <div class='caption'>I designed and programmed a wiggly background animation inspired by a video of stoma cells.</div></div>
