@@ -2,7 +2,7 @@
 templateKey: work
 title: Avery Shorts Season 3
 type: client site
-featured: true
+featured: false
 draft: false
 date: 2020-09-24T00:19:41.355Z
 date-finish: 2021-05-18T16:37:36.277Z
