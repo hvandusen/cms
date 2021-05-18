@@ -66,6 +66,10 @@ $thingToColor: 'border-color'
   src: url("/fonts/swiss-721-Condensed.ttf") format("truetype")
 
 @font-face
+  font-family: "Swiss Light"
+  src: url("/fonts/swiss-721-light.ttf") format("truetype")
+
+@font-face
   font-family: "Swiss Round"
   src: url("/fonts/swiss-721-bold-rounded.woff") format("woff")
   src: url("/fonts/swiss-721-bold-rounded.ttf") format("truetype")
@@ -224,7 +228,7 @@ span
   //grid-row: span 4
 .homepage
   position: relative
-  margin: 2rem 0
+  margin: 0 0 2rem 0
   .project-nav
     // position: fixed
     // width: 8rem
@@ -343,7 +347,7 @@ span
   display: grid
   grid-template-columns: repeat(12, 1fr)
   grid-gap: 1rem 1rem
-  padding: 0 1rem 0 1rem
+  padding: 0 2rem
   grid-auto-rows: calc( (100vw - 1rem - 3rem - (1rem * 11)) / 12)
   grid-auto-flow: row dense
   .thumb
@@ -486,7 +490,7 @@ span
     z-index: 10
 .work-page
     max-width: 1000px
-    margin: 0 3rem
+    margin: 0 0 0 2rem
     padding-bottom: 5rem
     width: calc(100vw - 180px)
     .caption-container
@@ -496,7 +500,8 @@ span
         box-shadow: grey 5px 5px 15px
       .caption
         @extend p
-        font-family: Swiss Extended
+        font-family: Swiss Light
+        font-size: 1.3rem
         text-align: left
         margin: 1rem 2rem
     .work-iframe
@@ -685,7 +690,7 @@ span
     outline: none
     cursor: pointer
     margin-right: 2rem
-    margin-left: 1rem
+    margin-left: 2rem
     margin-top: 1rem
 .navbar-item
   padding: 0

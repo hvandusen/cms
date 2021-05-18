@@ -41,8 +41,7 @@ const WorkTemplate = ({
                 console.log("img",img)
                 const isImage = img.indexOf(".mp4") === -1;
                 if(isImage){
-                  const image = getImage(img);
-                  return <img key={i} src={img} alt={"we testin"} />
+                  return <GatsbyImage key={i} images={getImage(img)} alt={"we testin"} />
                 } else {
                   return <video autoPlay loop muted key={i} src={img}></video>;
                 }
@@ -55,8 +54,8 @@ const WorkTemplate = ({
             <iframe style={{
             width: "100%",
             height: "70vh",
-            }} src={ensureHttp(url)}></iframe>
-            <a className="work-iframe-link" href={url.indexOf("http://") ? url : "http://"+url}>{url}</a>
+            }} src={url}></iframe>
+            <a className="work-iframe-link" target="_blank" href={url.indexOf("http://") ? url : "http://"+url}>{url}</a>
           </div> : ""}
         {tags && tags.length ? (
           <div style={{ marginTop: `4rem` }}>
