@@ -6,7 +6,7 @@ featured: true
 draft: false
 date: 2020-08-13T14:04:33.360Z
 date-finish: 2021-05-18T19:12:58.692Z
-url: https://henryvandusen.com/candusen
+url: https://candusen.net
 description: "My personal website for years. Hen: put all the old versions on there!"
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1600705960/Screen_Shot_2020-09-21_at_12.26.48_PM_lynmef.png
@@ -35,7 +35,7 @@ The site has had a few different homepages over the years. This was the first of
 
 <div class='caption-container image-caption'>
     <img src=https://res.cloudinary.com/candusen/image/upload/v1621365851/Screen_Shot_2021-05-18_at_3.22.49_PM_piegly.png></img>
-  <div class='caption'>Circa 2018</div></div>
+  <div class='caption'>Circa 2018.</div></div>
 
 I collected some of my favorite pages on the (secret) page candusen.net/selections. 
 
