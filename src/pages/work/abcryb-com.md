@@ -13,4 +13,3 @@ description: "I was hired to work on a project with my sister where we used the
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1616359558/Screen_Shot_2021-03-21_at_4.45.36_PM_mp7sgu.png
 ---
-<div class='vidcaption'><video autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621270739/abcryb-vid_wiebhc.mp4></video><div class='caption'>This is it my boy</div></div>
