@@ -61,6 +61,11 @@ $thingToColor: 'border-color'
   src: url("/fonts/swiss-721-medium.ttf") format("truetype")
 
 @font-face
+  font-family: "Swiss Normal"
+  src: url("/fonts/swiss-721-normal.woff") format("woff")
+  src: url("/fonts/swiss-721-normal.ttf") format("truetype")
+
+@font-face
   font-family: "Swiss Condensed"
   src: url("/fonts/swiss-721-Condensed.woff") format("woff")
   src: url("/fonts/swiss-721-Condensed.ttf") format("truetype")
@@ -91,7 +96,7 @@ $thingToColor: 'border-color'
 
 $mainFont: "Swiss Medium"
 $boldFont: 'Az-Medium'
-$bookFont: "Swiss Medium"
+$bookFont: "Swiss Normal"
 $italicFont: 'Az-Italic'
 $fadeRGB: rgbFade 3s linear infinite
 
@@ -116,6 +121,7 @@ body
   font-size: 1rem
   line-height: 1.25em
   color: black
+  text-rendering: geometricprecision
 b
   font-family: 'Az-Bold'
 
@@ -398,6 +404,7 @@ span
       line-height: 1.1
       bottom: 100%
       backdrop-filter: reverse
+      font-family: $mainFont
       &.inline-text
         font-family: 'Swiss Thick'
         color: white
@@ -493,8 +500,9 @@ span
     margin: 0 0 0 2rem
     padding-bottom: 5rem
     width: calc(100vw - 180px)
+    font-family: 'Swiss Normal'
     .caption-container
-      margin: 6rem 0
+      margin: 3rem 0
       img,video
         width: 100%
         box-shadow: grey 5px 5px 15px
@@ -503,7 +511,6 @@ span
         font-family: Swiss Light
         font-size: 1.3rem
         text-align: left
-        margin: 1rem 2rem
     .work-iframe
       position: relative
       margin-top: 12rem
@@ -556,6 +563,15 @@ span
     .work-title
       padding-bottom: 1rem
       // font-family: "Swiss Outline"
+    .work-url a
+      @include round
+      color: $blue
+      &:hover
+        color: $red
+        text-decoration: none
+      border-bottom: solid $green 2px
+      display: inline-block
+      border-bottom-style: rounded
     .work-description
       font-family: "Swiss Extended"
       padding: 0rem 2rem 0rem 0

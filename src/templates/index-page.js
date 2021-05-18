@@ -50,7 +50,7 @@ const IndexPageTemplate = ({
 }
 
 const IndexPage = ({ data }) => {
-  const allworks = sortEdgesByFmField(data.allMarkdownRemark.edges,"date").map((e) => e.node)
+  const allworks = sortEdgesByFmField(data.allMarkdownRemark.edges,"id").map((e) => e.node)
   return (
     <Layout>
       <IndexPageTemplate
@@ -105,7 +105,6 @@ export const pageQuery = graphql`
             featuredimage
             draft
             featured
-            images
             tags
             paper_code {
               code

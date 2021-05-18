@@ -43,7 +43,7 @@ const GetWorks = () => {
       }
     }
   `)
-  return sortEdgesByFmField(data.allMarkdownRemark.edges,"title").map((e) => e.node)
+  return sortEdgesByFmField(data.allMarkdownRemark.edges,"id").map((e) => e.node)
 }
 
 export default GetWorks

@@ -18,7 +18,7 @@ function block(obj){
   const isImage = obj.img && obj.img[0].indexOf(".mp4") === -1
   return `<div class='caption-container ${isImage ? "image-caption" : "video-caption"}'>
     ${isImage ? `<img src=${obj.img}></img>` : `<video autoplay muted loop src=${obj.img}></video>`}
-  <div class='caption'>${obj.caption ?  obj.caption : ""}</div></div>`;
+  <div class='caption'>${typeof obj.caption !== "undefined" ?  obj.caption : ""}</div></div>`;
 }
 
 CMS.registerEditorComponent({
@@ -35,8 +35,9 @@ CMS.registerEditorComponent({
   // Function to extract data elements from the regexp match
   fromBlock: function(match) {
     console.log("match", match)
+    let captionz = match[1].split("~")[0]
     const attempt = {
-      caption: match[1].split("~")[0],
+      caption: captionz ? captionz : "",
       img: match[1].split("~")[1]
     }
     console.log("attempt: ", attempt)

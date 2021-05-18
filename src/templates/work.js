@@ -15,6 +15,7 @@ const WorkTemplate = ({
   description,
   images,
   featuredSharp,
+  display_url,
   featured,
   tags,
   url,
@@ -25,6 +26,7 @@ const WorkTemplate = ({
   const img = getImage(featuredSharp)
   let [iframeClicked,setIframeClicked] = useState("")
   const iframeCoverClicked = (e) => setIframeClicked("clicked")
+  const displayURL = display_url ? display_url : url;
   return (
     <section className="section work-page">
       {helmet || ''}
@@ -32,6 +34,7 @@ const WorkTemplate = ({
         <h5 className="title is-size-2 has-text-weight-bold is-bold-light work-title">
           {title.replace(".com"," . com")}
         </h5>
+        { !featured && url  ? <div className="work-url"><a href={displayURL} target="_blank">{displayURL}</a></div> : ""}
         { description ? <div className="work-description"><p>{description}</p></div> : ""}
         {false && featuredSharp ? <GatsbyImage image={img} alt={"we testin"} /> : ""}
         <PostContent content={content} className="work-content-container"/>
@@ -41,7 +44,7 @@ const WorkTemplate = ({
                 console.log("img",img)
                 const isImage = img.indexOf(".mp4") === -1;
                 if(isImage){
-                  return <GatsbyImage key={i} images={getImage(img)} alt={"we testin"} />
+                  return <img key={i} src={img} alt={"we testin"} />
                 } else {
                   return <video autoPlay loop muted key={i} src={img}></video>;
                 }
@@ -91,7 +94,7 @@ const Work = ({ data }) => {
       <WorkTemplate
         content={post.html}
         contentComponent={HTMLContent}
-        description={post.frontmatter.description}
+        display_url={post.frontmatter.display_url}
         description={post.frontmatter.description}
         url={post.frontmatter.url}
         images={post.frontmatter.images}

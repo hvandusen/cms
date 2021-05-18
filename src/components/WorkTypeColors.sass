@@ -6,64 +6,21 @@ $violet: #5b1286
 $green: #4F9851
 $blue: #364497
 
+@mixin thumb($thumbType, $color)
+  .project-category-#{$thumbType}
+    color: $color
+  .thumb-#{$thumbType}
+    &:hover
+      box-shadow: 1px 1px 32px -18px $color
+      text-decoration-color: $color
+    border: solid 2px $color
+    .thumb-label
+      color: $color
 
-.project-category-candusen
-  color: $violet
-.thumb-candusen
-  &:hover
-    box-shadow: 1px 1px 32px -18px $violet
-  border: solid 2px $violet
-
-.project-category-website
-  color: $green
-.thumb-website
-  &:hover
-    box-shadow: 1px 1px 32px -8px $green
-  border: solid 2px $green
-  .thumb-label
-    color: $green
-
-.project-category-software
-  color: $indigo
-.thumb-software
-  &:hover
-    box-shadow: 1px 1px 32px -8px $indigo
-  border: solid 2px $indigo
-  .thumb-label
-    color: $indigo
-
-.project-category-client
-  color: $orange
-.thumb-client
-  &:hover
-    box-shadow: 1px 1px 32px -8px $orange
-  border: solid 2px $orange
-  .thumb-label
-    color: $orange
-
-.project-category-mix
-  color: $yellow
-.thumb-mix
-  &:hover
-    box-shadow: 1px 1px 32px -8px $yellow
-  border: solid 2px $yellow
-  .thumb-label
-    color: $yellow
-
-.project-category-print
-  color: $red
-.thumb-print
-  &:hover
-    box-shadow: 1px 1px 32px -8px $red
-  border: solid 2px $red
-  .thumb-label
-    color: $red
-
-.project-category-essay
-  color: $blue
-.thumb-essay
-  &:hover
-    box-shadow: 1px 1px 32px -8px $blue
-  border: solid 2px $blue
-  .thumb-label
-    color: $blue
+@include thumb('candusen',$violet)
+@include thumb('website',$green)
+@include thumb('software',$indigo)
+@include thumb('mix',$yellow)
+@include thumb('print',$red)
+@include thumb('essay',$blue)
+@include thumb('client',$orange)
