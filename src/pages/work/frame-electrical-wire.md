@@ -3,7 +3,7 @@ templateKey: work
 title: Wire Press
 type: print
 featured: false
-draft: false
+draft: true
 date: 2020-04-05T14:27:00.000Z
 date-finish: 2020-04-05T14:27:00.000Z
 description: |
