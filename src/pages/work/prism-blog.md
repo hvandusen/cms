@@ -2,7 +2,7 @@
 templateKey: work
 title: Prism blog
 type: Website
-featured: false
+featured: true
 draft: false
 date: 2020-08-13T14:14:24.154Z
 date-finish: 2021-05-18T14:10:58.053Z
