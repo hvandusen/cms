@@ -2,7 +2,7 @@
 templateKey: work
 title: dusendusen.com
 type: client site
-featured: true
+featured: false
 draft: false
 date: 2020-07-30T18:41:57.361Z
 date-finish: 2021-05-18T17:11:04.608Z
