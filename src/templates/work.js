@@ -29,18 +29,23 @@ const WorkTemplate = ({
     <section className="section work-page">
       {helmet || ''}
       <div className="container content">
-        <h1 className="title is-size-2 has-text-weight-bold is-bold-light work-title">
+        <h5 className="title is-size-2 has-text-weight-bold is-bold-light work-title">
           {title.replace(".com"," . com")}
-        </h1>
+        </h5>
         { description ? <div className="work-description"><p>{description}</p></div> : ""}
+        {false && featuredSharp ? <GatsbyImage image={img} alt={"we testin"} /> : ""}
         <PostContent content={content} className="work-content-container"/>
         {images && images.length ? (
             <div className="work-images">
               {images.map((img,i) => {
-                console.log(img)
-                const image = getImage(img)
-                // return   <GatsbyImage key={i} image={image} alt={"we testin"} />
-                return   <img key={i} src={img} alt={"we testin"} />
+                console.log("img",img)
+                const isImage = img.indexOf(".mp4") === -1;
+                if(isImage){
+                  const image = getImage(img);
+                  return <img key={i} src={img} alt={"we testin"} />
+                } else {
+                  return <video autoPlay loop muted key={i} src={img}></video>;
+                }
               })}
             </div>
         ) : ""}
@@ -52,8 +57,7 @@ const WorkTemplate = ({
             height: "70vh",
             }} src={ensureHttp(url)}></iframe>
             <a className="work-iframe-link" href={url.indexOf("http://") ? url : "http://"+url}>{url}</a>
-          </div> :
-          featuredSharp ? <GatsbyImage image={img} alt={"we testin"} /> : ""}
+          </div> : ""}
         {tags && tags.length ? (
           <div style={{ marginTop: `4rem` }}>
             <h3>Tags</h3>

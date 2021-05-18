@@ -17,7 +17,7 @@ images: ""
 
 <div class='caption-container image-caption'>
     <img src=https://res.cloudinary.com/candusen/image/upload/v1621346251/Screen_Shot_2021-05-17_at_10.02.25_AM_rjscab.png></img>
-  <div class='caption'>undefined</div></div>
+  <div class='caption'></div></div>
 
 
 

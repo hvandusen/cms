@@ -18,7 +18,7 @@ function block(obj){
   const isImage = obj.img && obj.img[0].indexOf(".mp4") === -1
   return `<div class='caption-container ${isImage ? "image-caption" : "video-caption"}'>
     ${isImage ? `<img src=${obj.img}></img>` : `<video autoplay muted loop src=${obj.img}></video>`}
-  <div class='caption'>${obj.caption}</div></div>`;
+  <div class='caption'>${obj.caption ?  obj.caption : ""}</div></div>`;
 }
 
 CMS.registerEditorComponent({
