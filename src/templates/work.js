@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import { Helmet } from 'react-helmet'
@@ -23,6 +23,8 @@ const WorkTemplate = ({
 }) => {
   const PostContent = contentComponent || Content
   const img = getImage(featuredSharp)
+  let [iframeClicked,setIframeClicked] = useState("")
+  const iframeCoverClicked = (e) => setIframeClicked("clicked")
   return (
     <section className="section work-page">
       {helmet || ''}
@@ -30,13 +32,8 @@ const WorkTemplate = ({
         <h1 className="title is-size-2 has-text-weight-bold is-bold-light work-title">
           {title.replace(".com"," . com")}
         </h1>
-        { description ? <p className="work-description">{description}</p> : ""}
-        {featured && url ? <div className="work-iframe"><iframe style={{
-          width: "100%",
-          height: "70vh",
-        }} src={ensureHttp(url)}></iframe><a className="work-iframe-link" href={url.indexOf("http://") ? url : "http://"+url}>{url}</a></div> :
-          featuredSharp ? <GatsbyImage image={img} alt={"we testin"} /> : ""}
-        <PostContent content={content} />
+        { description ? <div className="work-description"><p>{description}</p></div> : ""}
+        <PostContent content={content} className="work-content-container"/>
         {images && images.length ? (
             <div className="work-images">
               {images.map((img,i) => {
@@ -47,6 +44,16 @@ const WorkTemplate = ({
               })}
             </div>
         ) : ""}
+        {featured && url ?
+          <div className="work-iframe">
+            <div className={`iframe-cover ${iframeClicked}`} onClick={iframeCoverClicked}><h3>Browse site</h3></div>
+            <iframe style={{
+            width: "100%",
+            height: "70vh",
+            }} src={ensureHttp(url)}></iframe>
+            <a className="work-iframe-link" href={url.indexOf("http://") ? url : "http://"+url}>{url}</a>
+          </div> :
+          featuredSharp ? <GatsbyImage image={img} alt={"we testin"} /> : ""}
         {tags && tags.length ? (
           <div style={{ marginTop: `4rem` }}>
             <h3>Tags</h3>

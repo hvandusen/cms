@@ -54,7 +54,7 @@ const Navbar = class extends React.Component {
           onKeyPress={console.log}
           ></div>
         </Link>
-        <Link to="/" id="nav-main-link" className="navbar-item" title="henry van dusen homepage"><h5 className="header"><span>H</span><span>e</span><span>n</span><span>r</span><span>y</span><span> </span><span>V</span><span>a</span><span>n</span><span> </span><span>D</span><span>u</span><span>s</span><span>e</span><span>n</span></h5></Link>
+        <Link to="/" id="nav-main-link" className="navbar-item" title="henry van dusen homepage"><h1 className="header"><span>H</span><span>e</span><span>n</span><span>r</span><span>y</span><span> </span><span>V</span><span>a</span><span>n</span><span> </span><span>D</span><span>u</span><span>s</span><span>e</span><span>n</span></h1></Link>
         <div className="container">
           <div className="navbar-brand">
 

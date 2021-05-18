@@ -11,11 +11,21 @@ import cloudinary from 'netlify-cms-media-library-cloudinary'
 CMS.registerMediaLibrary(uploadcare)
 CMS.registerMediaLibrary(cloudinary)
 console.log("are we going")
+
+function block(obj){
+  if(obj.img)
+  console.log("HEEEEEEENRY",obj, obj.img[0].indexOf(".mp4"))
+  const isImage = obj.img && obj.img[0].indexOf(".mp4") === -1
+  return `<div class='caption-container ${isImage ? "image-caption" : "video-caption"}'>
+    ${isImage ? `<img src=${obj.img}></img>` : `<video autoplay muted loop src=${obj.img}></video>`}
+  <div class='caption'>${obj.caption}</div></div>`;
+}
+
 CMS.registerEditorComponent({
   // Internal id of the component
-  id: "imgcaption",
+  id: "caption",
   // Visible label
-  label: "Img + Caption",
+  label: "Img/Vid w Caption",
   // Fields the user need to fill out when adding an instance of the component
   fields: [
     {name: 'img', label: 'Image', widget: 'image'},
@@ -33,16 +43,10 @@ CMS.registerEditorComponent({
     return attempt;
   },
   // Function to create a text block from an instance of this component
-  toBlock: function(obj) {
-    return `<div class='imgcaption'><img src=${obj.img}></img><div class='caption'>${obj.caption}</div></div>`;
-  },
+  toBlock: block,
   // Preview output for this component. Can either be a string or a React component
   // (component gives better render performance)
-  toPreview: function(obj) {
-    return (
-      obj.caption
-    );
-  }
+  toPreview: block
 });
 
 // CMS.registerPreviewTemplate('index', IndexPagePreview)
