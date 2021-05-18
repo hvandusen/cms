@@ -16,3 +16,7 @@ featuredimage:
 <div class='caption-container video-caption'>
     <video autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621270739/abcryb-vid_wiebhc.mp4></video>
   <div class='caption'>Here we go</div></div>
+
+<div class='caption-container video-caption'>
+    <video autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621343165/abcryb-vid-2_mgfvxk.mp4></video>
+  <div class='caption'></div></div>
