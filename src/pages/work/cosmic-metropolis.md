@@ -15,4 +15,4 @@ featuredimage:
 ---
 <div class='caption-container video-caption'>
     <video autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621359609/cosmic-vid_tfxfxl.mp4></video>
-  <div class='caption'>undefined</div></div>
+  <div class='caption'>The panels are very detailed so this site allows you to zoom in on each one.</div></div>
