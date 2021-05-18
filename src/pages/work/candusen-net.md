@@ -35,7 +35,7 @@ The site has had a few different homepages over the years. This was the first of
 
 <div class='caption-container image-caption'>
     <img src=https://res.cloudinary.com/candusen/image/upload/v1621365851/Screen_Shot_2021-05-18_at_3.22.49_PM_piegly.png></img>
-  <div class='caption'>Circa 2018</div></div>
+  <div class='caption'>Circa 2018.</div></div>
 
 I collected some of my favorite pages on the (secret) page candusen.net/selections. 
 
