@@ -2,7 +2,7 @@
 templateKey: work
 title: Plant
 type: Candusen page
-draft: true
+draft: false
 date: 2020-07-29T15:47:43.472Z
 date-finish: 2021-05-19T20:04:42.284Z
 featuredimage:
