@@ -4,6 +4,9 @@ title: Wheel
 type: Candusen page
 draft: true
 date: 2020-07-29T15:51:54.845Z
+date-finish: 2021-05-19T19:34:35.984Z
+featuredimage:
+  - https://res.cloudinary.com/candusen/image/upload/v1621452968/Screen_Shot_2021-05-19_at_3.35.55_PM_d8lwhl.png
 paper_code:
   code: |
     var height = 200;
