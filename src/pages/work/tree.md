@@ -4,10 +4,11 @@ title: Tree
 type: Candusen page
 draft: true
 date: 2020-07-29T15:54:31.304Z
+date-finish: 2021-05-19T19:53:46.517Z
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1600433826/Screen_Shot_2020-09-18_at_8.52.19_AM_eiug91.png
 paper_code:
-  code: >-
+  code: >
     var spot;
 
     var output;
@@ -77,6 +78,9 @@ paper_code:
     		else {
     			vein.rotate(-45,spot)
     		}
+        var intersections = output.getIntersections(vein)
+        if(!intersections.length)
+          return
     		veinEnd = output.getIntersections(vein)[0].point
     		rootAngle = !rootAngle;
     		finalVein = new Path([spot]);
@@ -161,9 +165,9 @@ paper_code:
     function tree(){
     	var st = new Point(view.bounds.center.x,view.bounds.height);
     	var rt = createRoot(st);
-    	tree = branch(rt.segments[rt.segments.length-1].point,new Point(0,-1),0);
+    	thetree = branch(rt.segments[rt.segments.length-1].point,new Point(0,-1),0);
     	return {
-    		subBranches : tree
+    		subBranches : thetree
     		};
 
 
@@ -172,6 +176,7 @@ paper_code:
     }
 
     var myTree = tree();
+
     function traverse(tree,effect){
     	if(tree.subBranches === undefined)
     		return
@@ -196,11 +201,23 @@ paper_code:
     		vec = new Point(40+Math.random()*5,40+Math.random()*5);
     		vec.angle = -Math.random()*180;
     		newp = new Path({segments: [pt,(pt+vec/2*Point.random()),pt+vec]})
-    		lineToLeaf(new Path({segments: [pt,(pt+vec/2*Point.random()),pt+vec]}),10+Math.random()*20).isLeaf = true	}
+    		var lTl = lineToLeaf(new Path({
+          segments: [pt,(pt+vec/2*Point.random()),pt+vec]
+        }),10+Math.random()*20)
+        if(lTl)
+          lTl.isLeaf = true
+      }
     }
 
     var moved = null;
 
-    function onMouseMove(e){
-    	}
+    function onMouseDown(e){
+    	project.activeLayer.clear()
+    	if(!tree)
+    		return
+    	myTree = tree();
+    	traverse(myTree,function(path){
+    		applyLeafs(path);
+    	});
+    }
 ---
