@@ -4,8 +4,9 @@ title: Plant
 type: Candusen page
 draft: true
 date: 2020-07-29T15:47:43.472Z
+date-finish: 2021-05-19T20:04:42.284Z
 featuredimage:
-  - https://res.cloudinary.com/candusen/image/upload/v1600431840/Screen_Shot_2020-09-17_at_6.49.40_PM_ughcjf.png
+  - https://res.cloudinary.com/candusen/image/upload/v1621453343/Screen_Shot_2021-05-19_at_3.42.11_PM_vr60uc.png
 paper_code:
   code: >-
     var spot;
