@@ -10,46 +10,16 @@ featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1621458211/Screen_Shot_2021-05-19_at_5.03.14_PM_scslq5.png
 paper_code:
   code: >-
-    /*
-
-    function onMouseDown(e){
-
-    }
-
-
-    function onMouseMove(e){
-
-    }
-
-
-    function onMouseUp(e){
-
-    }
-
-
-    function onKeyPress(e){
-
-    }
-
-
-    function onFrame(e){
-
-    }
-
-    */
-
     var all = new Group();
 
     function rgb(){
       return ["red","blue","green","yellow","purple"][num(5)];
     }
 
-    var width = 5+num(25);
 
-    var height = 5+num(25);
-
-
-    function tiles(width,height){
+    function tiles(){
+      var width = 5+num(25);
+      var height = 5+num(25);
       var size = Math.min(window.innerHeight,window.innerHeight)/(2+width)
       var lines = new Group();
       var cellSize = new Point(window.innerWidth/width,window.innerHeight/height);
@@ -138,6 +108,11 @@ paper_code:
     }
 
 
-    tiles(width,height)
+    tiles()
+
+    function onMouseDown(){
+      project.activeLayer.clear();
+      tiles()
+    }
 desort: false
 ---
