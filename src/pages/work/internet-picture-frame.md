@@ -31,7 +31,7 @@ Wordnet is an amazing database of English terms that provides a hierarchy of mea
 
 <div class='caption-container image-caption'>
     <img src=https://res.cloudinary.com/candusen/image/upload/v1621459518/Screen_Shot_2021-05-19_at_5.23.36_PM_kgbbwi.png></img>
-  <div class='caption'>A Synonyms/Hypernym hierarchy search for the term "microwave."</div></div>
+  <div class='caption'>A Synonyms/Hypernym hierarchy WordNet search for the term "microwave."</div></div>
 
 My code traverses the Wordnet's "tree of meaning" to accomplish the stream of consciousness feel. For instance, the code will kick off the SOC with a random term from a list, like dog. Wordnet will give us each meaning of dog, as well as the hierarchy of its meaning. Dog is an animal which is a mammal which is an organism which is an entity. The next word will either pertain to dog's other meanings, or will go one level up the tree, to mammal, and search terms related to that. This process goes on forever!
 
