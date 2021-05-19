@@ -7,7 +7,7 @@ draft: false
 date: 2021-05-19T20:10:20.491Z
 date-finish: 2021-05-19T20:10:20.510Z
 featuredimage:
-  - https://res.cloudinary.com/candusen/image/upload/v1621455089/Screen_Shot_2021-05-19_at_4.11.17_PM_aivx3e.png
+  - https://res.cloudinary.com/candusen/image/upload/v1621455221/Screen_Shot_2021-05-19_at_4.13.28_PM_uy19mz.png
 images:
   - https://res.cloudinary.com/candusen/image/upload/v1621455089/Screen_Shot_2021-05-19_at_4.11.17_PM_aivx3e.png
 paper_code:
