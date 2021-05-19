@@ -6,7 +6,7 @@ featured: true
 draft: false
 date: 2017-03-21T19:31:00.000Z
 date-finish: 2021-03-03T15:25:00.000Z
-url: http://rodeo.computer
+url: https://rodeo.computer
 description: /roʊˈdeɪoʊ/, a super computer by Cory Arcangel that plays phone
   games. Check out this iFrame of the official webpage by Arcangel studio about
   the computer.
