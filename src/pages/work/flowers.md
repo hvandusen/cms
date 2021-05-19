@@ -6,7 +6,7 @@ draft: false
 date: 2020-07-29T15:40:52.095Z
 date-finish: 2021-05-19T19:38:12.767Z
 featuredimage:
-  - https://res.cloudinary.com/candusen/image/upload/v1621453207/Screen_Shot_2021-05-19_at_3.39.52_PM_y5hpzu.png
+  - https://res.cloudinary.com/candusen/image/upload/v1621453343/Screen_Shot_2021-05-19_at_3.42.11_PM_vr60uc.png
 paper_code:
   code: >
     var spot;
