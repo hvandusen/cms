@@ -4,140 +4,121 @@ title: Digital clock
 type: Candusen page
 draft: false
 date: 2020-07-29T15:23:49.527Z
+date-finish: 2021-05-19T15:57:02.505Z
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1600434043/Screen_Shot_2020-09-18_at_9.00.20_AM_rka7gc.png
 paper_code:
   code: >
-    var currentShape = null;
-    var ratio = 1;
-    var still = true;
-    var shapes;
-    var count = 0;
-    var thecnt = 0;
-    var q = console;
-    var clock;
-    var counter = Math.floor(Math.random()*1536);
-    var speed = 1+Math.floor(Math.random()*3);
-    var difference = 100+Math.random()*100;
-    if (!paper.Item.prototype.setRampPoint) {
-         paper.Item.prototype.setRampPoint = function () {};
-    }
 
-    function frame(){
-    	time = Date().split(' ')[4].split(':')
-    	hours = time[0]
-    	minutes = time[1]
-    	setClock(hours,minutes)
+    var clock = new Group();
+    var shifted = false;
+    var digits = [];
+
+    var theTime = ""
+
+
+    var timeObj = {         //   0
+      "0": [0,1,2,4,5,6],   //1     2
+      "1": [2,5],           //   3
+      "2": [0,2,3,4,6],     //4     5
+      "3": [0,2,3,5,6],     //   6
+      "4": [1,2,3,5],
+      "5": [0,1,3,5,6],
+      "6": [0,1,3,4,5,6],
+      "7": [0,2,5],
+      "8": [0,1,2,3,4,5,6],
+      "9": [0,1,2,3,5,6],
     }
 
     var background;
-
-    background = new Path.Rectangle([0,0],[view.bounds.width+1000,view.bounds.height+1000]);
-
-
-    background.opacity = .6
-    		background.fillColor = {
-    		gradient:{
-    			stops:[[colorWheel(counter),'0'],[colorWheel(counter+difference),'.5'],[colorWheel(counter+difference),'1']]},
-    			origin: [0,Math.random()*screen.availHeight],
-    			destination: [screen.availWidth+150,Math.random()*screen.availHeight]
-    					}
     function setBgnd(){
     	counter = Math.floor(Math.random()*1536);
     	speed = 1+Math.floor(Math.random()*3)
     	difference = 100+Math.random()*100
-    	background = new Path.Rectangle([0,0],[view.bounds.width+1000,view.bounds.height+1000]);
+    	background = new Path.Rectangle(view.bounds.size*2);
+      background.opacity = .6
+      background.fillColor = {
+        gradient:{
+        	stops:[[colorWheel(counter),'0'],[colorWheel(counter+difference),'.5'],[colorWheel(counter+difference),'1']]},
+        	origin: [0,Math.random()*screen.availHeight],
+        	destination: [screen.availWidth+150,Math.random()*screen.availHeight]
+        }
+      background.sendToBack()
+      }
+    setBgnd()
 
-    background.opacity = .6
-    		background.fillColor = {
-    		gradient:{
-    			stops:[[colorWheel(counter),'0'],[colorWheel(counter+difference),'.5'],[colorWheel(counter+difference),'1']]},
-    			origin: [0,Math.random()*screen.availHeight],
-    			destination: [screen.availWidth+150,Math.random()*screen.availHeight]
-    					}
+
+    function orientClock(){
+      clock.fitBounds(view.bounds.size)
+      clock.scale(.9)
+      clock.position = view.bounds.center
+      console.log("thetime",theTime)
+      if(theTime && theTime[0]==="1"){
+        clock.position -= [clock.bounds.width*.1,0]
+        shifted = true;
+      }
+      if(shifted && theTime[0]==="0"){
+        clock.position += [clock.bounds.width*.1,0]
+        shifted = false;
+      }
+
     }
 
-    new Layer()
 
-    project.importSVG("/img/clock-2.svg",function(files){
-    		layer = project.activeLayer.children
-    		for(c in files.children){
-    			files.children[c].fillColor = prettyRaCo();
-    			files.children[c].visible = false;
-    					}
-    		//files.children[files.children.length-1].visible = true;
-    		//files.children[files.children.length-2].visible = true;
-    		project.activeLayer.children[0].position = view.center+[-70,0]
-    		textH = project.activeLayer.children[0].bounds.height;
-        console.log("texth",textH);
-    		files.scale(2)
-        clock = files
-    		frame();
-    		});
+    project.importSVG("/img/clock-2.svg",function(files,i){
+      clock.children = files.children.reverse();
+      clock.children.forEach(function(child){
+        lightSegment(child,true)
+      })
+      orientClock()
+      for (var i = 0; i < 4; i++) {
+        digits.push(new Group(
+          clock.children.slice(2,9)
+        ))
+      }
+      clock.children = clock.children.concat(digits)
+    });
 
-    window.onresize = function(event) {
-    	textH = project.activeLayer.children[0].bounds.height
-    	layer[0].scale(.25*window.innerHeight/textH)
-    	project.activeLayer.children[0].position = view.center +[-70,0]
+
+    function lightSegment(path,dim){
+      path.set({
+        fillColor: prettyRaCo(),
+        opacity: dim ? 0.01 : 1
+      })
     }
 
 
     setInterval(function(){
-    	time = Date().split(' ')[4].split(':')
-    	hours = time[0]
-    	minutes = time[1]
+      getTime(function(time){
+        time.forEach(function(digit,i){
+          timeObj[digit].forEach(function(digitSlot,j){
+            lightSegment(digits[i].children[digitSlot])
+          })
+        })
+        lightSegment(clock.children[0])
+        lightSegment(clock.children[1])
+      })
+    },1000)
 
-    	setClock(hours,minutes)
-    },1000);
 
-
-
-    var currentMin;
-
-    var numPatterns = {
-    	'0' :[0,1,2,4,5,6],
-    	'1' :[0,1],
-    	'2' :[2,0,3,5,4],
-    	'3' :[0,1,2,3,4],
-    	'4' :[0,1,3,6],
-    	'5' :[1,2,3,4,6],
-    	'6' :[1,2,3,4,5,6],
-    	'7' :[0,1,2],
-    	'8' :[0,1,2,3,4,5,6],
-    	'9' :[0,1,2,3,6]
+    function getTime(updateClock) {
+      var date = new Date();
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      minutes = minutes < 10 ? '0'+minutes : minutes;
+      var strTime = (hours+""+minutes).split("");
+      if(theTime.length<1 || theTime[3] != strTime[3]){
+        theTime = strTime
+        updateClock(theTime)
+        orientClock()
+      }
+      return strTime;
     }
 
-    function setClock(hours,minutes){
-    	if(hours>12)
-    	hours = hours-12
-    	if(hours == 0)
-    	hours = 12
-    	if(hours.length == 1){
-    		hours.insert(0,0)
-    	}
-    	h = hours.toString();
-    	m = minutes.toString();
-    	//project.activeLayer.children[0].visible = false;
-    	kids = project.activeLayer.children[0].children
-    	for(var i = kids.length-3;i> -1;i--){
-    		kids[i].visible = false;
-    	}
-    	for(i in numPatterns[h[0]]) //digit 1; fill panels that match time digit
-    		{
-    		dig1 = h[0]
-    		kids[7+numPatterns[h[0]][i]].visible = true;// fillColor = prettyRaCo();
-    		}
-    	for(i in numPatterns[h[1]])
-    		{
-    		kids[14+numPatterns[h[1]][i]].visible = true;//.fillColor = prettyRaCo();
-    		}
-    	for(i in numPatterns[m[0]])
-    		{
-    		kids[numPatterns[m[0]][i]].visible = true;//.fillColor = prettyRaCo();
-    		}
-    	for(i in numPatterns[m[1]])
-    		{
-    		kids[21+numPatterns[m[1]][i]].visible = true;//.fillColor = prettyRaCo();
-    		}
+
+    function onResize(){
+      orientClock()
     }
 ---
