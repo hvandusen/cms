@@ -2,32 +2,23 @@
 templateKey: work
 title: Digital clock
 type: Candusen page
-draft: true
+draft: false
 date: 2020-07-29T15:23:49.527Z
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1600434043/Screen_Shot_2020-09-18_at_9.00.20_AM_rka7gc.png
 paper_code:
   code: >
     var currentShape = null;
-
     var ratio = 1;
-
     var still = true;
-
     var shapes;
-
-    var points = [];
-
     var count = 0;
-
+    var thecnt = 0;
     var q = console;
-
-    var cunt = Math.floor(Math.random()*1536);
-
-    var speed = 1+Math.floor(Math.random()*3)
-
-    var difference = 100+Math.random()*100
-
+    var clock;
+    var counter = Math.floor(Math.random()*1536);
+    var speed = 1+Math.floor(Math.random()*3);
+    var difference = 100+Math.random()*100;
     if (!paper.Item.prototype.setRampPoint) {
          paper.Item.prototype.setRampPoint = function () {};
     }
@@ -47,12 +38,12 @@ paper_code:
     background.opacity = .6
     		background.fillColor = {
     		gradient:{
-    			stops:[[colorWheel(cunt),'0'],[colorWheel(cunt+difference),'.5'],[colorWheel(cunt+difference),'1']]},
+    			stops:[[colorWheel(counter),'0'],[colorWheel(counter+difference),'.5'],[colorWheel(counter+difference),'1']]},
     			origin: [0,Math.random()*screen.availHeight],
     			destination: [screen.availWidth+150,Math.random()*screen.availHeight]
     					}
     function setBgnd(){
-    	cunt = Math.floor(Math.random()*1536);
+    	counter = Math.floor(Math.random()*1536);
     	speed = 1+Math.floor(Math.random()*3)
     	difference = 100+Math.random()*100
     	background = new Path.Rectangle([0,0],[view.bounds.width+1000,view.bounds.height+1000]);
@@ -60,7 +51,7 @@ paper_code:
     background.opacity = .6
     		background.fillColor = {
     		gradient:{
-    			stops:[[colorWheel(cunt),'0'],[colorWheel(cunt+difference),'.5'],[colorWheel(cunt+difference),'1']]},
+    			stops:[[colorWheel(counter),'0'],[colorWheel(counter+difference),'.5'],[colorWheel(counter+difference),'1']]},
     			origin: [0,Math.random()*screen.availHeight],
     			destination: [screen.availWidth+150,Math.random()*screen.availHeight]
     					}
@@ -68,23 +59,19 @@ paper_code:
 
     new Layer()
 
-    project.importSVG("/static/img/clock.svg",function(files){
+    project.importSVG("/img/clock-2.svg",function(files){
     		layer = project.activeLayer.children
-    		layer.position = view.center;
-
-    		//layer.activate()
-
-    		project.activeLayer.children[0]
     		for(c in files.children){
-    			points.push(new Point(files.children[c].bounds.center))
     			files.children[c].fillColor = prettyRaCo();
     			files.children[c].visible = false;
     					}
-    		files.children[files.children.length-1].visible = true;
-    		files.children[files.children.length-2].visible = true;
+    		//files.children[files.children.length-1].visible = true;
+    		//files.children[files.children.length-2].visible = true;
     		project.activeLayer.children[0].position = view.center+[-70,0]
-    		textH = project.activeLayer.children[0].bounds.height
-    		layer[0].scale(.16*window.innerHeight/textH)
+    		textH = project.activeLayer.children[0].bounds.height;
+        console.log("texth",textH);
+    		files.scale(2)
+        clock = files
     		frame();
     		});
 
@@ -99,8 +86,10 @@ paper_code:
     	time = Date().split(' ')[4].split(':')
     	hours = time[0]
     	minutes = time[1]
+
     	setClock(hours,minutes)
     },1000);
+
 
 
     var currentMin;
@@ -133,7 +122,6 @@ paper_code:
     	for(var i = kids.length-3;i> -1;i--){
     		kids[i].visible = false;
     	}
-
     	for(i in numPatterns[h[0]]) //digit 1; fill panels that match time digit
     		{
     		dig1 = h[0]
