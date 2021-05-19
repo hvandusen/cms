@@ -12,13 +12,10 @@ description: >-
   and love about making websites. It's the first domain I ever bought.
 
 
-
   At first I played around with making simple and fun hand made HTML pages. This is still my preferred method of making sites XD
 
 
-
   I found it exhilarating that I had a folder sitting somewhere on the internet for all the world to see. I started by using the homepage as a list for my band's shows and to showcase some food-based clip art.
-
 
 
   Eventually I discovered javascript which opened up the worlds available to me in a webpage, and I started making pages like crazy. I loved the ability to link to certain pages from my homepage, so that visitors could browse around and find my newest work. But my favorite thing to do was to make pages that weren't accessible via the home page, and send them directly to friends.
