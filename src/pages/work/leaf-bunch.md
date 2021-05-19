@@ -2,7 +2,7 @@
 templateKey: work
 title: Leaf bunch
 type: Candusen page
-draft: true
+draft: false
 date: 2020-07-29T15:44:06.315Z
 date-finish: 2021-05-19T19:48:35.409Z
 featuredimage:
