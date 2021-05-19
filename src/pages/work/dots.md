@@ -9,35 +9,59 @@ date-finish: 2021-05-19T20:18:11.805Z
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1621455504/Screen_Shot_2021-05-19_at_4.18.05_PM_dzsgnl.png
 paper_code:
-  code: |-
+  code: >-
     /*
+
     function onMouseDown(e){
+
     }
+
 
     function onMouseMove(e){
+
     }
+
 
     function onMouseUp(e){
+
     }
+
 
     function onKeyPress(e){
+
     }
 
+
     function onFrame(e){
+
     }
+
     */
+
+    var smaller = window.innerWidth < window.innerHeight ? window.innerWidth : window.innerHeight;
+
     smaller = smaller/2
+
     var rect = new Path.Rectangle(0,0,smaller*1.3,smaller*1.3);
+
     rect.strokeColor="green";
+
     rect.strokeWidth = 20;
+
     rect.fillColor="yellow";
+
     rect.position = view.bounds.center;
+
     rect.sendToBack();
+
     function onMouseMove(e){
       rect.position  = e.point;
     }
+
     var g = new Group();
+
     var size = 450;
+
     for (var i = 0; i < smaller/size; i++) {
       for (var j = 0; j < smaller/size; j++) {
         var c = new Path.Circle(i*size,j*size,size/3);
@@ -47,8 +71,11 @@ paper_code:
         g.children.push(c)
       }
     }
+
     g.position = view.bounds.center
+
     var colorCount = 0;
+
     function onMouseDown(e){
       // subtr = new CompoundPath({
       //   children: [g,copy],
@@ -62,6 +89,7 @@ paper_code:
       rect.fillColor = ["blue","red","green","yellow"][colorCount%4]
       colorCount++
     }
+
 
     function subtractGroup(path,group){
       var p = path;
