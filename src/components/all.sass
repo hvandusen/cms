@@ -2,6 +2,7 @@
 // @import '~bulma'
 @import 'WorkTypeColors'
 @import 'mixins'
+@import 'paperAddOns'
 $thingToColor: 'border-color'
 @keyframes rgbFade
   0%
@@ -455,7 +456,7 @@ span
 
 
 #page
-  padding-top: 8rem
+  padding-top: 6rem
 
   .candusen-page
     .work-box, &.work-box
@@ -533,9 +534,9 @@ span
     .caption-container
       margin: 3rem 0
       img,video
+        @include rgbShadow
         width: 100%
-        box-shadow: grey 5px 5px 14px
-        @include effect8
+        // box-shadow: grey 5px 5px 14px
       .caption
         @extend p
         font-family: Swiss Light
@@ -592,7 +593,7 @@ span
         background-repeat: no-repeat
     .work-title
       padding-bottom: 1rem
-      // font-family: "Swiss Outline"
+      font-family: "Swiss Normal"
     .work-url a
       @include round
       color: $blue
@@ -602,14 +603,22 @@ span
       border-bottom: solid $green 2px
       display: inline-block
       border-bottom-style: rounded
+    .work-header
+      display: flex
+      align-items: baseline
+      justify-content: space-between
+      @include bp(xs)
+        flex-direction: column
     .work-description
       padding: 0rem 2rem 0rem 0
+      @include bp(xs)
+        margin-top: 2rem
     .work-images
       margin: 6rem 0
       img,video
+        @include rgbShadow
         max-width: 100%
         margin-bottom: 6rem
-        box-shadow: grey 5px 5px 15px
     p
       img
         margin: 0 auto
@@ -699,7 +708,7 @@ span
   #nav-main-link
     color: #DB3932
     text-decoration-color: #4F9851
-    margin: 3rem 0 0 2rem
+    margin: 2rem 0 0 2rem
     span
       font-size: inherit
       line-height: inherit
@@ -743,7 +752,7 @@ span
     position: fixed
     top: 3.1rem
     right: 2rem
-    top: 3rem
+    top: 2rem
     right: 2rem
   &:nth-child(1)
       color: red

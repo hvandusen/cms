@@ -68,7 +68,7 @@ paper_code:
     project.importSVG("/img/clock-2.svg",function(files,i){
       clock.children = files.children.reverse();
       clock.children.forEach(function(child){
-        lightSegment(child,true)
+        dimSegment(child)
       })
       orientClock()
       for (var i = 0; i < 4; i++) {
@@ -80,17 +80,25 @@ paper_code:
     });
 
 
-    function lightSegment(path,dim){
+    function lightSegment(path){
       path.set({
         fillColor: prettyRaCo(),
-        opacity: dim ? 0.01 : 1
+        opacity: 1
       })
     }
+
+    function dimSegment(path){
+      path.set({
+        opacity: 0.01
+      })
+    }
+
 
 
     setInterval(function(){
       getTime(function(time){
         time.forEach(function(digit,i){
+          digits[i].children.map(dimSegment)
           timeObj[digit].forEach(function(digitSlot,j){
             lightSegment(digits[i].children[digitSlot])
           })
@@ -106,7 +114,7 @@ paper_code:
       var hours = date.getHours();
       var minutes = date.getMinutes();
       hours = hours % 12;
-      hours = hours ? hours : 12; // the hour '0' should be '12'
+      hours = hours ? "0"+hours : 12; // the hour '0' should be '12'
       minutes = minutes < 10 ? '0'+minutes : minutes;
       var strTime = (hours+""+minutes).split("");
       if(theTime.length<1 || theTime[3] != strTime[3]){

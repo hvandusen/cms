@@ -153,3 +153,39 @@ $outerPadding: 2.5rem
     animation: span-1-rotate $time 1
   &:nth-child(3n+2)
     animation: span-2-rotate $time 1
+//#{random(5)}px
+@mixin rgbShadow
+  position: relative
+  $main: 0px 5px 20px -10px $red, -5px -5px 20px -10px $blue, 9px 0 20px -10px $green
+  -webkit-box-shadow: $main
+  -moz-box-shadow: $main
+  box-shadow: $main
+
+  &:before, &:after
+    content: ""
+    position: absolute
+    z-index: -1
+    $before: 0 0 20px $blue
+    -webkit-box-shadow: $before
+    -moz-box-shadow: $before
+    box-shadow: $before
+    top: 10px
+    bottom: 10px
+    left: 0
+    right: 0
+    -moz-border-radius: 100px / 10px
+    border-radius: 100px / 10px
+
+  &:after
+    $after: 0 0 20px $green
+    right: 10px
+    left: auto
+    -webkit-box-shadow: $after
+    -moz-box-shadow: $after
+    box-shadow: $after
+    $afterTransform: skew(8deg) rotate(3deg)
+    -webkit-transform: $afterTransform
+    -moz-transform: $afterTransform
+    -ms-transform: $afterTransform
+    -o-transform: $afterTransform
+    transform: $afterTransform

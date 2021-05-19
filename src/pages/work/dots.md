@@ -10,34 +10,6 @@ featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1621455504/Screen_Shot_2021-05-19_at_4.18.05_PM_dzsgnl.png
 paper_code:
   code: >-
-    /*
-
-    function onMouseDown(e){
-
-    }
-
-
-    function onMouseMove(e){
-
-    }
-
-
-    function onMouseUp(e){
-
-    }
-
-
-    function onKeyPress(e){
-
-    }
-
-
-    function onFrame(e){
-
-    }
-
-    */
-
     var smaller = window.innerWidth < window.innerHeight ? window.innerWidth : window.innerHeight;
 
     smaller = smaller/2

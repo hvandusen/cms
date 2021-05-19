@@ -31,10 +31,12 @@ const WorkTemplate = ({
     <section className="section work-page">
       {helmet || ''}
       <div className="container content">
-        <h5 className="title is-size-2 has-text-weight-bold is-bold-light work-title">
-          {title.replace(".com"," . com")}
-        </h5>
-        { !featured && url  ? <div className="work-url"><a href={displayURL} target="_blank">{displayURL}</a></div> : ""}
+        <div className="work-header">
+          <h5 className="title is-size-2 has-text-weight-bold is-bold-light work-title">
+            {title.replace(".com"," . com")}
+          </h5>
+          { !!url  ? (<div className="work-url"><a href={displayURL} target="_blank">{displayURL}</a></div>) : ""}
+        </div>
         { description ? <div className="work-description"><p>{description}</p></div> : ""}
         {false && featuredSharp ? <GatsbyImage image={img} alt={"we testin"} /> : ""}
         <PostContent content={content} className="work-content-container"/>

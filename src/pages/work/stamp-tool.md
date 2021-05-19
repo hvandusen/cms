@@ -7,38 +7,6 @@ featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1600431835/Screen_Shot_2020-09-17_at_6.56.49_PM_rd08h4.png
 paper_code:
   code: >
-    /*
-
-    function onMouseDown(e){
-
-    }
-
-
-    function onMouseMove(e){
-
-    }
-
-
-    function onMouseUp(e){
-
-    }
-
-
-    function onKeyPress(e){
-
-    }
-
-
-    function onFrame(e){
-
-    }
-
-    */
-
-
-    //var heightMax =
-
-
     var widthMax = window.innerWidth/6;
 
 

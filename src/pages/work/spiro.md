@@ -10,34 +10,6 @@ featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1621458081/Screen_Shot_2021-05-19_at_5.00.58_PM_fyomi0.png
 paper_code:
   code: >
-    /*
-
-    function onMouseDown(e){
-
-    }
-
-
-    function onMouseMove(e){
-
-    }
-
-
-    function onMouseUp(e){
-
-    }
-
-
-    function onKeyPress(e){
-
-    }
-
-
-    function onFrame(e){
-
-    }
-
-    */
-
     function innerOuter(radius,innerPercentage){
       var that = {};
       that.outer = new Path.Circle(0,0,radius);

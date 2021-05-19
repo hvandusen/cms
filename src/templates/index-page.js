@@ -50,7 +50,7 @@ const IndexPageTemplate = ({
 }
 
 const IndexPage = ({ data }) => {
-  const allworks = sortEdgesByFmField(data.allMarkdownRemark.edges,"date",false).map((e) => e.node).reverse()
+  const allworks = sortEdgesByFmField(data.allMarkdownRemark.edges,"id",false).map((e) => e.node).reverse()
   return (
     <Layout>
       <IndexPageTemplate

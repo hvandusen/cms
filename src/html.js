@@ -14,6 +14,7 @@ export default function HTML(props) {
         />
         {props.headComponents}
         <script src={`${withPrefix('/')}paper-full.min.v0.12.15.js`}></script>
+        <script src={`https://code.jquery.com/jquery-3.6.0.min.js`}></script>
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
