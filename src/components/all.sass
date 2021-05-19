@@ -173,6 +173,7 @@ p
   font-size: 1.5rem
   line-height: 1.3em
   font-family: $bookFont
+  white-space: pre-wrap
 
 span
   font-size: 1.5rem
@@ -180,13 +181,41 @@ span
 .wrapper
   @include wrapper
 
+@mixin effect8
+  position: relative
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset
+
+  &:before, &:after
+    content: ""
+    position: absolute
+    z-index: -1
+    -webkit-box-shadow: 0 0 20px rgba(0,0,0,0.8)
+    -moz-box-shadow: 0 0 20px rgba(0,0,0,0.8)
+    box-shadow: 0 0 20px rgba(0,0,0,0.8)
+    top: 10px
+    bottom: 10px
+    left: 0
+    right: 0
+    -moz-border-radius: 100px / 10px
+    border-radius: 100px / 10px
+
+  &:after
+    right: 10px
+    left: auto
+    -webkit-transform: skew(8deg) rotate(3deg)
+    -moz-transform: skew(8deg) rotate(3deg)
+    -ms-transform: skew(8deg) rotate(3deg)
+    -o-transform: skew(8deg) rotate(3deg)
+    transform: skew(8deg) rotate(3deg)
+
 @media(max-width:480px)
   body .navbar
     // width: 150px
     .nav-icon
-      width: 9rem
-      height: 9rem
-      margin: 2rem
+      width: 2.7rem
+      height: 2rem
   body .homepage
     margin: 0
     .project-grid-large-thumbs
@@ -236,6 +265,8 @@ span
   position: relative
   margin: 0 0 2rem 0
   .project-nav
+    //henry
+    display: none
     // position: fixed
     // width: 8rem
     margin-bottom: 3rem
@@ -368,17 +399,11 @@ span
       grid-column: span 4
       grid-row: span 4
     @include bp(xs)
-      grid-column: span 6
-      grid-row: span 6
-      &.thumb-client
-        grid-column: span 6!important
-        grid-row: span 6!important
+      grid-column: span 12!important
+      grid-row: span 12!important
       &.thumb-candusen
-        grid-column: span 3!important
-        grid-row: span 3!important
-      &.thumb-website, &.thumb-software
-        grid-column: span 6!important
-        grid-row: span 6!important
+        grid-column: span 4!important
+        grid-row: span 4!important
 
     // transition: .3s all
     &:hover
@@ -405,6 +430,8 @@ span
       bottom: 100%
       backdrop-filter: reverse
       font-family: $mainFont
+      @include bp(xs)
+        word-break: break-word
       &.inline-text
         font-family: 'Swiss Thick'
         color: white
@@ -428,9 +455,7 @@ span
 
 
 #page
-  padding-top: 3rem
-  @include bp(xs)
-    padding-top: 0
+  padding-top: 8rem
 
   .candusen-page
     .work-box, &.work-box
@@ -501,15 +526,20 @@ span
     padding-bottom: 5rem
     width: calc(100vw - 180px)
     font-family: 'Swiss Normal'
+    @include bp(xs)
+      width: auto
+      margin: 0
+      padding: 0 2rem
     .caption-container
       margin: 3rem 0
       img,video
         width: 100%
-        box-shadow: grey 5px 5px 15px
+        box-shadow: grey 5px 5px 14px
+        @include effect8
       .caption
         @extend p
         font-family: Swiss Light
-        font-size: 1.3rem
+        font-size: 1.2rem
         text-align: left
     .work-iframe
       position: relative
@@ -573,7 +603,6 @@ span
       display: inline-block
       border-bottom-style: rounded
     .work-description
-      font-family: "Swiss Extended"
       padding: 0rem 2rem 0rem 0
     .work-images
       margin: 6rem 0
@@ -666,9 +695,11 @@ span
       background: white
 
 .navbar
+  position: fixed
   #nav-main-link
     color: #DB3932
     text-decoration-color: #4F9851
+    margin: 3rem 0 0 2rem
     span
       font-size: inherit
       line-height: inherit
@@ -687,11 +718,11 @@ span
   flex-direction: row
   align-items: center
   @include bp(xs)
-    width: 100%
-    justify-content: center
-    margin: 1.3rem 0px
+    display: flex
   .header
     margin: 0
+    font-size: 2rem
+    line-height: 2rem
   &.is-active
     .container
       opacity: 1
@@ -701,15 +732,19 @@ span
   .nav-icon
     @include sprite(0)
     display: inline-block
-    width: 7rem
-    height: 7rem
+    width: 2rem
+    height: 1.5rem
     outline: none
     cursor: pointer
-    margin-right: 2rem
-    margin-left: 2rem
-    margin-top: 1rem
+
 .navbar-item
   padding: 0
+  &.navbar-icon
+    position: fixed
+    top: 3.1rem
+    right: 2rem
+    top: 3rem
+    right: 2rem
   &:nth-child(1)
       color: red
   &:nth-child(2)

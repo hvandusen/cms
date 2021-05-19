@@ -40,7 +40,7 @@ const Navbar = class extends React.Component {
         role="navigation"
         aria-label="main-navigation"
       >
-        <Link to="/" className="navbar-item" title="henry van dusen homepage">
+        <Link to="/" className="navbar-item navbar-icon" title="henry van dusen homepage">
           <div className="nav-icon"
           role="menu" tabIndex={0}
           data-target="nav"
