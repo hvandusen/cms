@@ -10,7 +10,7 @@ featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1621455816/Screen_Shot_2021-05-19_at_4.23.16_PM_urq1sz.png
 paper_code:
   code: >-
-    $("body").append(`<style>
+    $("body").append("<style>
 
     .row {
       margin: 0;
@@ -55,7 +55,7 @@ paper_code:
 
     }
 
-    </style>`)
+    </style>")
 
     var speed = 10;
 
