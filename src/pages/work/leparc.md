@@ -14,7 +14,7 @@ paper_code:
 
     var colorOffsets = [1280,1280,1167,1167];
 
-    var rows = Math.floor(window.innerHeight/20);;
+    var rows = Math.floor(window.innerHeight/20)+1;
 
     var columns = Math.floor(window.innerWidth/20);
 
