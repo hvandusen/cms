@@ -10,53 +10,6 @@ featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1621455816/Screen_Shot_2021-05-19_at_4.23.16_PM_urq1sz.png
 paper_code:
   code: >-
-    $("body").append("<style>
-
-    .row {
-      margin: 0;
-      padding: 0;
-      line-height: 1em;
-      height: 1em;
-    }
-
-
-    .shape {
-      width: 1em;
-      height: 1em;
-      background: red;
-      display: inline-block;
-      line-height: 1em;
-      margin: 0;
-      padding: 0;
-    }
-
-
-    .row:nth-child(2n+0) .shape:nth-child(2n+0){
-      //background: yellow;
-    }
-
-
-    .row:nth-child(2n+0) .shape:nth-child(2n+1){
-      //background: red;
-      //border: solid transparent 1px;
-      border-radius: 50%;
-      box-sizing: border-box;
-    }
-
-
-    .row:nth-child(2n+1) .shape:nth-child(2n+0){
-      //background: blue;
-      border-radius: 100%;
-    }
-
-
-    .row:nth-child(2n+1) .shape:nth-child(2n+1){
-      //background: green;
-
-    }
-
-    </style>")
-
     var speed = 10;
 
     var colorOffsets = [1280,1280,1167,1167];
