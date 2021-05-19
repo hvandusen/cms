@@ -49,29 +49,13 @@ paper_code:
     var colorDiffs = [Math.floor(3072/(rows-4)),Math.floor(3072/(columns-4)),Math.floor(3072/(rows-4)),Math.floor(3072/(columns-4))];
 
     $(document).ready(function(){
+
+    $("<div class='shapes'></div>").appendTo($("body"))
       addShapes(rows,columns)
       colorShapes(colorOffsets,colorDiffs);
     });
 
     var count = 0;
-
-
-    $(document).mousemove(function(e){
-      var pos = {
-        x:e.pageX/window.innerWidth,
-        y:e.pageY/window.innerHeight
-      }
-      if(pos.x<.5 &&pos.y<.5)
-        colorOffsets[0]+=50
-      if(pos.x>.5 &&pos.y>.5)
-        colorOffsets[1]+=5
-      if(pos.x<.5 &&pos.y>.5)
-        colorOffsets[2]+=5
-      if(pos.x<.5 &&pos.y>.5)
-        colorOffsets[3]+=5
-      colorDiffs = [Math.floor(3072/(rows-4)),Math.floor(3072/(columns-4)),Math.floor(3072/(rows-4)),Math.floor(3072/(columns-4))];
-      colorShapes(colorOffsets,colorDiffs);
-    })
 
 
     function addShapes(rows,columns){
@@ -106,8 +90,5 @@ paper_code:
       //colorOffsets[3]+=speed*.65;
       colorShapes(colorOffsets,colorDiffs);
     },10)
-
-
-    $("<div class='box'></div>").appendTo($("body"))
 desort: false
 ---
