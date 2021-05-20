@@ -20,7 +20,7 @@ featuredimage:
 
 
 
-<div class='caption-container video-caption'>
+<div class='caption-container video-caption'><div className="mobile-video-cover"></div>
     <video autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621346321/artist-statements-vid_g5beic.mp4></video>
   <div class='caption'>I wrote a little bit of javascript to animate the letters and numbers here :) Maybe i should post it here.</div></div>
 

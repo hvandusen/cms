@@ -48,7 +48,11 @@ const WorkTemplate = ({
                 if(isImage){
                   return <img key={i} src={img} alt={"we testin"} />
                 } else {
-                  return <video autoPlay loop muted key={i} src={img}></video>;
+                  return
+                    <div className="videowrapper">
+                    <div className="mobile-video-cover"></div>
+                      <video autoPlay loop muted key={i} src={img}></video>
+                    </div>;
                 }
               })}
             </div>

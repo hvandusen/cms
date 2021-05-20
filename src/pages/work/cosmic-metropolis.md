@@ -13,6 +13,6 @@ description: A website showcasing my dad's large-scale pen drawing Cosmic
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1600717851/Screen_Shot_2020-09-21_at_3.50.24_PM_gcu43c.png
 ---
-<div class='caption-container video-caption'>
+<div class='caption-container video-caption'><div className="mobile-video-cover"></div>
     <video autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621359609/cosmic-vid_tfxfxl.mp4></video>
   <div class='caption'>The panels are very detailed so this site allows you to zoom in on each one.</div></div>

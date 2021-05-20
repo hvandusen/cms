@@ -546,6 +546,8 @@ span
       position: relative
       margin-top: 12rem
       margin-bottom: 8rem
+      @include bp(xs)
+        display: none
       .iframe-cover
         @include wrapper
         height: calc(100% - 15px)
@@ -613,6 +615,9 @@ span
       padding: 0rem 2rem 0rem 0
       @include bp(xs)
         margin-top: 2rem
+    .mobile-video-cover
+      @include wrapper
+      display: block
     .work-images
       margin: 6rem 0
       img,video
