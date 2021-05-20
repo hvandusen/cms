@@ -36,6 +36,6 @@ The site has had a few different homepages over the years. This was the first of
 
 I collected some of my favorite pages on the (secret) page candusen.net/selections.
 
-<div class='caption-container video-caption'><div className="mobile-video-cover"></div>
-    <video autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621366585/candusen-vid-fast_d6jpoe.mp4></video>
+<div class='caption-container video-caption'><div className="mobile-video-cover">
+    <video autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621366585/candusen-vid-fast_d6jpoe.mp4></video></div>
   <div class='caption'>Blowing through some of the pages on candusen.net/selections. These are some of my faves from over the years.</div></div>

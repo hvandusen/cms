@@ -26,6 +26,10 @@ $sprite-size: 128px
 $outerPadding: 2.5rem
 
 @mixin bp($class)
+  @if $class == mobile
+    @media(max-width: 480px)
+      @content
+
   @if $class == xs
     @media(max-width: 767px)
       @content

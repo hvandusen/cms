@@ -17,8 +17,6 @@ paper_code:
 
     var lf = tree(4+Math.random()*4, view.center+[0,200],15+Math.random()*90);
 
-    console.dir(lf)
-
     var newp;
 
     var leaff ;

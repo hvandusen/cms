@@ -4,7 +4,7 @@ import { kebabCase } from 'lodash'
 import { Helmet } from 'react-helmet'
 import { graphql, Link, withPrefix } from 'gatsby'
 import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import Content, { HTMLContent, clickedContent } from '../components/Content'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const ensureHttp = (str) => str && (str.indexOf("http")> - 1 ? str : "https://"+ str).replace("http://","https://")
@@ -15,6 +15,7 @@ const WorkTemplate = ({
   description,
   images,
   featuredSharp,
+  imagesSharp,
   display_url,
   featured,
   tags,
@@ -24,6 +25,10 @@ const WorkTemplate = ({
 }) => {
   const PostContent = contentComponent || Content
   const img = getImage(featuredSharp)
+  const niceImages = imagesSharp.map((e,i) => {
+      return e.childImageSharp ? getImage(e) : images[i];
+  })
+  console.log("imagessharp",niceImages)
   let [iframeClicked,setIframeClicked] = useState("")
   const iframeCoverClicked = (e) => setIframeClicked("clicked")
   const displayURL = display_url ? display_url : url;
@@ -40,19 +45,18 @@ const WorkTemplate = ({
         { description ? <div className="work-description"><p>{description}</p></div> : ""}
         {false && featuredSharp ? <GatsbyImage image={img} alt={"we testin"} /> : ""}
         <PostContent content={content} className="work-content-container"/>
-        {images && images.length ? (
+        {niceImages && niceImages.length ? (
             <div className="work-images">
-              {images.map((img,i) => {
-                console.log("img",img)
-                const isImage = img.indexOf(".mp4") === -1;
-                if(isImage){
-                  return <img key={i} src={img} alt={"we testin"} />
+              {niceImages.map((img,i) => {
+                console.log("work-image: ",img)
+                if(typeof img !== "string"){
+                  return <GatsbyImage className="work-image" key={i} image={img} alt={"we testin"} />
                 } else {
-                  return
-                    <div className="videowrapper">
-                    <div className="mobile-video-cover"></div>
+                  return (<div className="videowrapper">
+                    <div className="mobile-video-cover" onClick={clickedContent}>
                       <video autoPlay loop muted key={i} src={img}></video>
-                    </div>;
+                      </div>
+                    </div>);
                 }
               })}
             </div>
@@ -105,6 +109,7 @@ const Work = ({ data }) => {
         url={post.frontmatter.url}
         images={post.frontmatter.images}
         featuredSharp={post.featuredSharp}
+        imagesSharp={post.imagesSharp}
         featured={post.frontmatter.featured}
         helmet={
           <Helmet titleTemplate="%s | Work">
@@ -150,6 +155,14 @@ export const pageQuery = graphql`
         childImageSharp {
           gatsbyImageData(
             width: 800
+            formats: [AUTO, WEBP, AVIF]
+          )
+        }
+      }
+      imagesSharp {
+        childImageSharp {
+          gatsbyImageData(
+            width: 1400
             formats: [AUTO, WEBP, AVIF]
           )
         }

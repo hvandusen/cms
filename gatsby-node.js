@@ -142,6 +142,24 @@ async function onCreateNode({
         node.featuredimage___NODE = fileNode.id
       }
     }
+    let urls = node.frontmatter.images ? node.frontmatter.images : null;
+    node.images___NODE = []
+    if (urls !== null && urls !== undefined) {
+      for(var i=0;i<urls.length;i++){
+        let fileNode = await createRemoteFileNode({
+          url: urls[i], // string that points to the URL of the image
+          parentNodeId: node.id, // id of the parent node of the fileNode you are going to create
+          createNode, // helper function in gatsby-node to generate the node
+          createNodeId, // helper function in gatsby-node to generate the node id
+          cache, // Gatsby's cache
+          store, // Gatsby's redux store
+        })
+        // if the file was created, attach the new node to the parent node
+        if (fileNode) {
+          node.images___NODE.push(fileNode.id)
+        }
+      }
+    }
   }
 }
 exports.createSchemaCustomization = ({ actions }) => {
@@ -150,6 +168,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type MarkdownRemark implements Node {
       frontmatter: Frontmatter
       featuredSharp: File @link(from: "featuredimage___NODE")
+      imagesSharp: [File] @link(from: "images___NODE")
     }
     type Frontmatter {
       title: String!

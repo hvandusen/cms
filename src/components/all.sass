@@ -532,6 +532,7 @@ span
       margin: 0
       padding: 0 2rem
     .caption-container
+      position: relative
       margin: 3rem 0
       img,video
         @include rgbShadow
@@ -615,15 +616,37 @@ span
       padding: 0rem 2rem 0rem 0
       @include bp(xs)
         margin-top: 2rem
-    .mobile-video-cover
-      @include wrapper
-      display: block
+    .mobile-video-cover, [classname="mobile-video-cover"]
+      position: relative
+      &.clicked
+        &:after
+          backdrop-filter: blur(0px)
+          color: transparent
+      &:after
+        @include wrapper
+        content: "Play video"
+        z-index: 1
+        pointer-events: none
+        transition: backdrop-filter .3s, color .3s
+        backdrop-filter: blur(0px)
+        color: transparent
+        font-size: 2rem
+        font-family: $bookFont
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        @include bp(xs)
+          color: black
+          backdrop-filter: blur(4px)
     .work-images
       margin: 6rem 0
-      img,video
+      .videowrapper, .work-image
+        position: relative
         @include rgbShadow
-        max-width: 100%
         margin-bottom: 6rem
+        img, video
+          max-width: 100%
     p
       img
         margin: 0 auto
