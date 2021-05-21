@@ -14,5 +14,5 @@ images:
   - https://res.cloudinary.com/candusen/image/upload/v1621364630/Screen_Shot_2021-05-18_at_2.57.30_PM_idbi6k.png
 ---
 <div class='caption-container video-caption'><div className="mobile-video-cover">
-    <video autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621364324/drawhub-vid_sfeclz.mp4></video></div>
+    <video playsinline autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621364324/drawhub-vid_sfeclz.mp4></video></div>
   <div class='caption'>This page features a few of my drawing tools which you can use to make a drawing and submit it to the gallery page.</div></div>

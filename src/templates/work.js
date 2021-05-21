@@ -54,7 +54,7 @@ const WorkTemplate = ({
                 } else {
                   return (<div className="videowrapper">
                     <div className="mobile-video-cover" onClick={clickedContent}>
-                      <video autoPlay loop muted key={i} src={img}></video>
+                      <video playsinline autoPlay loop muted key={i} src={img}></video>
                       </div>
                     </div>);
                 }

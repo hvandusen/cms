@@ -19,5 +19,5 @@ tags:
   - external
 ---
 <div class='caption-container video-caption'><div className="mobile-video-cover">
-    <video autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621359048/ph-vid_hbppgk.mp4></video></div>
+    <video playsinline autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621359048/ph-vid_hbppgk.mp4></video></div>
   <div class='caption'>The homepage features randomly shown sets of image that link to each other. Each time you click an image it shows you another related set.</div></div>

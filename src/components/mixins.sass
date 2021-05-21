@@ -30,7 +30,7 @@ $outerPadding: 2.5rem
     @media(max-width: 480px)
       @content
 
-  @if $class == xs
+  @else if $class == xs
     @media(max-width: 767px)
       @content
 

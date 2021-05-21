@@ -20,11 +20,11 @@ images:
   - https://res.cloudinary.com/candusen/image/upload/v1621343456/Screen_Shot_2021-05-17_at_10.24.00_AM_z20ljc.png
 ---
 <div class='caption-container video-caption'><div className="mobile-video-cover">
-    <video autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621270739/abcryb-vid_wiebhc.mp4></video></div>
+    <video playsinline autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621270739/abcryb-vid_wiebhc.mp4></video></div>
   <div class='caption'>Here we go</div></div>
 
 
 
 <div class='caption-container video-caption'><div className="mobile-video-cover">
-    <video autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621343165/abcryb-vid-2_mgfvxk.mp4></video></div>
+    <video playsinline autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621343165/abcryb-vid-2_mgfvxk.mp4></video></div>
   <div class='caption'></div></div>
