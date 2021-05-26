@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: 'henry van dusen',
@@ -28,6 +32,14 @@ module.exports = {
         path: `${__dirname}/src/img`,
         name: 'images',
       },
+    },
+    {
+      resolve: `gatsby-source-stripe`,
+      options: {
+        objects: ['Balance', 'Product', 'Sku', 'Price'],
+        secretKey: process.env.STRIPE_SEC,
+        downloadFiles: true,
+      }
     },
     {
       resolve: 'gatsby-transformer-remark',

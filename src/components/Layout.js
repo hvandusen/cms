@@ -2,6 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
+import Cart from '../components/Cart'
 import './all.sass'
 // import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
@@ -49,6 +50,7 @@ const TemplateWrapper = ({ children }) => {
         />
       </Helmet>
       <Navbar />
+      <Cart />
       <div id="page">{children}</div>
         <Footer />
     </div>

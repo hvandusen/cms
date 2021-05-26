@@ -4,24 +4,17 @@ const path = require('path')
 const { createFilePath,createRemoteFileNode } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images-v2')
 const fs = require("fs")
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 
-exports.onCreateWebpackConfig = ({ getConfig, stage, actions, plugins }) => {
-  // if (stage === "build-javascript") {
-  //   const currentConfig = getConfig()
-  //
-  //   // sanity check so we don't access undefined
-  //   if (
-  //     false &&
-  //     currentConfig.optimization &&
-  //     currentConfig.optimization.minimizer &&
-  //     currentConfig.optimization.minimizer.length
-  //   ) {
-  //     // replace instance of TerserPlugin with new one with custom options
-  //     currentConfig.output.publicPath = ""
-  //
-  //     actions.replaceWebpackConfig(currentConfig)
-  //   }
-  // }
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+   resolve: {
+      fallback: {
+        crypto: require.resolve('crypto-browserify'),
+        stream: require.resolve('stream-browserify'),
+      },
+    },
+  })
 }
 
 exports.createPages = ({ actions, graphql }) => {

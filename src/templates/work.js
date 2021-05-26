@@ -4,6 +4,7 @@ import { kebabCase } from 'lodash'
 import { Helmet } from 'react-helmet'
 import { graphql, Link, withPrefix } from 'gatsby'
 import Layout from '../components/Layout'
+import { useShoppingCart } from "use-shopping-cart"
 import Content, { HTMLContent, clickedContent } from '../components/Content'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
@@ -17,6 +18,7 @@ const WorkTemplate = ({
   featuredSharp,
   imagesSharp,
   display_url,
+  product,
   featured,
   tags,
   url,
@@ -24,13 +26,22 @@ const WorkTemplate = ({
   helmet,
 }) => {
   const PostContent = contentComponent || Content
+  const formatCurrency = (price) => `$${price/100}`
   const img = getImage(featuredSharp)
   const niceImages = imagesSharp.map((e,i) => {
       return e.childImageSharp ? getImage(e) : images[i];
   })
-  console.log("imagessharp",niceImages)
   let [iframeClicked,setIframeClicked] = useState("")
   const iframeCoverClicked = (e) => setIframeClicked("clicked")
+  const { addItem,cartDetails,incrementItem } = useShoppingCart()
+  const addToCart = async (e) => {
+      e.preventDefault()
+      delete product.id
+      if(cartDetails[product.price_id])
+        incrementItem(product.price_id,1)
+      else
+        addItem(product,1)
+    }
   const displayURL = display_url ? display_url : url;
   return (
     <section className="section work-page">
@@ -82,6 +93,12 @@ const WorkTemplate = ({
             </ul>
           </div>
         ) : null}
+        {product ?
+          <div className="product">
+          <div className="price">{formatCurrency(product.price)}</div>
+          <div className="add-to-cart" onClick={addToCart}>Add to Cart</div>
+          </div>
+           : ""}
       </div>
     </section>
   )
@@ -96,8 +113,24 @@ WorkTemplate.propTypes = {
   helmet: PropTypes.object,
 }
 
+const getProduct = (allStripePrice,price_id) => {
+  const prices = allStripePrice.edges.map(e => e.node)
+  const price = prices.find((p)=>p.id === price_id)
+  console.log("dem prices",price)
+  const product = price.product
+  product.image = product.images[0]
+  product.price = price.unit_amount
+  product.price_id = price.id
+  product.currency = "USD"
+  delete product.id
+  console.log(product)
+  return product
+}
+
 const Work = ({ data }) => {
   const { markdownRemark: post } = data
+  const { allStripePrice } = data
+  const product = getProduct(allStripePrice,post.frontmatter.price_id)
   console.log("dataz",data)
   return (
     <Layout>
@@ -108,9 +141,10 @@ const Work = ({ data }) => {
         description={post.frontmatter.description}
         url={post.frontmatter.url}
         images={post.frontmatter.images}
+        featured={post.frontmatter.featured}
+        product={product}
         featuredSharp={post.featuredSharp}
         imagesSharp={post.imagesSharp}
-        featured={post.frontmatter.featured}
         helmet={
           <Helmet titleTemplate="%s | Work">
             <title>{`${post.frontmatter.title}`}</title>
@@ -145,6 +179,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         description
+        price_id
         images
         featured
         url
@@ -165,6 +200,20 @@ export const pageQuery = graphql`
             width: 1400
             formats: [AUTO, WEBP, AVIF]
           )
+        }
+      }
+    }
+    allStripePrice {
+      edges {
+        node {
+          id
+          unit_amount
+          product {
+            id
+            images
+            description
+            name
+          }
         }
       }
     }
