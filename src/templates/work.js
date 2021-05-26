@@ -10,6 +10,8 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const ensureHttp = (str) => str && (str.indexOf("http")> - 1 ? str : "https://"+ str).replace("http://","https://")
 
+const spanify = (str) => str.split("").map((char,i)=> <span key={i}>{char}</span>)
+
 const WorkTemplate = ({
   content,
   contentComponent,
@@ -95,8 +97,8 @@ const WorkTemplate = ({
         ) : null}
         {product ?
           <div className="product">
-          <div className="price">{formatCurrency(product.price)}</div>
-          <div className="add-to-cart" onClick={addToCart}>Add to Cart</div>
+          <p className="price">{formatCurrency(product.price)}</p>
+          <p className="add-to-cart" onClick={addToCart}>{spanify("Add to Cart")}</p>
           </div>
            : ""}
       </div>
@@ -114,9 +116,10 @@ WorkTemplate.propTypes = {
 }
 
 const getProduct = (allStripePrice,price_id) => {
+  if(!allStripePrice || !price_id)
+    return {}
   const prices = allStripePrice.edges.map(e => e.node)
   const price = prices.find((p)=>p.id === price_id)
-  console.log("dem prices",price)
   const product = price.product
   product.image = product.images[0]
   product.price = price.unit_amount
@@ -130,8 +133,8 @@ const getProduct = (allStripePrice,price_id) => {
 const Work = ({ data }) => {
   const { markdownRemark: post } = data
   const { allStripePrice } = data
+  console.log('trying to get product ',allStripePrice,post.frontmatter.price_id)
   const product = getProduct(allStripePrice,post.frontmatter.price_id)
-  console.log("dataz",data)
   return (
     <Layout>
       <WorkTemplate

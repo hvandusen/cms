@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { useShoppingCart, DebugCart } from 'use-shopping-cart'
-import { Product } from './Product'
 // import { CartItems } from './CartItems'
 const productData = [
   {
@@ -21,7 +20,6 @@ const productData = [
 const Cart = () => {
   /* Gets the totalPrice and a method for redirecting to stripe */
   const shopping_cart = useShoppingCart()
-  console.log(shopping_cart)
   return (
     <div className="cart">
       {/* This is where we'll render our cart */}

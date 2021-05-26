@@ -660,6 +660,14 @@ span
         margin: 0 auto
         max-width: 100%
         display: block
+    .product
+      .add-to-cart
+        cursor: pointer
+        &:hover
+          color: #364497
+          animation: underline-rgb-sparkle 1s
+          span
+            @include span-text-rgb-sparkle(.3s)
 
 .paper-nav
   position: absolute
