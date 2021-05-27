@@ -16,4 +16,6 @@ description: >-
   2014.
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1600701291/IMG_7773_hfadwi.jpg
+images:
+  - https://res.cloudinary.com/candusen/image/upload/v1600701291/IMG_7773_hfadwi.jpg
 ---
