@@ -95,7 +95,7 @@ const WorkTemplate = ({
             </ul>
           </div>
         ) : null}
-        {product ?
+        {product && product.price ?
           <div className="product">
           <p className="price">{formatCurrency(product.price)}</p>
           <p className="add-to-cart" onClick={addToCart}>{spanify("Add to Cart")}</p>
