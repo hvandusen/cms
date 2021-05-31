@@ -14,7 +14,7 @@ const TemplateWrapper = ({ children }) => {
       <Helmet>
         <html lang="en" />
         <title>Henry Van Dusen</title>
-        <meta name="description" content="a site for the boys" />
+        <meta name="description" content="henry van dusen's work :)" />
 
         <link
           rel="apple-touch-icon"
