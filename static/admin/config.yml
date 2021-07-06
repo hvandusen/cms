@@ -54,6 +54,27 @@ collections:
       - {label: "Code", name: "paper_code", widget: "code", required: false}
       - {label: "Interactivity", name: "interactivity", widget: "select", multiple: true, options: ["mousemove","click","drag","click-and-move"], required: false}
       - {label: "Send to back", name: "desort", widget: "boolean", default: false, required: false}
+      - label: 'Post Content'
+        name: 'post_content'
+        widget: 'list'
+        types:
+          - label: 'Text'
+            name: 'post_content_text'
+            widget: 'object'
+            fields:
+              - { label: 'Header', name: 'string', widget: 'string' }
+              - { label: 'Text', name: 'text', widget: 'markdown' }
+          - label: 'Figure'
+            name: 'post_content_figure'
+            widget: 'object'
+            fields:
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Caption', name: 'caption', widget: 'text'}
+          - label: 'Code'
+            name: 'post_content_code'
+            widget: 'object'
+            fields:
+              - {label: "Code", name: "code", widget: "code", required: false}
 
   - name: "pages"
     label: "Pages"
