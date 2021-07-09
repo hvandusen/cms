@@ -3,8 +3,9 @@ templateKey: work
 title: Ellsworth painting generator
 type: Candusen page
 date: 2020-07-29T15:25:04.765Z
+date-finish: 2021-07-09T12:57:08.566Z
 featuredimage:
-  - https://res.cloudinary.com/candusen/image/upload/v1600431841/Screen_Shot_2020-09-17_at_6.47.07_PM_geditx.png
+  - https://res.cloudinary.com/candusen/image/upload/v1625835455/Screen_Shot_2021-07-09_at_7.55.46_AM_jdaetp.png
 paper_code:
   code: |
     var path;
