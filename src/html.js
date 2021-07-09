@@ -15,6 +15,20 @@ export default function HTML(props) {
         {props.headComponents}
         <script src={`${withPrefix('/')}paper-full.min.v0.12.15.js`}></script>
         <script src={`https://code.jquery.com/jquery-3.6.0.min.js`}></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-EQH20J0HNS"></script>
+        <script type="text/javascript"   dangerouslySetInnerHTML={{ __html: `
+          if(!!window || typeof window !== "undefined"){
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments)
+            };
+            if(dataLayer){
+              gtag('js', new Date());
+              gtag('config', 'G-EQH20J0HNS');
+            }
+          }
+          ` }}>
+        </script>
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}

@@ -184,12 +184,28 @@ span
 
 .cart
   position: fixed
-  top: 2rem
-  right: 6rem
+  top: 1rem
+  right: 1rem
   z-index: 32
   display: flex
+  width: 66px
   > div
     margin-left: 5px
+  .cart-stuff
+    font-size: 13px
+    button, .checkout
+      border: solid black 1px
+      padding: 4px
+      cursor: pointer
+      &:hover
+        color: white
+        background: black
+    button
+      margin: 0
+      background: none
+      margin-bottom: 5px
+    .cart-count
+      margin-bottom: 28px
 
 @mixin effect8
   position: relative
@@ -789,6 +805,10 @@ span
     height: 1.5rem
     outline: none
     cursor: pointer
+    &.cart-mode
+      width: 4rem
+      height: 2.9rem
+      transform: translate(10px,-11px)
 
 .navbar-item
   padding: 0

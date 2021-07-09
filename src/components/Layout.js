@@ -6,8 +6,12 @@ import Cart from '../components/Cart'
 import './all.sass'
 // import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
+import { useShoppingCart, DebugCart } from 'use-shopping-cart'
 
+let cartCount;
 const TemplateWrapper = ({ children }) => {
+  const {cartCount} = useShoppingCart()
+
   // const { title, description } = useSiteMetadata()
   return (
     <div>
@@ -49,8 +53,8 @@ const TemplateWrapper = ({ children }) => {
           content={`${withPrefix('/')}img/og-image.jpg`}
         />
       </Helmet>
-      <Navbar />
-      <Cart />
+      <Cart cartcount={cartCount}/>
+      <Navbar cartcount={cartCount}/>
       <div id="page">{children}</div>
         <Footer />
     </div>

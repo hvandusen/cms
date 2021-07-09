@@ -9,6 +9,7 @@ module.exports = {
     title: 'henry van dusen',
     description:
       'stuff i (henry van dusen) do!',
+    gatsby_env: process.env.NODE_ENV
   },
   plugins: [
     'gatsby-plugin-react-helmet',

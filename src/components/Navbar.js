@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import logo from '../img/ellsworth-shape-logo-padding.png'
-
+import cartLogo from '../img/ellsworth-shape-cart.png'
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -33,7 +33,7 @@ const Navbar = class extends React.Component {
   }
 
   render() {
-
+    const cartmode = this.props.cartcount > 0
     return (
       <nav
         className={`navbar is-transparent ${this.state.navBarActiveClass}`}
@@ -41,11 +41,11 @@ const Navbar = class extends React.Component {
         aria-label="main-navigation"
       >
         <Link to="/" className="navbar-item navbar-icon" title="henry van dusen homepage">
-          <div className="nav-icon"
+          <div className={`nav-icon ${(cartmode ? 'cart-mode' : "")}`}
           role="menu" tabIndex={0}
           data-target="nav"
           style={{
-            backgroundImage: `url(${logo})`,
+            backgroundImage: `url(${(cartmode ? cartLogo : logo)})`,
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat"
 

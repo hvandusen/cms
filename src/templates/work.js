@@ -12,6 +12,8 @@ const ensureHttp = (str) => str && (str.indexOf("http")> - 1 ? str : "https://"+
 
 const spanify = (str) => str.split("").map((char,i)=> <span key={i}>{char}</span>)
 
+
+
 const WorkTemplate = ({
   content,
   contentComponent,
@@ -23,6 +25,7 @@ const WorkTemplate = ({
   product,
   featured,
   tags,
+  mode,
   url,
   title,
   helmet,
@@ -74,7 +77,7 @@ const WorkTemplate = ({
               })}
             </div>
         ) : ""}
-        {featured && url ?
+        {featured && url && url.indexOf("https")>-1 ?
           <div className="work-iframe">
             <div className={`iframe-cover ${iframeClicked}`} onClick={iframeCoverClicked}><h3>Browse site</h3></div>
             <iframe style={{
@@ -119,6 +122,7 @@ const getProduct = (allStripePrice,price_id) => {
   if(!allStripePrice || !price_id)
     return {}
   const prices = allStripePrice.edges.map(e => e.node)
+  console.log("ok now ",prices,price_id)
   const price = prices.find((p)=>p.id === price_id)
   const product = price.product
   product.image = product.images[0]
@@ -133,8 +137,10 @@ const getProduct = (allStripePrice,price_id) => {
 const Work = ({ data }) => {
   const { markdownRemark: post } = data
   const { allStripePrice } = data
-  console.log('trying to get product ',allStripePrice,post.frontmatter.price_id)
-  const product = getProduct(allStripePrice,post.frontmatter.price_id)
+  const mode = data.site.siteMetadata.gatsby_env
+  let price_id = post.frontmatter[`price_${(mode === "development" ? 'test_':'')}id`]
+  console.log('trying to get product ',mode,allStripePrice,price_id)
+  const product = getProduct(allStripePrice, price_id)
   return (
     <Layout>
       <WorkTemplate
@@ -146,6 +152,7 @@ const Work = ({ data }) => {
         images={post.frontmatter.images}
         featured={post.frontmatter.featured}
         product={product}
+        mode={mode}
         featuredSharp={post.featuredSharp}
         imagesSharp={post.imagesSharp}
         helmet={
@@ -183,6 +190,7 @@ export const pageQuery = graphql`
         title
         description
         price_id
+        price_test_id
         images
         featured
         url
@@ -218,6 +226,11 @@ export const pageQuery = graphql`
             name
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        gatsby_env
       }
     }
   }

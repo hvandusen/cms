@@ -43,8 +43,7 @@ const Thumb = ({work,filter}) =>{
           style={{
             backgroundSize: "contain",
             backgroundImage: `url(${bgImg ? '' : img.images.fallback.src})`
-          }}
-        >
+          }}>
       </BackgroundImage> :
       <GatsbyImage image={img} alt={"we testin"} />
     }
