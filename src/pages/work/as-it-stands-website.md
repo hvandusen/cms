@@ -2,7 +2,7 @@
 templateKey: work
 title: As It Stands . LA
 type: client site
-featured: true
+featured: false
 draft: false
 date: 2020-08-29T16:35:44.581Z
 date-finish: 2021-05-18T19:50:52.657Z
