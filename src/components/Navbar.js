@@ -9,6 +9,7 @@ const Navbar = class extends React.Component {
     this.state = {
       active: false,
       navBarActiveClass: '',
+      emailCopied: false
     }
   }
 
@@ -55,6 +56,10 @@ const Navbar = class extends React.Component {
           ></div>
         </Link>
         <Link to="/" id="nav-main-link" className="navbar-item" title="henry van dusen homepage"><h1 className="header"><span>H</span><span>e</span><span>n</span><span>r</span><span>y</span><span> </span><span>V</span><span>a</span><span>n</span><span> </span><span>D</span><span>u</span><span>s</span><span>e</span><span>n</span></h1></Link>
+        <a className={`email ${this.state.emailCopied ? "copied" : ""}`}type="email" value="henry@candusen.net" onClick={() => {
+          navigator.clipboard.writeText("henry@candusen.net");
+          this.setState({emailCopied: true});
+        }}>{this.state.emailCopied ? "Email copied!" : "Wanna work together?"}</a>
         <div className="container">
           <div className="navbar-brand">
 

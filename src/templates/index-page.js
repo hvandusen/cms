@@ -21,6 +21,7 @@ const labelOrderedWorks = (works) => {
 }
 
 const sortEdgesByFmField = (array,field) => {
+  console.log("sorting array ",array,array[0].node.frontmatter)
   return array.slice().sort((a,b) => a.node.frontmatter[field] > b.node.frontmatter[field] ? 1 : -1);
 }
 const IndexPageTemplate = ({
@@ -50,7 +51,8 @@ const IndexPageTemplate = ({
 }
 
 const IndexPage = ({ data }) => {
-  const allworks = sortEdgesByFmField(data.allMarkdownRemark.edges,"id",false).map((e) => e.node).reverse()
+  const allworks = sortEdgesByFmField(data.allMarkdownRemark.edges,"featured",false).map((e) => e.node).reverse()
+  console.log(allworks)
   return (
     <Layout>
       <IndexPageTemplate
