@@ -2,7 +2,7 @@
 templateKey: work
 title: abcryb.com
 type: client site
-featured: true
+featured: false
 draft: false
 date: 2017-01-03T05:00:00.000Z
 date-finish: 2017-02-16T15:40:00.000Z
