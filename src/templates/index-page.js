@@ -84,13 +84,7 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
+        images
       }
     }
     allMarkdownRemark(filter: {fields: {slug: {regex: "/work/"}}}) {
@@ -98,6 +92,11 @@ export const pageQuery = graphql`
         node {
           id
           html
+          featuredImg {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             type
@@ -110,14 +109,6 @@ export const pageQuery = graphql`
             tags
             paper_code {
               code
-            }
-          }
-          featuredSharp {
-            childImageSharp {
-              gatsbyImageData(
-                width: 800
-                formats: [AUTO, WEBP, AVIF]
-              )
             }
           }
           fields {

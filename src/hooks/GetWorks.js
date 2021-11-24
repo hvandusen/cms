@@ -27,14 +27,6 @@ const GetWorks = () => {
                 code
               }
             }
-            featuredSharp {
-              childImageSharp {
-                gatsbyImageData(
-                  width: 800
-                  formats: [AUTO, WEBP, AVIF]
-                )
-              }
-            }
             fields {
               slug
             }

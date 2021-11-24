@@ -7,7 +7,7 @@ draft: false
 date: 2017-01-03T05:00:00.000Z
 date-finish: 2017-02-16T15:40:00.000Z
 url: https://abcryb.com
-description: "I was hired to work on a project with my sister where we used the
+description: "I was hired to work on a project with Dusen Dusen where we used the
   Microsoft Surface pro to build a site and all its assets. It's a cute little
   interactive site with different activities. "
 featuredimage:

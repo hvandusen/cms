@@ -20,7 +20,8 @@ const WorkTemplate = ({
   description,
   images,
   featuredSharp,
-  imagesSharp,
+  featuredImg,
+  featuredImgs,
   display_url,
   product,
   featured,
@@ -32,10 +33,10 @@ const WorkTemplate = ({
 }) => {
   const PostContent = contentComponent || Content
   const formatCurrency = (price) => `$${price/100}`
-  const img = getImage(featuredSharp)
-  const niceImages = imagesSharp.map((e,i) => {
+  const img = getImage(featuredImg)
+  const niceImages = featuredImgs ? featuredImgs.map((e,i) => {
       return e.childImageSharp ? getImage(e) : images[i];
-  })
+  }) : null;
   let [iframeClicked,setIframeClicked] = useState("")
   const iframeCoverClicked = (e) => setIframeClicked("clicked")
   const { addItem,cartDetails,incrementItem } = useShoppingCart()
@@ -136,10 +137,11 @@ const getProduct = (allStripePrice,price_id) => {
 
 const Work = ({ data }) => {
   const { markdownRemark: post } = data
+  console.log("POST!!!",post)
   const { allStripePrice } = data
   const mode = data.site.siteMetadata.gatsby_env
   let price_id = post.frontmatter[`price_${(mode === "development" ? 'test_':'')}id`]
-  console.log('trying to get product ',mode,allStripePrice,price_id)
+  console.log("post",post)
   const product = getProduct(allStripePrice, price_id)
   return (
     <Layout>
@@ -154,7 +156,8 @@ const Work = ({ data }) => {
         product={product}
         mode={mode}
         featuredSharp={post.featuredSharp}
-        imagesSharp={post.imagesSharp}
+        featuredImgs={post.featuredImgs}
+        featuredImg={post.featuredImg}
         helmet={
           <Helmet titleTemplate="%s | Work">
             <title>{`${post.frontmatter.title}`}</title>
@@ -185,6 +188,16 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
+      featuredImg {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
+      featuredImgs {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
@@ -196,22 +209,6 @@ export const pageQuery = graphql`
         url
         display_url
         tags
-      }
-      featuredSharp {
-        childImageSharp {
-          gatsbyImageData(
-            width: 800
-            formats: [AUTO, WEBP, AVIF]
-          )
-        }
-      }
-      imagesSharp {
-        childImageSharp {
-          gatsbyImageData(
-            width: 1400
-            formats: [AUTO, WEBP, AVIF]
-          )
-        }
       }
     }
     allStripePrice {

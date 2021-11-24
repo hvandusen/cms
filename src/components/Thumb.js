@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
 import { convertToBgImage } from "gbimage-bridge"
 
 const num = (range) => Math.floor(Math.random()*range)
@@ -20,10 +20,11 @@ const slugifyType = (str) => str.replace(/\s+/g, '-').toLowerCase().replace("mix
 
 const Thumb = ({work,filter}) =>{
   // console.log("work supplied at one", work)
+  console.log("thumb work",work)
   const fm = work.frontmatter
   const workType = fm.type
   const theClass = " thumb thumb-"+fm.type.split(" ")[0].toLowerCase()
-  const img = getImage(work.featuredSharp)
+  const img = getImage(work.featuredImg)
   let bgImg
   try {
     bgImg = convertToBgImage(img)

@@ -101,7 +101,21 @@ exports.createPages = ({ actions, graphql }) => {
   })
 }
 
-async function onCreateNode({
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  createTypes(`
+    type MarkdownRemark implements Node {
+      frontmatter: Frontmatter
+      featuredImg: File @link(from: "fields.localFeaturedImg")
+      featuredImgs: [File] @link(from: "fields.localFeaturedImgs")
+    }
+    type Frontmatter {
+      title: String!
+    }
+  `)
+}
+
+exports.onCreateNode = async ({
   node,
   actions,
   actions: { createNode },
@@ -110,9 +124,9 @@ async function onCreateNode({
   store,
   cache,
   createNodeId,
-}){
+}) => {
   const { createNodeField } = actions
-  fmImagesToRelative(node) // convert image paths for gatsby images
+  //fmImagesToRelative(node) // convert image paths for gatsby images
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
     createNodeField({
@@ -120,55 +134,53 @@ async function onCreateNode({
       node,
       value,
     })
-    let url = node.frontmatter.featuredimage ? node.frontmatter.featuredimage[0] : null;
-    if (url !== null && url !== undefined) {
-      let fileNode = await createRemoteFileNode({
-        url: url, // string that points to the URL of the image
+    if(!node.frontmatter.hasOwnProperty("featuredimage"))
+      console.log("Fuck",node.frontmatter.title)
+      //If thers a featured image add file node for it
+    if (
+      node.internal.type === "MarkdownRemark" &&
+      node.frontmatter.hasOwnProperty("featuredimage") &&
+      node.frontmatter.featuredimage.length
+    ) {
+      console.log(node.frontmatter.featuredimage)
+      const fileNode = await createRemoteFileNode({
+        url: node.frontmatter.featuredimage[0], // string that points to the URL of the image
         parentNodeId: node.id, // id of the parent node of the fileNode you are going to create
         createNode, // helper function in gatsby-node to generate the node
         createNodeId, // helper function in gatsby-node to generate the node id
         cache, // Gatsby's cache
-        store, // Gatsby's redux store
+        store, // Gatsby's Redux store
       })
-      // if the file was created, attach the new node to the parent node
+      // if the file was created, extend the node with "localFeaturedImg"
       if (fileNode) {
-        node.featuredimage___NODE = fileNode.id
+        createNodeField({ node, name: "localFeaturedImg", value: fileNode.id })
       }
     }
-    let urls = node.frontmatter.images ? node.frontmatter.images : null;
-    node.images___NODE = []
-    if (urls !== null && urls !== undefined) {
-      for(var i=0;i<urls.length;i++){
-        let fileNode = await createRemoteFileNode({
-          url: urls[i], // string that points to the URL of the image
+    //If theres a images field add file node for them
+    if (
+      node.internal.type === "MarkdownRemark" &&
+      node.frontmatter.hasOwnProperty("images") &&
+      node.frontmatter.images.length
+    ) {
+      const imgs = node.frontmatter.images;
+      let fileNodes = []
+      for (var i = 0; i < imgs.length; i++) {
+        const fileNode = await createRemoteFileNode({
+          url: imgs[i], // string that points to the URL of the image
           parentNodeId: node.id, // id of the parent node of the fileNode you are going to create
           createNode, // helper function in gatsby-node to generate the node
           createNodeId, // helper function in gatsby-node to generate the node id
           cache, // Gatsby's cache
-          store, // Gatsby's redux store
+          store, // Gatsby's Redux store
         })
-        // if the file was created, attach the new node to the parent node
-        if (fileNode) {
-          node.images___NODE.push(fileNode.id)
-        }
+        fileNodes.push(fileNode.id)
+      }
+      // if the file was created, extend the node with "localFeaturedImg"
+      if (fileNodes.length) {
+        createNodeField({ node, name: "localFeaturedImgs", value: fileNodes })
       }
     }
+
+    return;
   }
 }
-exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions
-  createTypes(`
-    type MarkdownRemark implements Node {
-      frontmatter: Frontmatter
-      featuredSharp: File @link(from: "featuredimage___NODE")
-      imagesSharp: [File] @link(from: "images___NODE")
-    }
-    type Frontmatter {
-      title: String!
-      featuredimage: [String]
-      images: [String]
-    }
-  `)
-}
-
-exports.onCreateNode = onCreateNode
