@@ -134,15 +134,13 @@ exports.onCreateNode = async ({
       node,
       value,
     })
-    if(!node.frontmatter.hasOwnProperty("featuredimage"))
-      console.log("Fuck",node.frontmatter.title)
+
       //If thers a featured image add file node for it
     if (
       node.internal.type === "MarkdownRemark" &&
       node.frontmatter.hasOwnProperty("featuredimage") &&
       node.frontmatter.featuredimage.length
     ) {
-      console.log(node.frontmatter.featuredimage)
       const fileNode = await createRemoteFileNode({
         url: node.frontmatter.featuredimage[0], // string that points to the URL of the image
         parentNodeId: node.id, // id of the parent node of the fileNode you are going to create

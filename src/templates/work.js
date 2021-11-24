@@ -65,7 +65,6 @@ const WorkTemplate = ({
         {niceImages && niceImages.length ? (
             <div className="work-images">
               {niceImages.map((img,i) => {
-                console.log("work-image: ",img)
                 if(typeof img !== "string"){
                   return <GatsbyImage className="work-image" key={i} image={img} alt={"we testin"} />
                 } else {
@@ -123,7 +122,6 @@ const getProduct = (allStripePrice,price_id) => {
   if(!allStripePrice || !price_id)
     return {}
   const prices = allStripePrice.edges.map(e => e.node)
-  console.log("ok now ",prices,price_id)
   const price = prices.find((p)=>p.id === price_id)
   const product = price.product
   product.image = product.images[0]
@@ -131,17 +129,14 @@ const getProduct = (allStripePrice,price_id) => {
   product.price_id = price.id
   product.currency = "USD"
   delete product.id
-  console.log(product)
   return product
 }
 
 const Work = ({ data }) => {
   const { markdownRemark: post } = data
-  console.log("POST!!!",post)
   const { allStripePrice } = data
   const mode = data.site.siteMetadata.gatsby_env
   let price_id = post.frontmatter[`price_${(mode === "development" ? 'test_':'')}id`]
-  console.log("post",post)
   const product = getProduct(allStripePrice, price_id)
   return (
     <Layout>
