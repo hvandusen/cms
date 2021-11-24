@@ -7,8 +7,7 @@ const stripePromise = loadStripe(process.env.STRIPE_PUB)//process.env.REACT_APP_
 exports.wrapRootElement = ({ element }) => {
   return (
     <CartProvider
-    mode="payment"
-    cartMode="client-only"
+    mode="client-only"
     stripe={stripePromise}
     successUrl="https://henryvd.com"
     cancelUrl="https://henryvd.com"
