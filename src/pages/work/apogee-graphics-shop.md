@@ -26,4 +26,5 @@ postContent:
   - type: figure
     image:
       - https://res.cloudinary.com/candusen/image/upload/v1640271800/apogee_zdup45.jpg
+    caption: This is caption
 ---
