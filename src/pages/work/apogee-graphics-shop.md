@@ -23,4 +23,7 @@ post_content:
     image:
       - https://res.cloudinary.com/candusen/video/upload/v1640271838/apogee_sitebrowse_xymhdb.mp4
     caption: A quick browse through the site!
+  - type: post_content_figure
+    image:
+      - https://res.cloudinary.com/candusen/image/upload/v1640271800/apogee_zdup45.jpg
 ---
