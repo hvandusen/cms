@@ -41,6 +41,7 @@ export const Blocks = ({ postContent, images }) => {
           <div className="mobile-video-cover" onClick={clickedContent}>
             <video playsinline autoPlay loop muted key={i} src={block.video[0]}></video>
             </div>
+            {block.caption && <div className='caption'>{block.caption}</div>}
           </div>
         break;
       case "code":

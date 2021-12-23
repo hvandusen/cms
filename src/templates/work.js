@@ -88,7 +88,7 @@ const WorkTemplate = ({
             width: "100%",
             height: "70vh",
             }} src={url}></iframe>
-            <a className="work-iframe-link" target="_blank" href={url.indexOf("http://") ? url : "http://"+url}>{url}</a>
+            <a className="work-iframe-link" target="_blank" href={display_url && display_url.indexOf("http://") ? display_url : "http://"+display_url}>{display_url}</a>
           </div> : ""}
         {tags && tags.length ? (
           <div style={{ marginTop: `4rem` }}>

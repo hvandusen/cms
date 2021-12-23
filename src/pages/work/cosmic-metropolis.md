@@ -12,7 +12,9 @@ description: A website showcasing my dad's large-scale pen drawing Cosmic
   also wraps around itself, so it can be tiled infinitely.
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1600717851/Screen_Shot_2020-09-21_at_3.50.24_PM_gcu43c.png
+postContent:
+  - type: video
+    video:
+      - https://res.cloudinary.com/candusen/video/upload/v1621359609/cosmic-vid_tfxfxl.mp4
+    caption: The panels are very detailed so this site allows you to zoom in on each one.
 ---
-<div class='caption-container video-caption'><div className="mobile-video-cover">
-    <video playsinline autoplay muted loop src=https://res.cloudinary.com/candusen/video/upload/v1621359609/cosmic-vid_tfxfxl.mp4></video></div>
-  <div class='caption'>The panels are very detailed so this site allows you to zoom in on each one.</div></div>

@@ -65,13 +65,11 @@ collections:
           - label: 'Header'
             name: 'header'
             widget: 'text'
-          - label: 'Text'
+          - label: 'Body text'
             name: 'text'
-            widget: 'object'
             summary: '{{fields.text}}'
-            fields:
-              - { label: 'Header', name: 'string', widget: 'string', required: false }
-              - { label: 'Text', name: 'text', widget: 'markdown' }
+            widget: 'markdown'
+            field: { label: 'Text', name: 'text', widget: 'markdown' }
           - label: 'Image'
             name: 'image'
             widget: 'object'
