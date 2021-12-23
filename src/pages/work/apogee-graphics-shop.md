@@ -7,6 +7,7 @@ draft: false
 date: 2021-12-23T15:13:15.657Z
 date-finish: 2021-12-23T15:13:15.663Z
 display_url: apogeegraphics.la
+url: apogeegraphics.la
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1640271800/apogee_zdup45.jpg
 desort: false
