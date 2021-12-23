@@ -557,11 +557,15 @@ span
       margin: 0
       padding: 0 2rem
     .caption-container
+      position: relative
       margin: 3rem 0
-      img,video
+      img,video, .gatsby-image-wrapper-constrained
         @include rgbShadow
         width: 100%
         // box-shadow: grey 5px 5px 14px
+        &.gatsby-image-wrapper-constrained
+          img
+            position: absolute
       .caption
         @extend p
         font-size: 1.2rem
@@ -641,6 +645,8 @@ span
         margin-top: 2rem
     .mobile-video-cover, [classname="mobile-video-cover"]
       position: relative
+      video
+        width: 100%
       &.clicked
         &:after
           backdrop-filter: blur(0px)
@@ -669,6 +675,7 @@ span
         @include rgbShadow
         margin-bottom: 6rem
         img, video
+          position: relative
           max-width: 100%
     p
       img

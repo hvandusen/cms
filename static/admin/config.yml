@@ -62,6 +62,9 @@ collections:
         summary: "items"
         label_singular: "block"
         types:
+          - label: 'Header'
+            name: 'header'
+            widget: 'text'
           - label: 'Text'
             name: 'text'
             widget: 'object'
@@ -69,12 +72,19 @@ collections:
             fields:
               - { label: 'Header', name: 'string', widget: 'string', required: false }
               - { label: 'Text', name: 'text', widget: 'markdown' }
-          - label: 'Figure'
-            name: 'figure'
+          - label: 'Image'
+            name: 'image'
             widget: 'object'
             summary: ''
             fields:
               - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Caption', name: 'caption', widget: 'text', required: false}
+          - label: 'Video'
+            name: 'video'
+            widget: 'object'
+            summary: ''
+            fields:
+              - { label: 'Video', name: 'video', widget: 'image' }
               - { label: 'Caption', name: 'caption', widget: 'text', required: false}
           - label: 'Code'
             name: 'code'

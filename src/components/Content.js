@@ -28,21 +28,23 @@ export const Blocks = ({ postContent, images }) => {
   return postContent.map((block,i) => {
     switch (block.type) {
       case "text":
-        return <div key={i} onClick={clickedContent} className={"block block-text"}>text</div>
+        return <p key={i} onClick={clickedContent} className={"block block-text work-text"}>{block.text}</p>
         break;
-      case "figure":
-        if(block.image[0].indexOf("mp4")>-1){
-          return <div key={i} onClick={clickedContent} className={"block block-video"}>video</div>
-        } else {
-          return <div key={i} className='caption-container image-caption block block-image'>
+      case "image":
+          return <div key={i} className='caption-container image-caption block block-image work-image'>
               <GatsbyImage image={images[imagesUsed++].childImageSharp.gatsbyImageData} alt="" />
-            {block.caption && <div class='caption'>{block.caption}</div>}
+            {block.caption && <div className='caption'>{block.caption}</div>}
             </div>
-        }
         break;
-
+      case "video":
+        return <div key={i} onClick={clickedContent} className={"caption-container block block-video work-video videowrapper"}>
+          <div className="mobile-video-cover" onClick={clickedContent}>
+            <video playsinline autoPlay loop muted key={i} src={block.video[0]}></video>
+            </div>
+          </div>
+        break;
       case "code":
-        return <div key={i} onClick={clickedContent} className={"block block-code"}>code</div>
+        return <div key={i} onClick={clickedContent} className={"block block-code work-code"}>code</div>
         break;
       default:
 

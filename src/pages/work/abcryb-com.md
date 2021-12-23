@@ -19,10 +19,7 @@ images:
   - https://res.cloudinary.com/candusen/image/upload/v1621343457/Screen_Shot_2021-05-17_at_10.18.29_AM_wg1ks1.png
   - https://res.cloudinary.com/candusen/image/upload/v1621343456/Screen_Shot_2021-05-17_at_10.24.00_AM_z20ljc.png
 postContent:
-  - type: text
-    string: Chapter 1
-    text: Here is some of the content yall.
-  - type: figure
+  - type: image
     caption: This is the caption.
     image:
       - https://res.cloudinary.com/candusen/image/upload/v1616359558/Screen_Shot_2021-03-21_at_4.45.36_PM_mp7sgu.png

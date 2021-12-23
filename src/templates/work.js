@@ -205,10 +205,10 @@ export const pageQuery = graphql`
         description
         postContent {
             type
-            string
             text
             caption
             image
+            video
           }
         price_id
         price_test_id
