@@ -108,6 +108,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       frontmatter: Frontmatter
       featuredImg: File @link(from: "fields.localFeaturedImg")
       featuredImgs: [File] @link(from: "fields.localFeaturedImgs")
+      blockImgs: [File] @link(from: "fields.localBlockImgs")
     }
     type Frontmatter {
       title: String!
@@ -126,7 +127,7 @@ exports.onCreateNode = async ({
   createNodeId,
 }) => {
   const { createNodeField } = actions
-  //fmImagesToRelative(node) // convert image paths for gatsby images
+  fmImagesToRelative(node) // convert image paths for gatsby images
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
     createNodeField({
@@ -176,6 +177,31 @@ exports.onCreateNode = async ({
       // if the file was created, extend the node with "localFeaturedImg"
       if (fileNodes.length) {
         createNodeField({ node, name: "localFeaturedImgs", value: fileNodes })
+      }
+    }
+    //If images are added to content blocks
+    if (
+      node.internal.type === "MarkdownRemark" &&
+      node.frontmatter.hasOwnProperty("postContent") &&
+      node.frontmatter.postContent.length &&
+      node.frontmatter.postContent.find(e => e.image && e.image.length && e.image[0].indexOf(".mp4") === -1)
+    ) {
+      const imgs = node.frontmatter.postContent.filter(e => e.image && e.image.length && e.image[0].indexOf(".mp4") === -1).map(c => c.image[0]);
+      let fileNodes = []
+      for (var i = 0; i < imgs.length; i++) {
+        const fileNode = await createRemoteFileNode({
+          url: imgs[i], // string that points to the URL of the image
+          parentNodeId: node.id, // id of the parent node of the fileNode you are going to create
+          createNode, // helper function in gatsby-node to generate the node
+          createNodeId, // helper function in gatsby-node to generate the node id
+          cache, // Gatsby's cache
+          store, // Gatsby's Redux store
+        })
+        fileNodes.push(fileNode.id)
+      }
+      // if the file was created, extend the node with "localFeaturedImg"
+      if (fileNodes.length) {
+        createNodeField({ node, name: "localBlockImgs", value: fileNodes })
       }
     }
 

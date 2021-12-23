@@ -18,15 +18,15 @@ images:
   - https://res.cloudinary.com/candusen/image/upload/v1621343456/Screen_Shot_2021-05-17_at_10.18.48_AM_ltj6zw.png
   - https://res.cloudinary.com/candusen/image/upload/v1621343457/Screen_Shot_2021-05-17_at_10.18.29_AM_wg1ks1.png
   - https://res.cloudinary.com/candusen/image/upload/v1621343456/Screen_Shot_2021-05-17_at_10.24.00_AM_z20ljc.png
-post_content:
-  - type: post_content_text
+postContent:
+  - type: text
     string: Chapter 1
     text: Here is some of the content yall.
-  - type: post_content_figure
+  - type: figure
     caption: This is the caption.
     image:
       - https://res.cloudinary.com/candusen/image/upload/v1616359558/Screen_Shot_2021-03-21_at_4.45.36_PM_mp7sgu.png
-  - type: post_content_code
+  - type: code
     code:
       code: |-
         var henry = "nice guy"

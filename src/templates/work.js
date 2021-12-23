@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet'
 import { graphql, Link, withPrefix } from 'gatsby'
 import Layout from '../components/Layout'
 import { useShoppingCart } from "use-shopping-cart"
-import Content, { HTMLContent, clickedContent } from '../components/Content'
+import Content, { HTMLContent, clickedContent, Blocks } from '../components/Content'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const ensureHttp = (str) => str && (str.indexOf("http")> - 1 ? str : "https://"+ str).replace("http://","https://")
@@ -30,6 +30,8 @@ const WorkTemplate = ({
   url,
   title,
   helmet,
+  postContent,
+  blockImgs
 }) => {
   const PostContent = contentComponent || Content
   const formatCurrency = (price) => `$${price/100}`
@@ -61,6 +63,7 @@ const WorkTemplate = ({
         </div>
         { description ? <div className="work-description"><p>{description}</p></div> : ""}
         {false && featuredSharp ? <GatsbyImage image={img} alt={"we testin"} /> : ""}
+        {postContent && <Blocks postContent={postContent} images={blockImgs}/>}
         <PostContent content={content} className="work-content-container"/>
         {niceImages && niceImages.length ? (
             <div className="work-images">
@@ -77,6 +80,7 @@ const WorkTemplate = ({
               })}
             </div>
         ) : ""}
+
         {featured && url && url.indexOf("https")>-1 ?
           <div className="work-iframe">
             <div className={`iframe-cover ${iframeClicked}`} onClick={iframeCoverClicked}><h3>Browse site</h3></div>
@@ -141,6 +145,7 @@ const Work = ({ data }) => {
   return (
     <Layout>
       <WorkTemplate
+        blockImgs={post.blockImgs}
         content={post.html}
         contentComponent={HTMLContent}
         display_url={post.frontmatter.display_url}
@@ -148,6 +153,7 @@ const Work = ({ data }) => {
         url={post.frontmatter.url}
         images={post.frontmatter.images}
         featured={post.frontmatter.featured}
+        postContent={post.frontmatter.postContent}
         product={product}
         mode={mode}
         featuredSharp={post.featuredSharp}
@@ -197,6 +203,13 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         description
+        postContent {
+            type
+            string
+            text
+            caption
+            image
+          }
         price_id
         price_test_id
         images
@@ -205,6 +218,12 @@ export const pageQuery = graphql`
         display_url
         tags
       }
+      blockImgs {
+          id
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
     }
     allStripePrice {
       edges {

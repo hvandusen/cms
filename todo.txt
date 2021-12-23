@@ -1,0 +1,11 @@
+content adding:
+
+title
+blocks
+  paragraph
+  block quote
+  video w caption
+  image w caption
+  code
+  iframe
+  paper canvas

@@ -54,24 +54,30 @@ collections:
       - {label: "Code", name: "paper_code", widget: "code", required: false}
       - {label: "Interactivity", name: "interactivity", widget: "select", multiple: true, options: ["mousemove","click","drag","click-and-move"], required: false}
       - {label: "Send to back", name: "desort", widget: "boolean", default: false, required: false}
-      - label: 'Post Content'
-        name: 'post_content'
+      - label: 'Blocks'
+        name: 'postContent'
         widget: 'list'
+        minimize_collapsed: true
+        collapsed: false
+        summary: "items"
+        label_singular: "block"
         types:
           - label: 'Text'
-            name: 'post_content_text'
+            name: 'text'
             widget: 'object'
+            summary: '{{fields.text}}'
             fields:
-              - { label: 'Header', name: 'string', widget: 'string' }
+              - { label: 'Header', name: 'string', widget: 'string', required: false }
               - { label: 'Text', name: 'text', widget: 'markdown' }
           - label: 'Figure'
-            name: 'post_content_figure'
+            name: 'figure'
             widget: 'object'
+            summary: ''
             fields:
               - { label: 'Image', name: 'image', widget: 'image' }
-              - { label: 'Caption', name: 'caption', widget: 'text'}
+              - { label: 'Caption', name: 'caption', widget: 'text', required: false}
           - label: 'Code'
-            name: 'post_content_code'
+            name: 'code'
             widget: 'object'
             fields:
               - {label: "Code", name: "code", widget: "code", required: false}
