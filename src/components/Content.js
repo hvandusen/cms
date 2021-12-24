@@ -25,17 +25,18 @@ const Content = ({ content, className }) => {
 export const Blocks = ({ postContent, images }) => {
   let imagesUsed = 0;
   console.log(postContent)
+  console.log("images: ",images)
   return postContent.map((block,i) => {
     switch (block.type) {
       case "text":
         return <p key={i} onClick={clickedContent} className={"block block-text work-text"}>{block.text}</p>
-        break;
+
       case "image":
-          return <div key={i} className='caption-container image-caption block block-image work-image'>
+          return (<div key={i} className='caption-container image-caption block block-image work-image'>
               <GatsbyImage image={images[imagesUsed++].childImageSharp.gatsbyImageData} alt="" />
             {block.caption && <div className='caption'>{block.caption}</div>}
-            </div>
-        break;
+            </div>)
+
       case "video":
         return <div key={i} onClick={clickedContent} className={"caption-container block block-video work-video videowrapper"}>
           <div className="mobile-video-cover" onClick={clickedContent}>
@@ -43,10 +44,10 @@ export const Blocks = ({ postContent, images }) => {
             </div>
             {block.caption && <div className='caption'>{block.caption}</div>}
           </div>
-        break;
+
       case "code":
         return <div key={i} onClick={clickedContent} className={"block block-code work-code"}>code</div>
-        break;
+
       default:
 
     }

@@ -12,6 +12,8 @@ description: A website for the band Flower Girl. Drops you into a random point
   anymore. I should fix it.
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1600709438/Screen_Shot_2020-09-21_at_1.30.21_PM_h7c5zo.png
-images:
-  - https://res.cloudinary.com/candusen/image/upload/v1621367711/Screen_Shot_2021-05-18_at_3.54.58_PM_l9hbqq.png
+postContent:
+  - type: image
+    image:
+      - https://res.cloudinary.com/candusen/image/upload/v1621367711/Screen_Shot_2021-05-18_at_3.54.58_PM_l9hbqq.png
 ---
