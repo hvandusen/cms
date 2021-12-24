@@ -3,12 +3,12 @@ templateKey: work
 title: Apogee Graphics Shop
 type: client site
 featured: false
-draft: false
+draft: true
 date: 2021-12-23T15:13:15.657Z
 date-finish: 2021-12-23T15:13:15.663Z
 display_url: apogeegraphics.la
-description: Apogee Graphics is a design and publishing company founded by artists
-  Laura Owens and Asha Schechter.
+description: Apogee Graphics is a design and publishing company founded by
+  artists Laura Owens and Asha Schechter.
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1640271800/apogee_zdup45.jpg
 desort: false
