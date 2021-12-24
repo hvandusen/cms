@@ -1,3 +1,4 @@
+@use "sass:math"
 $spritesheet-png: '../../static/img/spritesheet.png'
 $spritesheet-svg: '../../static/img/spritesheet.svg'
 $sprite-size: 128px
@@ -15,9 +16,9 @@ $sprite-size: 128px
 @mixin sprite($column: 0, $row: 0)
   // background-image: url($spritesheet-png)
   // background-image: url($spritesheet-svg)
-  background-position-x: $column * (100% / 8)
+  background-position-x: $column * math.div(100%, 8)
   background-position-y: $row * 100%
-  background-size: (100% * 8) (100% / 1)
+  background-size: (100% * 8) math.div(100%, 1)
 
 @mixin columns($start: 0,$end: 0)
   grid-column-end: $end

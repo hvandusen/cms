@@ -25,5 +25,5 @@ postContent:
   - type: image
     image:
       - https://res.cloudinary.com/candusen/image/upload/v1621359238/Screen_Shot_2021-05-18_at_1.33.14_PM_vxqobg.png
-tags: client
+tags: [client]
 ---
