@@ -64,23 +64,6 @@ const WorkTemplate = ({
         { description ? <div className="work-description"><p>{description}</p></div> : ""}
         {false && featuredSharp ? <GatsbyImage image={img} alt={"we testin"} /> : ""}
         {postContent && <Blocks postContent={postContent} images={blockImgs}/>}
-        <PostContent content={content} className="work-content-container"/>
-        {niceImages && niceImages.length ? (
-            <div className="work-images">
-              {niceImages.map((img,i) => {
-                if(typeof img !== "string"){
-                  return <GatsbyImage className="work-image" key={i} image={img} alt={"we testin"} />
-                } else {
-                  return (<div className="videowrapper">
-                    <div className="mobile-video-cover" onClick={clickedContent}>
-                      <video playsinline autoPlay loop muted key={i} src={img}></video>
-                      </div>
-                    </div>);
-                }
-              })}
-            </div>
-        ) : ""}
-
         {featured && url && url.indexOf("https")>-1 ?
           <div className="work-iframe">
             <div className={`iframe-cover ${iframeClicked}`} onClick={iframeCoverClicked}><h3>Browse site</h3></div>

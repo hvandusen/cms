@@ -21,6 +21,7 @@ collections:
   - name: "work"
     label: "Works"
     folder: "src/pages/work"
+    label_singular: "work"
     create: true
     slug: "{{slug}}"
     sortable_fields: ['commit_date', 'title', 'type', 'draft','interactivity',date']

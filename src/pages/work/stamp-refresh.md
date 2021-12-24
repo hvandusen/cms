@@ -13,6 +13,8 @@ description: |-
   Edition of 7, 2 artist proofs.
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1616555001/stamp-refresh-pic-straightened2_u5ttd4.jpg
-images:
-  - https://res.cloudinary.com/candusen/image/upload/v1616555001/stamp-refresh-pic-straightened2_u5ttd4.jpg
+postContent:
+  - type: image
+    image:
+      - https://res.cloudinary.com/candusen/image/upload/v1616555001/stamp-refresh-pic-straightened2_u5ttd4.jpg
 ---
