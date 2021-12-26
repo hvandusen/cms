@@ -15,12 +15,12 @@ paper_code:
     function onMouseDown(e){
     	draw = !draw;
     	if(draw){
-    		line = new Path(getOptions());
+    		line = new paper.Path(getOptions());
     	}
     }
 
-    var shadowOffset = new Point(-1550,-1550);
-    var shadowOffsets = new Point(200,200);
+    var shadowOffset = new paper.Point(-1550,-1550);
+    var shadowOffsets = new paper.Point(200,200);
     var isRetina = ( window.devicePixelRatio > 1)
     var getOptions = function(){
     	return{
@@ -34,7 +34,7 @@ paper_code:
     }
     }
 
-    var line = new Path(getOptions());
+    var line = new paper.Path(getOptions());
 
     $("body").on("touchend", function(){
     	draw = !draw;
@@ -43,7 +43,7 @@ paper_code:
     function onMouseMove(e){
     	var adder = e.delta.normalize().rotate(90).multiply(100)
     	if(draw){
-    			line.add(new Point(e.point+adder-shadowOffset));
+    			line.add(new paper.Point(e.point+adder-shadowOffset));
     			adder = adder.negate();
     			line.insertSegment(0,e.point+adder-shadowOffset)
     			line.position += line.movementgr;
