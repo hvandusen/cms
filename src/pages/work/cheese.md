@@ -19,7 +19,7 @@ paper_code:
     var sliceSize;
 
 
-    function cheese(pos,size){
+    function cheese(pos){
       var cheeseGroup = new Group();
       var topGuide = new Path.Circle(300,300,100);
       topGuide.scale(1,.3);
@@ -72,10 +72,6 @@ paper_code:
       top.bringToFront();
       cheeseGroup.children = [bottom,innerRight,innerLeft,rightSide,top]
       cheeseGroup.position = pos;
-      var bounds = new Path.Rectangle(0,0,size[0],size[1]);
-      bounds.position = cheeseGroup.position;
-      cheeseGroup.fitBounds(bounds.bounds)
-      cheeseGroup.scale(.9)
       return cheeseGroup;
     }
 
@@ -87,9 +83,14 @@ paper_code:
       var h = Math.floor(window.innerHeight / amt);
       for (var i = 0; i < amt; i++) {
         for (var j = 0; j < amt; j++) {
-          cheese([(w/2+w*i),(h/2+h*j)], [w,h]);
+          cheese([(w/2+w*i),(h/2+h*j)]);
         }
       }
+    }
+
+
+    function onMouseDown(){
+      cheeseGrid();
     }
 
 
