@@ -40,7 +40,7 @@ export const Blocks = ({ postContent, images }) => {
       case "video":
         return <div key={i} onClick={clickedContent} className={"caption-container block block-video work-video videowrapper"}>
           <div className="mobile-video-cover" onClick={clickedContent}>
-            <video playsinline autoPlay loop muted key={i} src={block.video[0]}></video>
+            <video playsInline webkit-playsinline="true" autoPlay loop muted key={i} src={block.video[0]}></video>
             </div>
             {block.caption && <div className='caption'>{block.caption}</div>}
           </div>

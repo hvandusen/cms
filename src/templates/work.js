@@ -64,6 +64,7 @@ const WorkTemplate = ({
         { description ? <div className="work-description"><p>{description}</p></div> : ""}
         {false && featuredSharp ? <GatsbyImage image={img} alt={"we testin"} /> : ""}
         {postContent && <Blocks postContent={postContent} images={blockImgs}/>}
+        {content && <PostContent content={content}/>}
         {featured && url && url.indexOf("https")>-1 ?
           <div className="work-iframe">
             <div className={`iframe-cover ${iframeClicked}`} onClick={iframeCoverClicked}><h3>Browse site</h3></div>
@@ -149,7 +150,6 @@ const Work = ({ data }) => {
               name="description"
               content={`${post.frontmatter.description}`}
             />
-            <script src={`${withPrefix('/')}paper-full.min.js`}></script>
           </Helmet>
         }
         tags={post.frontmatter.tags}

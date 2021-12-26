@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Henry VD CMS</title>
+  <style>
+    #publish {
+      position: absolute;
+      right: 250px;
+      z-index: 10000;
+      top: 20px;
+      color: black;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <a id="publish">Publish</a>
+  <script>
+    var publish = document.getElementById("publish");
+    publish.addEventListener('click', function (e) {
+      e.preventDefault();
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "https://api.netlify.com/build_hooks/5f636e14a0ebcb0e74013871", true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send();
+    });
+  </script>
+  <!-- Include the script that builds the page and powers Netlify CMS -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+</body>
+</html>

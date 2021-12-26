@@ -1,0 +1,64 @@
+body {
+  font-family: monospace; }
+
+.emojis {
+  display: inline-block;
+  float: left;
+  width: 576px;
+  font-size: 24px;
+  position: absolute;
+  left: 630px;
+  top: 24px;
+  bottom: 24px;
+  overflow: scroll; }
+  .emojis .emoji {
+    cursor: pointer; }
+
+.editors {
+  float: left; }
+
+.controls {
+  padding: 1em;
+  width: 600px;
+  font-size: 1.5em; }
+  .controls div {
+    margin: 1em; }
+  .controls button {
+    font-size: .6em;
+    margin: 0 0 0 0.5em; }
+  .controls > button {
+    margin: 1em; }
+  .controls > label {
+    margin: 1em;
+    display: block; }
+    .controls > label > label {
+      margin: 0 0 0 0.5em; }
+
+.editor {
+  display: block;
+  margin: 3em; }
+  .editor.double-column {
+    width: 576px; }
+  .editor .block {
+    display: inline-block;
+    height: 24px;
+    user-select: none;
+    width: 24px;
+    margin: 0;
+    vertical-align: bottom;
+    text-align: center;
+    padding: 0;
+    line-height: 24px;
+    font-size: 24px;
+    margin-bottom: -2px; }
+  .editor.guides .block {
+    background: -moz-linear-gradient(-45deg, #e2e2e2 0%, rgba(219, 219, 219, 0.78) 50%, rgba(209, 209, 209, 0.77) 51%, rgba(254, 254, 254, 0.55) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, #e2e2e2), color-stop(50%, rgba(219, 219, 219, 0.78)), color-stop(51%, rgba(209, 209, 209, 0.77)), color-stop(100%, rgba(254, 254, 254, 0.55)));
+    background: -webkit-linear-gradient(-45deg, #e2e2e2 0%, rgba(219, 219, 219, 0.78) 50%, rgba(209, 209, 209, 0.77) 51%, rgba(254, 254, 254, 0.55) 100%); }
+
+.temp {
+  visibility: hidden; }
+
+.output {
+  position: absolute;
+  left: -5000px; }

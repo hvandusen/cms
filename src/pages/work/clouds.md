@@ -13,8 +13,9 @@ paper_code:
     var draw = false;
     function onMouseDown(e){
         draw = !draw;
+        console.log("down",draw)
         if(draw){
-            line = new paper.Path(getOptions());
+          line = new paper.Path(getOptions());
         }
     }
     var shadowOffset = new paper.Point(-1550,-1550);
@@ -25,7 +26,7 @@ paper_code:
         fillColor: new Color(1,1),
         strokeWidth: 200,
         shadowColor:  prettyRaCo(),
-        shadowOffset: shadowOffset*(isRetina ? 2 : 1),
+        shadowOffset: shadowOffset*(isRetina ? 1 : 1),
         opacity:.5,
         shadowBlur: window.innerWidth >480 ? 800: (20+Math.random()*10),
         movement: Point.random()
@@ -33,7 +34,7 @@ paper_code:
     }
     var line = new paper.Path(getOptions());
     function onMouseUp(e){
-      draw = !draw;
+      //draw = !draw;
     }
     function onMouseMove(e){
       var adder = e.delta.normalize().rotate(90).multiply(100)
@@ -43,6 +44,7 @@ paper_code:
               line.insertSegment(0,e.point+adder-shadowOffset)
               line.position += line.movementgr;
               line.smooth()
+              console.log("drawing",line)
       }
     }
   lang: javascript
