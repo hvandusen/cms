@@ -10,7 +10,6 @@ import cloudinary from 'netlify-cms-media-library-cloudinary'
 
 CMS.registerMediaLibrary(uploadcare)
 CMS.registerMediaLibrary(cloudinary)
-console.log("are we going")
 
 function block(obj){
   if(obj.img)

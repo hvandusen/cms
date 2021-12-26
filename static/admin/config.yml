@@ -86,7 +86,8 @@ collections:
       - {label: "Stripe test price ID", name: "price_test_id", widget: "string", required: false}
       - {label: "URL", name: "url", widget: "string", required: false}
       - {label: "Tags", name: "tags", widget: "list", required: false}
-
+      - {label: "Column width override", name: "grid_col", widget: "number", min: 1, max: 8, required: false}
+      - {label: "Row height override", name: "grid_row", widget: "number", min: 1, max: 8, required: false}
   - name: "pages"
     label: "Pages"
     files:

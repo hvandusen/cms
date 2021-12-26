@@ -125,7 +125,11 @@ paper_code:
       movementVector = (view.center-e.point).normalize();
     }
 
-
+    function onMouseDown(e){
+      grid = generateGrid();
+      makeVerts(grid);
+      makeHoris(grid);
+    }
 
 
     function generateGrid(options){
@@ -171,6 +175,7 @@ paper_code:
         that.columns = Math.ceil(window.innerWidth/that.totalWidth);
         that.rows = Math.ceil(window.innerHeight/that.totalWidth);
       }
+      console.log(that)
       return that;
     }
 
@@ -223,3 +228,70 @@ paper_code:
       $('.menu').toggleClass('show');
     });
 ---
+<style>
+  @media(max-width:480px){
+    .showMenu {
+      font-size: 16px;
+    }
+  }
+  .menu {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: transparent;
+    font-size: 16px!important;
+  }
+  .menu label {
+  display: none;
+  padding-bottom: 5px;
+  text-align: right;
+}
+  .menu.show label {
+    display: inherit;
+    position: relative;
+  }
+  .menu.show label:after{
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: white;
+    filter: blur(33px);
+    -webkit-filter: blur(33px);
+  }
+  button {
+    font-size: 30px;
+    font-family: SwissRounded;
+    background: white;
+  }
+  .showMenu {
+    font-size: 20px;
+    background-image: url('options.png');
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 50px;
+    height: 50px;
+    float: right;
+    padding: 0 15px;
+  }
+  .newGrid {
+    background-image: url('newGrid.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 50px;
+    height: 50px;
+    float: right;
+  }
+
+</style>
+<div class='menu'>
+    <button class='newGrid'>
+    </button>
+    <button class='showMenu'>
+    </button>
+  </div>

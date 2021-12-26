@@ -4,10 +4,8 @@ body {
 .emojis {
   display: inline-block;
   float: left;
-  width: 576px;
   font-size: 24px;
   position: absolute;
-  left: 630px;
   top: 24px;
   bottom: 24px;
   overflow: scroll; }
@@ -19,7 +17,7 @@ body {
 
 .controls {
   padding: 1em;
-  width: 600px;
+  width: 350px;
   font-size: 1.5em; }
   .controls div {
     margin: 1em; }

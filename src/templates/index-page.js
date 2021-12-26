@@ -107,6 +107,8 @@ export const pageQuery = graphql`
             draft
             featured
             tags
+            grid_row
+            grid_col
             paper_code {
               code
             }

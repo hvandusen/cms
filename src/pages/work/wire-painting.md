@@ -14,4 +14,5 @@ postContent:
 date: 2020-09-21T16:13:58.651Z
 date-finish: 2021-05-18T18:42:13.501Z
 grid_row: 3
+grid_col: 2
 ---

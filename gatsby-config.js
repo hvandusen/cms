@@ -77,8 +77,14 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
-      },
+        headers: {
+          '/*': [
+            "Content-Security-Policy: frame-ancestors 'self' https://henryvd.com/",
+            "X-Frame-Options: ALLOW-FROM https://henryvd.com/",
+          ]
+        },
+        mergeSecurityHeaders: true,
+      }
     },
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
