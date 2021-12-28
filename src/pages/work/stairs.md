@@ -2,9 +2,13 @@
 templateKey: work
 title: Stairs
 type: Candusen page
-date: 2020-07-29T15:50:30.004Z
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1600431840/Screen_Shot_2020-09-17_at_6.53.13_PM_fu7afk.png
+postContent:
+  - type: youtube
+    text: https://www.youtube.com/watch?v=LcWLe_f-wQk
+date: 2020-07-29T15:50:30.004Z
+date-finish: 2021-12-28T22:06:27.715Z
 paper_code:
   code: >-
     generateStairs();
