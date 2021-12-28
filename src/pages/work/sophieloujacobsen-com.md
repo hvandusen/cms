@@ -3,7 +3,7 @@ templateKey: work
 title: sophieloujacobsen.com
 type: client site
 featured: false
-draft: true
+draft: false
 postContent:
   - type: video
     video:
