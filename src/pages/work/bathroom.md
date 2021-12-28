@@ -11,7 +11,7 @@ description: I was waiting for a bus near Penn Station to go to DC and killed
 postContent:
   - type: image
     image:
-      - https://res.cloudinary.com/candusen/image/upload/v1640711716/IMG_1255_me3re9.heic
+      - https://res.cloudinary.com/candusen/image/upload/v1640712327/IMG_1255_ezb5up.jpg
   - type: text
     text: I had never tried to put any of my drawings in perspective, and I guess
       seeing the strong pattern on the floor from this particular angle got me
