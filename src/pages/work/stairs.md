@@ -5,10 +5,15 @@ type: Candusen page
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1600431840/Screen_Shot_2020-09-17_at_6.53.13_PM_fu7afk.png
 postContent:
+  - type: text
+    text: I saw this youtube video explaining how to draw a 3d illusion of stairs
+      where the process is broken down into very simple parts.
   - type: youtube
     text: https://www.youtube.com/watch?v=LcWLe_f-wQk
-    caption: I figured if the video could be followed by a child I could probably
-      make a program draw the illusion as well.
+    caption: ""
+  - type: text
+    text: I figured if the video could be followed by a child I could probably make
+      a program draw the illusion as well.
 date: 2020-07-29T15:50:30.004Z
 date-finish: 2021-12-28T22:06:27.715Z
 paper_code:
