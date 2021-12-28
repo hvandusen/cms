@@ -2,14 +2,23 @@
 templateKey: work
 title: Bathroom
 type: Candusen page
-featured: false
-draft: false
-date: 2021-05-19T20:10:20.491Z
-date-finish: 2021-05-19T20:10:20.510Z
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1621455221/Screen_Shot_2021-05-19_at_4.13.28_PM_uy19mz.png
-images:
-  - https://res.cloudinary.com/candusen/image/upload/v1621455089/Screen_Shot_2021-05-19_at_4.11.17_PM_aivx3e.png
+featured: false
+draft: false
+description: I was waiting for a bus near Penn Station to go to DC and killed
+  some time at a diner.. I was struck by bathroom tile and took this photo.
+postContent:
+  - type: image
+    image:
+      - https://res.cloudinary.com/candusen/image/upload/v1640711716/IMG_1255_me3re9.heic
+  - type: text
+    text: I had never tried to put any of my drawings in perspective, and I guess
+      seeing the strong pattern on the floor from this particular angle got me
+      thinking...  I ended up making this on my laptop on the bus, which had
+      outlets in front of every seat **🙏**
+date: 2021-05-19T20:10:20.491Z
+date-finish: 2021-05-19T20:10:20.510Z
 paper_code:
   code: |-
     window.g = new grid(10,10,5,"none");
@@ -107,5 +116,7 @@ paper_code:
     function onMouseDown(){
       create();
     }
+images:
+  - https://res.cloudinary.com/candusen/image/upload/v1621455089/Screen_Shot_2021-05-19_at_4.11.17_PM_aivx3e.png
 desort: false
 ---
