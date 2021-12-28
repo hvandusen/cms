@@ -2,6 +2,8 @@
 templateKey: work
 title: sophieloujacobsen.com
 type: client site
+featuredimage:
+  - https://res.cloudinary.com/candusen/image/upload/v1640709715/Screen_Shot_2021-12-28_at_11.41.49_AM_ftzyfq.png
 featured: false
 draft: false
 postContent:
