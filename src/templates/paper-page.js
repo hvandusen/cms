@@ -4,10 +4,11 @@ import { Helmet } from 'react-helmet'
 import { graphql, Link, navigate } from 'gatsby'
 import Layout from '../components/Layout'
 import PaperWrapper from '../components/PaperWrapper'
-import { HTMLContent } from '../components/Content'
+import { Blocks } from '../components/Content'
 
 const Candusen = (props) => {
   const { data } = props
+  const [infoToggled,setInfoToggled] = useState(false);
   let [fullscreen, setFullscreen] = useState(false);
   const { markdownRemark: post } = data
   const {previous,next} = props.pageContext
@@ -36,6 +37,11 @@ const Candusen = (props) => {
       document.addEventListener('keydown', onkeydown);
     }
   })
+  const toggleInfo = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setInfoToggled(!infoToggled);
+  }
   return (
     <Layout>
       <div className="paper-page">
@@ -45,6 +51,17 @@ const Candusen = (props) => {
         {next ? (
         <Link className="next" to={next} >next</Link>): null}
       </div>
+      {(post.frontmatter.description || post.frontmatter.postContent) &&
+        <div id="info" className={infoToggled ? "show":""} onClick={toggleInfo}>
+          <div id="info-icon">i</div>
+          <div id="info-content">
+            <div id="info-content-wrapper">
+              {post.frontmatter.description && <p>{post.frontmatter.description}</p>}
+              {post.frontmatter.postContent && <Blocks postContent={post.frontmatter.postContent} images={post.blockImgs} />}
+            </div>
+          </div>
+        </div>
+      }
       <PaperWrapper
         autoFocusz={true}
         tabIndex="0"
@@ -52,7 +69,6 @@ const Candusen = (props) => {
         {...post.frontmatter}
         {...post.frontmatter.paper_code}
         {...post}
-        contentComponent={HTMLContent}
         helmet={
           <Helmet titleTemplate="%s | Candusen">
             <title>{`${post.frontmatter.title}`}</title>
@@ -89,8 +105,21 @@ export const pageQuery = graphql`
         featuredimage
         images
         tags
+        postContent {
+          type
+          text
+          caption
+          image
+          video
+        }
         paper_code {
           code
+        }
+      }
+      blockImgs {
+        id
+        childImageSharp {
+          gatsbyImageData
         }
       }
     }

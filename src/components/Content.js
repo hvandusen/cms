@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import md from 'snarkdown';
+import YoutubeEmbed from "./YoutubeEmbed"
 
 export const clickedContent = (e) => {
-  console.log("We clicked content baby",e.target)
   const {target} = e;
   if(target.play){
     target.play()
@@ -14,6 +15,7 @@ export const clickedContent = (e) => {
 export const HTMLContent = ({ content, className }) => (
   <div onClick={clickedContent} className={className} dangerouslySetInnerHTML={{ __html: content }} />
 )
+
 
 const Content = ({ content, className }) => {
   console.log(content)
@@ -26,11 +28,13 @@ export const Blocks = ({ postContent, images }) => {
   let imagesUsed = 0;
   console.log(postContent)
   console.log("images: ",images)
-  return postContent.map((block,i) => {
+  return postContent.length === 0 ? [] : postContent.map((block,i) => {
     switch (block.type) {
       case "text":
-        return <p key={i} onClick={clickedContent} className={"block block-text work-text"}>{block.text}</p>
-
+        console.log(block.text)
+        return <p key={i} onClick={clickedContent} className={"block block-text work-text"}
+        dangerouslySetInnerHTML={{__html: md(block.text)}}>
+        </p>;
       case "image":
           return (<div key={i} className='caption-container image-caption block block-image work-image'>
               <GatsbyImage image={images[imagesUsed++].childImageSharp.gatsbyImageData} alt="" />
@@ -44,7 +48,13 @@ export const Blocks = ({ postContent, images }) => {
             </div>
             {block.caption && <div className='caption'>{block.caption}</div>}
           </div>
-
+      case "youtube":
+        return <div key={i} onClick={clickedContent} className={"caption-container block block-video work-video videowrapper"}>
+          <div className="mobile-video-cover" onClick={clickedContent}>
+            <YoutubeEmbed embedId={block.text.indexOf("v=")> -1 ? block.text.split("v=")[1] : block.text} />
+            </div>
+            {block.caption && <div className='caption'>{block.caption}</div>}
+          </div>
       case "code":
         return <div key={i} onClick={clickedContent} className={"block block-code work-code"}>code</div>
 

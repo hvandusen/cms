@@ -6,8 +6,8 @@ featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1621455221/Screen_Shot_2021-05-19_at_4.13.28_PM_uy19mz.png
 featured: false
 draft: false
-description: I was waiting for a bus near Penn Station to go to DC and killed
-  some time at a diner.. I was struck by bathroom tile and took this photo.
+description: "I was waiting for a bus near Penn Station to go to DC and killed
+  some time at a diner.. I was struck by the tile in the bathroom and took this photo:"
 postContent:
   - type: image
     image:

@@ -11,7 +11,7 @@ paper_code:
 
     d = new Date();
 
-    size = screen.availHeight/2.5
+    size = Math.min(window.innerHeight,window.innerWidth)/2.5
 
     notch1 = prettyRaCo()
 

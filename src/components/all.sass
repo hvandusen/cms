@@ -160,8 +160,6 @@ body h6
 a
   color: #000000
   text-decoration: none
-  &:hover
-    text-decoration: underline
 
 .h6
   font-family: $bookFont
@@ -483,7 +481,6 @@ span
 
 #page
   padding-top: 6rem
-
   .candusen-page
     .work-box, &.work-box
       grid-column: span 6
@@ -542,12 +539,61 @@ span
     height: 100vh
     top: 0
     z-index: -1
+    #info
+      #info-icon
+        text-align: center
+        line-height: 40px
+        font-size: 32px
+        width: 40px
+        height: 40px
+        position: fixed
+        z-index: 100
+        bottom: 10px
+        left: 10px
+        display: block
+        border: solid black 1px
+        border-radius: 50px
+        backdrop-filter: blur(3px)
+        font-family: 'Swiss Round'
+        cursor: pointer
+        transition: backdrop-filter .4s
+        &:hover
+          backdrop-filter: blur(5px)
+      #info-content
+        cursor: nw-resize
+        pointer-events: none
+        opacity: 0
+        height: 100vh
+        overflow: scroll
+        margin: 0 auto
+        backdrop-filter: blur(5px)
+        background: rgba(255,255,255,0.6)
+        background: linear-gradient(144deg, rgba(255, 171, 171, 1) 0%, rgba(157, 255, 157, 0.9) 50%, rgba(157, 157, 255, 0.9) 100%)
+        position: fixed
+        top: 0
+        left: 0
+        width: 50%
+        z-index: 100
+        max-width: none
+        padding: 0 25%
+        transition: opacity .4s
+        @include bp(xs)
+          width: 90%
+          padding: 0 5%
+        #info-content-wrapper
+          padding: 4em 0
+      &.show
+        #info-icon
+          display: block
+        #info-content
+          opacity: 1
+          pointer-events: all
 .paper-listing
   .paper-preview-link
     padding: .5em
     position: absolute
     z-index: 10
-.work-page
+.work-page, #info-content
     max-width: 1000px
     margin: 0 0 0 2rem
     padding-bottom: 5rem
@@ -702,7 +748,21 @@ span
           animation: underline-rgb-sparkle 1s
           span
             @include span-text-rgb-sparkle(.3s)
-
+.block-text
+  a
+    text-decoration: underline
+    &:hover
+      text-decoration: underline
+      text-decoration-line: overline
+      position: relative
+      &:after
+        content: ">"
+        position: absolute
+        top: -0.23em
+        right: -0.3em
+        height: 0.6em
+        line-height: 0.3em
+        font-size: 0.8em
 .paper-nav
   position: absolute
   bottom: 1.5rem

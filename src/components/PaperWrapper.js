@@ -18,7 +18,6 @@ const canvasStyle = {
 const PaperWrapper = ({
   id,
   html,
-  contentComponent,
   description,
   images,
   featuredimage,
@@ -69,7 +68,6 @@ const PaperWrapper = ({
 
 PaperWrapper.propTypes = {
   html: PropTypes.node.isRequired,
-  contentComponent: PropTypes.func,
   description: PropTypes.string,
   title: PropTypes.string,
   helmet: PropTypes.object,

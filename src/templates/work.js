@@ -9,7 +9,6 @@ import Content, { HTMLContent, clickedContent, Blocks } from '../components/Cont
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const ensureHttp = (str) => str && (str.indexOf("http")> - 1 ? str : "https://"+ str).replace("http://","https://")
-
 const spanify = (str) => str.split("").map((char,i)=> <span key={i}>{char}</span>)
 
 

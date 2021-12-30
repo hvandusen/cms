@@ -21,21 +21,30 @@ paper_code:
         child.position = pt;
         child.position += [num(size),num(size)];
         child.strokeColor = colors.splice(num(colors.length),1)
+        child.rotate(Math.random()*360)
       });
+      group.position = pt;
       return group;
     }
 
-    set(new Point(100,100),50)
-
-    var all = new Group();
-    var size = 20;
-    var cellSize = 50;
-    var columns=rows=6;
-    for (var i = 0; i < columns; i++) {
-      for (var j = 0; j < rows; j++) {
-        all.children.push(set(new Point(i*cellSize,j*cellSize),size))
+    //set(new Point(100,100),50)
+    function draw(){
+      project.activeLayer.clear()
+      var all = new Group();
+      var cellSize = 25 + Math.random()*250;
+      var size = cellSize*.5;
+      var columns = window.innerWidth / cellSize;
+      var rows = window.innerHeight / cellSize;
+      for (var i = 0; i < columns; i++) {
+        for (var j = 0; j < rows; j++) {
+          all.children.push(set(new Point(i*cellSize,j*cellSize),size))
+        }
       }
+      all.fitBounds(view.bounds);
+      all.scale(.9)
     }
-    all.fitBounds(view.bounds);
-    all.scale(.9)
+    draw()
+    function onMouseDown(){
+      draw()
+    }
 ---

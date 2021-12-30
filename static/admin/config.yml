@@ -54,7 +54,7 @@ collections:
           - label: 'Header'
             name: 'header'
             widget: 'text'
-          - label: 'Body text'
+          - label: 'Text'
             name: 'text'
             summary: '{{fields.text}}'
             widget: 'markdown'
@@ -72,6 +72,12 @@ collections:
             summary: ''
             fields:
               - { label: 'Video', name: 'video', widget: 'image' }
+              - { label: 'Caption', name: 'caption', widget: 'text', required: false}
+          - label: 'Youtube'
+            name: 'youtube'
+            summary: '{{fields.text}}'
+            fields:
+              - { label: 'url', name: 'text', widget: 'string' }
               - { label: 'Caption', name: 'caption', widget: 'text', required: false}
           - label: 'Code'
             name: 'code'

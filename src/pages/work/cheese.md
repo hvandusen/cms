@@ -21,7 +21,7 @@ paper_code:
 
     function cheese(pos,size){
       var cheeseGroup = new Group();
-      var topGuide = new Path.Circle(300,300,100);
+      var topGuide = new Path.Circle(300,300,size[0]);
       topGuide.scale(1,.3);
 
 
@@ -39,7 +39,7 @@ paper_code:
 
       var bottom = top.clone();
       bottom.fillColor = prettyRaCo();
-      bottom.position.y += 50;
+      bottom.position.y += size[1]*1;
       bottom.sendToBack();
 
       var rightSide = new Path();
@@ -49,7 +49,7 @@ paper_code:
         rightSide.add(new Point(topGuide.getPointAt(position)));
         position++;
       }
-      var bottomPoints = rightSide.segments.map(function(s){ var n = [s.point.x,s.point.y+50]; return n}).reverse();
+      var bottomPoints = rightSide.segments.map(function(s){ var n = [s.point.x,s.point.y+size[1]*1]; return n}).reverse();
       rightSide.addSegments(bottomPoints)
       rightSide.closed = true;
 

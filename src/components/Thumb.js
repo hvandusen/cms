@@ -20,7 +20,6 @@ const slugifyType = (str) => str.replace(/\s+/g, '-').toLowerCase().replace("mix
 
 const Thumb = ({work,filter}) =>{
   // console.log("work supplied at one", work)
-  console.log("thumb work",work.frontmatter.grid_row)
   const fm = work.frontmatter
   const workType = fm.type
   const theClass = " thumb thumb-"+fm.type.split(" ")[0].toLowerCase()
@@ -46,6 +45,7 @@ const Thumb = ({work,filter}) =>{
           preserveStackingContext
           style={{
             backgroundSize: "contain",
+            backgroundPosition: "top",
             backgroundImage: `url(${bgImg ? '' : img.images.fallback.src})`
           }}>
       </BackgroundImage> :

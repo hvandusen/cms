@@ -36,24 +36,8 @@ postContent:
       - https://res.cloudinary.com/candusen/image/upload/v1621361542/Screen_Shot_2021-05-18_at_1.50.22_PM_dbh6if.png
     caption: Another "light" pic!
   - type: text
-    text: >-
-      Wordnet is a database for real (or human) languages, in my case English.
-      It has a list of meanings of each word just like a dictionary, but the
-      kicker is it also situates each word into an all-encompassing heirarchy of
-      things and concepts. Searching aardvark on wordnet will give you this:
-
-
-      =>   anteater
-        =>   placental mammal
-          =>   mammal
-            =>   vertebrate
-               =>  chordate
-                  =>  animal
-                    =>  organism
-                        => living
-                          => whole
-                            =>  object
-                                      physical entity
+    text: |-
+      Wordnet is a database for real (or human) languages, in my case English. It has a list of meanings of each word just like a dictionary, but the kicker is it also situates each word into an all-encompassing heirarchy of things and concepts. Searching aardvark on wordnet will tell you that it's an anteater which is a placental mammal which is a mammal which is a vertebrate which is a chordate which is a animal which is a organism which is a living which is a whole which is a object which is a physical entity.
   - type: image
     image:
       - https://res.cloudinary.com/candusen/image/upload/v1621459518/Screen_Shot_2021-05-19_at_5.23.36_PM_kgbbwi.png
