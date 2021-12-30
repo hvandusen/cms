@@ -57,62 +57,62 @@ paper_code:
     }
 
 
-
-    function rgb(){
-      return "rgb("+[0,255,num(255)].map(function(e,i,a){
-        return a.splice(Math.floor(Math.random()*a.length),1)[0] + ","+(a.length<2 ? a[0]:"")
-      }).join("")+")"
-    }
-
-
-    var rows = 10;
-
-    var columns = 8;
-
-    var size = Math.min(window.innerWidth,window.innerHeight);
-
-    var tapeSize = size/Math.max(rows,columns);
-
-    var c = new Group();//[];
-
-    var r = new Group();//[];
-
-
-    for (var i = 0; i < rows; i++) {
-      // c.push(new Group());
-      var style = {
-        // strokeWidth: tapeSize,
-        fillColor: ["red","green","blue"][i%3]
+    function draw(){
+      project.activeLayer.clear();
+      function rgb(){
+        return "rgb("+[0,255,num(255)].map(function(e,i,a){
+          return a.splice(Math.floor(Math.random()*a.length),1)[0] + ","+(a.length<2 ? a[0]:"")
+        }).join("")+")"
       }
-      var path = new Path(style);
-      path.add(0,tapeSize*i)
-      path.add(size*(columns/rows),tapeSize*i)
-      path.add(size*(columns/rows),tapeSize+tapeSize*i)
-      path.add(0,tapeSize+tapeSize*i)
-      path[(Math.random() > .5 ? "sendToBack" : "bringToFront")]();
-      r.children.push(path)
-    }
 
+      var rows = 10;
+      var columns = 8;
+      var size = Math.min(window.innerWidth,window.innerHeight);
+      var tapeSize = size/Math.max(rows,columns);
+      var c = new Group();//[];
+      var r = new Group();//[];
 
-    for (var i = 0; i < columns; i++) {
-      // c.push(new Group());
-      var style = {
-        fillColor: ["red","green","blue"][i%3]
+      for (var i = 0; i < rows; i++) {
+        // c.push(new Group());
+        var style = {
+          // strokeWidth: tapeSize,
+          fillColor: ["red","green","blue"][i%3]
+        }
+        var path = new Path(style);
+        path.add(0,tapeSize*i)
+        path.add(size*(columns/rows),tapeSize*i)
+        path.add(size*(columns/rows),tapeSize+tapeSize*i)
+        path.add(0,tapeSize+tapeSize*i)
+        path[(Math.random() > .5 ? "sendToBack" : "bringToFront")]();
+        r.children.push(path)
       }
-      var path = new Path(style);
-      path.add(tapeSize*i,0)
-      path.add(tapeSize*i,size)
-      path.add(tapeSize*i+tapeSize,size)
-      path.add(tapeSize*i+tapeSize,0)
-      path[(Math.random() > .5 ? "sendToBack" : "bringToFront")]();
-      c.children.push(path)
+
+      for (var i = 0; i < columns; i++) {
+        // c.push(new Group());
+        var style = {
+          fillColor: ["red","green","blue"][i%3]
+        }
+        var path = new Path(style);
+        path.add(tapeSize*i,0)
+        path.add(tapeSize*i,size)
+        path.add(tapeSize*i+tapeSize,size)
+        path.add(tapeSize*i+tapeSize,0)
+        path[(Math.random() > .5 ? "sendToBack" : "bringToFront")]();
+        c.children.push(path)
+      }
+
+      r.rotate(num(10)-5)
+      c.rotate(num(10)-5)
+
+      var outside = new Path.Rectangle(0,0,tapeSize*columns,tapeSize*rows);
+
     }
 
 
-    r.rotate(num(10)-5)
-
-    c.rotate(num(10)-5)
+    draw();
 
 
-    var outside = new Path.Rectangle(0,0,tapeSize*columns,tapeSize*rows);
+    function onMouseMove(){
+      draw()
+    }
 ---
