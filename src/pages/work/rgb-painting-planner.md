@@ -2,6 +2,8 @@
 templateKey: work
 title: RGB Painting Planner
 type: Candusen page
+featuredimage:
+  - https://res.cloudinary.com/candusen/image/upload/v1640837984/Screen_Shot_2021-12-29_at_11.19.38_PM_mh8akb.png
 featured: false
 draft: false
 date: 2021-12-30T04:17:54.937Z
