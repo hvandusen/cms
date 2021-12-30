@@ -101,8 +101,13 @@ paper_code:
         c.children.push(path)
       }
 
-      r.rotate(num(10)-5)
-      c.rotate(num(10)-5)
+      r.rotate(90+num(10)-5);
+      r.position = view.bounds.center;
+      r.scale(2);
+      c.rotate(90+num(10)-5);
+      c.position = view.bounds.center;
+      c.scale(2);
+
 
       var outside = new Path.Rectangle(0,0,tapeSize*columns,tapeSize*rows);
 
@@ -112,7 +117,7 @@ paper_code:
     draw();
 
 
-    function onMouseMove(){
+    function onMouseDown(){
       draw()
     }
 ---
