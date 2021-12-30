@@ -3,7 +3,7 @@ templateKey: work
 title: Tesselation
 type: Candusen page
 featuredimage:
-  - https://res.cloudinary.com/candusen/image/upload/v1640832193/Screen_Shot_2021-12-29_at_9.43.03_PM_etk2kw.png
+  - https://res.cloudinary.com/candusen/image/upload/v1640832426/Screen_Shot_2021-12-29_copy_e53iz4.jpg
 featured: false
 draft: false
 date: 2021-12-29T21:33:00.832Z
