@@ -3,7 +3,7 @@ templateKey: work
 title: Tesselation
 type: Candusen page
 featuredimage:
-  - https://res.cloudinary.com/candusen/image/upload/v1640813637/Screen_Shot_2021-12-29_at_4.29.56_PM_bcm7mf.png
+  - https://res.cloudinary.com/candusen/image/upload/v1640832193/Screen_Shot_2021-12-29_at_9.43.03_PM_etk2kw.png
 featured: false
 draft: false
 date: 2021-12-29T21:33:00.832Z
@@ -214,6 +214,7 @@ paper_code:
       return results
     }
 
+    go()
 
     function onMouseDown() {
       go()
