@@ -1,7 +1,7 @@
 ---
 templateKey: work
 title: Ripple Ribbon
-type: Candusen page
+type: Drawing
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1641266767/Scan_3_cover_f3mzxn.jpg
 featured: false
