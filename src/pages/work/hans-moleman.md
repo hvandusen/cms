@@ -3,7 +3,7 @@ templateKey: work
 title: Hans Moleman
 type: Drawing
 featuredimage:
-  - https://res.cloudinary.com/candusen/image/upload/v1641256488/Scan_36_ktpcid.jpg
+  - https://res.cloudinary.com/candusen/image/upload/v1641257923/Scan_36_ktpcid.jpg
 featured: false
 draft: false
 description: I made this for my brother 🤪
