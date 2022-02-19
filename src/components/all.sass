@@ -278,7 +278,6 @@ span
           pointer-events: none
         &.candusen-page
           //grid-row: span 4
-
         &.website
           //grid-row: span 6
         &.print, &.software, &.tape
@@ -437,7 +436,7 @@ span
     &.thumb-client
       grid-column: span 4
       grid-row: span 3
-    &.thumb-candusen
+    &.thumb-candusen, &.thumb-drawing
       grid-column: span 1
       grid-row: span 1
       border: none
@@ -748,6 +747,18 @@ span
           animation: underline-rgb-sparkle 1s
           span
             @include span-text-rgb-sparkle(.3s)
+#other-work
+  padding: 2em
+  #other-work-list
+    overflow-x: scroll
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    .other-work-item
+      margin: 1em
+      display: inline-block
+  .other-work-item-image
+    width: 300px
 .block-text
   a
     text-decoration: underline

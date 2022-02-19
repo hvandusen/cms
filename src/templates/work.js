@@ -11,8 +11,6 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 const ensureHttp = (str) => str && (str.indexOf("http")> - 1 ? str : "https://"+ str).replace("http://","https://")
 const spanify = (str) => str.split("").map((char,i)=> <span key={i}>{char}</span>)
 
-
-
 const WorkTemplate = ({
   content,
   contentComponent,
@@ -26,11 +24,14 @@ const WorkTemplate = ({
   featured,
   tags,
   mode,
+  slug,
   url,
   title,
   helmet,
+  type,
   postContent,
-  blockImgs
+  blockImgs,
+  other
 }) => {
   const PostContent = contentComponent || Content
   const formatCurrency = (price) => `$${price/100}`
@@ -51,6 +52,7 @@ const WorkTemplate = ({
     }
   const displayURL = display_url ? display_url : url;
   return (
+    <div id="work-page-wrapper">
     <section className="section work-page">
       {helmet || ''}
       <div className="container content">
@@ -93,6 +95,20 @@ const WorkTemplate = ({
            : ""}
       </div>
     </section>
+    <section className="section other-work">
+      {other.edges.length > 2 && <div id="other-work">
+        <h3>More {type.toLowerCase()}s:</h3>
+        <div id="other-work-list">
+        {other.edges.filter(({node: work})=> (!!!work.frontmatter.draft && work.fields.slug !== slug)).map(({node: work},i)=>
+          <a key={i} class="other-work-item" href={work.fields.slug}>
+            <p key={i} class="other-work-item-title">{work.frontmatter.title}</p>
+            {work.featuredImg && <div class="other-work-item-image"><GatsbyImage objectFit="contain" image={work.featuredImg.childImageSharp.gatsbyImageData} alt={"we testin"} /></div>}
+          </a>
+        )}
+        </div>
+      </div>}
+    </section>
+    </div>
   )
 }
 
@@ -121,10 +137,11 @@ const getProduct = (allStripePrice,price_id) => {
 
 const Work = ({ data }) => {
   const { markdownRemark: post } = data
-  const { allStripePrice } = data
+  const { allStripePrice, other } = data
   const mode = data.site.siteMetadata.gatsby_env
   let price_id = post.frontmatter[`price_${(mode === "development" ? 'test_':'')}id`]
   const product = getProduct(allStripePrice, price_id)
+  console.log("other",other)
   return (
     <Layout>
       <WorkTemplate
@@ -139,6 +156,8 @@ const Work = ({ data }) => {
         postContent={post.frontmatter.postContent}
         product={product}
         mode={mode}
+        type={post.frontmatter.type}
+        slug={post.fields.slug}
         featuredSharp={post.featuredSharp}
         featuredImgs={post.featuredImgs}
         featuredImg={post.featuredImg}
@@ -153,6 +172,7 @@ const Work = ({ data }) => {
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        other={other}
       />
     </Layout>
   )
@@ -167,10 +187,13 @@ Work.propTypes = {
 export default Work
 
 export const pageQuery = graphql`
-  query WorkByID($id: String!) {
+  query WorkByID($id: String!, $type: String!) {
     markdownRemark(id: { eq: $id }) {
       id
       html
+      fields {
+        slug
+      }
       featuredImg {
         childImageSharp {
           gatsbyImageData
@@ -184,6 +207,7 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
+        type
         description
         postContent {
             type
@@ -206,6 +230,24 @@ export const pageQuery = graphql`
             gatsbyImageData
           }
         }
+    }
+    other: allMarkdownRemark(filter: {frontmatter: {type: {eq: $type}}}) {
+      edges {
+        node {
+          frontmatter {
+            title
+            draft
+          }
+          featuredImg {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+          fields {
+            slug
+          }
+        }
+      }
     }
     allStripePrice {
       edges {

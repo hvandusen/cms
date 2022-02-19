@@ -69,6 +69,7 @@ exports.createPages = ({ actions, graphql }) => {
         // additional data can be passed via context
         context: {
           id,
+          type: postType,
           previous: edge.previous ? edge.previous.fields.slug : null,
           next: edge.next ? edge.next.fields.slug : null
         },
