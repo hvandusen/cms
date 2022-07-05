@@ -37,4 +37,6 @@ postContent:
       and CSS only.
 date: 2022-07-05T14:24:07.238Z
 date-finish: 2022-07-05T14:24:07.246Z
+display_url: https://merz-akademie-creative-coding.netlify.app/
+url: https://merz-akademie-creative-coding.netlify.app/
 ---
