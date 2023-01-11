@@ -29,7 +29,7 @@
     "gatsby-remark-relative-images-v2": "^0.1.5",
     "gatsby-source-filesystem": "^4.2.0",
     "gatsby-source-stripe": "^3.2.2",
-    "gatsby-transformer-remark": "^5.2.0",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "4.2.0",
     "gbimage-bridge": "^0.1.1",
     "global": "^4.4.0",
