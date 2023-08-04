@@ -49,7 +49,5 @@ postContent:
 date: 2022-06-08T22:16:40.619Z
 date-finish: 2023-06-02T22:16:40.630Z
 display_url: dusendusen.com
-tags:
-  - client
-  - shopify
+tags: []
 ---
