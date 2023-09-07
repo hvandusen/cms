@@ -4,6 +4,7 @@ title: Candusen.com
 type: Website
 featuredimage:
   - https://res.cloudinary.com/candusen/image/upload/v1694094519/Screenshot_2023-09-07_at_9.48.06_AM_njedwp.png
+  - https://res.cloudinary.com/candusen/image/upload/v1694097155/Screenshot_2023-09-07_at_10.32.24_AM_ksquj2.png
 featured: false
 draft: false
 description: Random e-commerce featuring my drawing programs that I've developed
